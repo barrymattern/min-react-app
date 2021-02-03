@@ -23,6 +23,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60],
       },
     },
+    profileImageUrl: {
+      allowNull: true,
+      type: DataTypes.STRING,
+      validates: {
+        len: [3, 500],
+      },
+    },
     tokenId: {
       type: DataTypes.STRING
     }
