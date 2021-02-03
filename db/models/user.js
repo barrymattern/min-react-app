@@ -43,8 +43,8 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'user_id',
     };
 
-    User.hasMany(models.Theme, { foreignKey: 'user_id' });
-    User.belongsToMany(models.Theme, { foreignKey: columnMapping });
+    // User.hasMany(models.Theme, { foreignKey: 'user_id' });
+    User.belongsToMany(models.Theme, columnMapping);
   };
 
   return User;
