@@ -57,7 +57,11 @@ router.post(
 
 // GET one user by id
 router.get('/:userId', asyncHandler(async function (req, res, next) {
-  const user = await User.findByPk(`${req.params.userId}`);
+  const user = await User.findByPk(`${req.params.userId}`, {
+    attributes: {
+      exclude: ['hashedPassword', 'tokenId'],
+    }
+  });
   res.json({ user });
 }));
 
@@ -69,6 +73,30 @@ router.get('/:userId/themes', asyncHandler(async function (req, res, next) {
     },
   });
   return res.json({ userThemes });
+}));
+
+// GET one user's light themes
+router.get(
+  '/:userId/themes/light',
+  asyncHandler(async function (req, res, next) {
+    const lightThemes = await Theme.findAll({
+      where: {
+        light: true,
+      },
+    });
+    return res.json(lightThemes);
+}));
+
+// GET one user's dark themes
+router.get(
+  '/:userId/themes/dark',
+  asyncHandler(async function (req, res, next) {
+    const darkThemes = await Theme.findAll({
+      where: {
+        light: false,
+      },
+    });
+    return res.json(darkThemes);
 }));
 
 // GET one user's favorite themes
@@ -83,6 +111,10 @@ router.get(
     return res.json({ favoriteThemes });
   }),
 );
+
+// TODO:
+// GET one user's favorite light themes
+// GET one user/s favorite dark themes
 
 // GET one user's single theme
 router.get(

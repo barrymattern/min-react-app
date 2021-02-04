@@ -18,6 +18,40 @@ router.get('/', asyncHandler(async function (req, res, next) {
   return res.json({ themes });
 }));
 
+// GET all light themes
+router.get('/light', asyncHandler(async function (req, res, next) {
+  const lightTheme = await Theme.findAll({
+    where: {
+      light: true,
+    },
+    include: [{
+      model: User,
+      attributes: ['username', 'profileImageUrl'],
+      through: {
+        attributes: [],
+      },
+    }],
+  });
+  return res.json({ lightTheme }); 
+}));
+
+// GET all dark themes
+router.get('/dark', asyncHandler(async function (req, res, next) {
+  const darkTheme = await Theme.findAll({
+    where: {
+      light: false,
+    },
+    include: [{
+      model: User,
+      attributes: ['username', 'profileImageUrl'],
+      through: {
+        attributes: [],
+      },
+    }],
+  });
+  return res.json({ darkTheme }); 
+}));
+
 // GET one theme by id
 router.get('/:themeId', asyncHandler(async function (req, res, next) {
   const theme = await Theme.findByPk(`${req.params.themeId}`, {
@@ -29,64 +63,7 @@ router.get('/:themeId', asyncHandler(async function (req, res, next) {
       },
     }],
   });
-  console.log(User);
   return res.json({ theme });
 }));
 
 module.exports = router;
-
-
-// Model.findAll({
-//   attributes: {
-//     include: [
-//       [sequelize.fn('COUNT', sequelize.col('hats')), 'no_hats']
-//     ]
-//   }
-// });
-
-// // GET one theme by id
-// router.get('/:themeId', asyncHandler(async function (req, res, next) {
-//   const theme = await Theme.findByPk(`${req.params.themeId}`, {
-//     include: [{
-//       model: User,
-//       attributes: {
-//         include: [['username', 'profileImageUrl']],
-//         exclude: ['Favorite']},
-//     }],
-//   });
-//   console.log(User);
-//   return res.json({ theme });
-// }));
-
-// // ORIGINAL
-// // GET one theme by id
-// router.get('/:themeId', asyncHandler(async function (req, res, next) {
-//   const theme = await Theme.findByPk(`${req.params.themeId}`, {
-//     include: [{
-//       model: User,
-//       attributes: ['username', 'profileImageUrl'],
-//     }],
-//   });
-//   console.log(User);
-//   return res.json({ theme });
-// }));
-
-// // GET one theme by id
-// router.get('/:themeId', asyncHandler(async function (req, res, next) {
-//   const theme = await Theme.findByPk(`${req.params.themeId}`, {
-//     include: [{
-//       model: User,
-//       attributes: {exclude: [
-//         'id',
-//         'email',
-//         'hashedPassword',
-//         'tokenId',
-//         'createdAt',
-//         'updatedAt',
-//         'Favorite',
-//       ]},
-//     }],
-//   });
-//   console.log(User);
-//   return res.json({ theme });
-// }));
