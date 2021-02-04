@@ -1,7 +1,7 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-
-import UserList from './components/UsersList';
+import React from "react";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+// import UserList from "./components/UsersList";
+import Themes from './components/Themes';
 
 
 function App() {
@@ -11,17 +11,25 @@ function App() {
         <nav>
             <ul>
                 <li><NavLink to="/" activeClass="active">Home</NavLink></li>
-                <li><NavLink to="/users" activeClass="active">Users</NavLink></li>
+                <li><NavLink to="/themes" activeClass="active">Themes</NavLink></li>
             </ul>
         </nav>
         <Switch>
-            <Route path="/users">
+            {/* <Route path="/users">
                 <UserList />
+            </Route> */}
+
+            <Route exact path="/">
+              <h1>Home Page</h1>
+              <p>Editor Preview</p>
+              <p>Color Wheel</p>
+              <p>JSON Visualizer</p>
             </Route>
 
-            <Route path="/">
-                <h1>My Home Page</h1>
+            <Route exact path="/themes">
+              <Themes />
             </Route>
+
         </Switch>
     </BrowserRouter>
   );
