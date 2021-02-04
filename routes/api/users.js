@@ -1,4 +1,5 @@
 const express = require('express');
+const { check } = require('express-validator');
 const asyncHandler = require('express-async-handler');
 
 const { User } = require('../../db/models');

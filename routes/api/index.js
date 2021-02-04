@@ -5,9 +5,9 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
-const routes = ['users'];
+const routes = ['users', 'session'];
 
-// EXAMPLE: router.use('/user', './user')
+// EXAMPLE: router.use('/users', './users')
 for (let route of routes) {
   router.use(`/${route}`, require(`./${route}`));
 }
@@ -24,5 +24,12 @@ router.get(
     return res.json({ user });
   }),
 );
+
+// GET /api/restore-user
+const { restoreUser } = require('../../utils/auth');
+
+router.get('/restore-user', restoreUser, (req, res) => {
+  return res.json(req.user);
+});
 
 module.exports = router;
