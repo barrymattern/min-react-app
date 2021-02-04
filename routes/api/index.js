@@ -5,9 +5,9 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
-const routes = ['users', 'session'];
+const routes = ['users', 'session', 'themes'];
 
-// EXAMPLE: router.use('/users', './users')
+// EXAMPLE: router.use('/users', './users') – add new routes to array above
 for (let route of routes) {
   router.use(`/${route}`, require(`./${route}`));
 }

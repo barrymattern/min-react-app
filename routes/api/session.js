@@ -8,6 +8,7 @@ const { User } = require("../../db/models");
 
 const router = express.Router();
 
+// Validation for Log in (below)
 const validateLogin = [
   check("credential")
     .exists({ checkFalsy: true })
