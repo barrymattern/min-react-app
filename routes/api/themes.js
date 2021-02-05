@@ -15,7 +15,7 @@ router.get('/', asyncHandler(async function (req, res, next) {
       },
     }],
   });
-  return res.json({ themes });
+  return res.json(themes);
 }));
 
 // GET all light themes

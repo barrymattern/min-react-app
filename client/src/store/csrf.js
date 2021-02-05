@@ -35,7 +35,7 @@ export async function fetch(url, options = {}) {
   return res;
 }
 
-// TODO: may need backend route for this
+// TODO: Need backend route for this
 export function restoreCSRF() {
   return fetch('/api/csrf/restore');
 }

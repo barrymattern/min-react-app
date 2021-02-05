@@ -10,6 +10,7 @@ const getAllThemes = (themes) => ({
 });
 
 // Thunk Action Creator – produces a function
+// Thunks are mainly for async
 export const fetchAllThemes = () => {
   return async (dispatch) => {
     // Interact with server
@@ -26,10 +27,13 @@ function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case GET_ALL_THEMES:
-      newState = action.payload; // payload from Action Creator
-      return { ...newState};
+      newState = {}; // payload from Action Creator, turned into object
+      action.payload.forEach(theme => {
+        newState[theme.id] = theme; // sets theme.id as keys for object
+      });
+      return newState;
     default:
-      return { ...state };
+      return state;
   }
 };
 

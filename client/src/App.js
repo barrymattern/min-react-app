@@ -30,6 +30,10 @@ function App() {
               <Themes />
             </Route>
 
+            <Route exact path="/themes/:themeId">
+              <OneTheme />
+            </Route>
+
         </Switch>
     </BrowserRouter>
   );
