@@ -26,8 +26,8 @@ function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case GET_ALL_THEMES:
-      newState = action.payload;
-      return { ...newState };
+      newState = action.payload; // payload from Action Creator
+      return { ...newState};
     default:
       return { ...state };
   }

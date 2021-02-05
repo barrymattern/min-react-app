@@ -26,10 +26,17 @@ const Theme = () => {
     <div className='themes-container'>
       {!currentThemes && <h3>Time to create more themes!</h3>} {/* replace with loading gif */}
       {currentThemes && currentThemes.map((theme, idx) => {
-        return <li>{theme.id}</li>
+        return (
+          <>
+            <h3>{theme.id}</h3>
+            <p>{theme.Users.map((user, idx) => {
+              return user.username;
+            })}</p>
+          </>
+        )
       })}
     </div>
   );
-};
+}
 
 export default Theme;
