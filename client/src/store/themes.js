@@ -23,11 +23,14 @@ export const fetchAllThemes = () => {
 const initialState = {};
 
 function reducer(state = initialState, action) {
-  let newState = {};
+  let newState;
   switch (action.type) {
     case GET_ALL_THEMES:
-      newState = action.themes;
+      newState = action.payload;
+      return { ...newState };
     default:
-      return state;
+      return { ...state };
   }
 };
+
+export default reducer;

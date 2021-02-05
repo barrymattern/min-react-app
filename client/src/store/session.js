@@ -9,7 +9,7 @@ const setUser = (user) => ({
 });
 
 export const createUser = (user) => async (dispatch) => {
-  const { image, username, email, password } = user;
+  const { username, email, password } = user; // Add 'image' back for s3
   const formData = new FormData();
   formData.append('username', username);
   formData.append('email', email);
