@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 // import UserList from "./components/UsersList";
 import Themes from './components/Themes';
+import SingleTheme from './components/SingleTheme';
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
             </Route>
 
             <Route exact path="/themes/:themeId">
-              <OneTheme />
+              <SingleTheme />
             </Route>
 
         </Switch>

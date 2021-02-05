@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { useParams } from 'react-router-dom';
 import { fetchAllThemes } from '../../store/themes';
 
 const Theme = () => {
   const dispatch = useDispatch();
-  // const params = useParams();
-  // const { themeId } = params;
 
   useEffect(() => {
     // Request to server
@@ -22,7 +19,8 @@ const Theme = () => {
   });
 
   // Prevents 'undefined' caused by tying to load before useEffect updates state
-  if (currentThemes == null) return null; // '==' coerces null & undefined to be truthy to execute if statement
+  // Can also use:  if (!currentThemes) return null
+  if (currentThemes == null) return null; // '==' coerces null & undefined to be truthy to execute 'if' statement
 
   return (
     <div className='themes-container'>
