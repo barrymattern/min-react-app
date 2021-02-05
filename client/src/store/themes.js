@@ -10,14 +10,28 @@ const getAllThemes = (themes) => ({
   payload: themes,
 });
 
+const getSingleTheme = (theme) => ({
+  type: GET_SINGLE_THEME,
+  payload: theme,
+});
+
 // Thunk Action Creator – produces a function **********************************
 // Thunks are mainly for async
 export const fetchAllThemes = () => {
   return async (dispatch) => {
     // Interact with server
-    const response = await fetch('api/themes');
+    const response = await fetch('/api/themes');
     dispatch(
       getAllThemes(response.data) // Already JSON from custom csrf
+    );
+  };
+};
+
+export const fetchSingleTheme = (themeId) => {
+  return async (dispatch) => {
+    const response = await fetch(`/api/themes/${themeId}`);
+    dispatch(
+      getSingleTheme(response.data)
     );
   };
 };
@@ -35,6 +49,8 @@ function reducer(state = initialState, action) {
         newState[theme.id] = theme; // sets theme.id as keys for object
       });
       return newState;
+    case GET_SINGLE_THEME:
+      return { ...state, [action.payload.theme.id]: action.payload.theme };
     default:
       return state;
   }

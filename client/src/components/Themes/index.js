@@ -20,7 +20,9 @@ const Theme = () => {
 
   // Prevents 'undefined' caused by tying to load before useEffect updates state
   // Can also use:  if (!currentThemes) return null
-  if (currentThemes == null) return null; // '==' coerces null & undefined to be truthy to execute 'if' statement
+  if (currentThemes.length === 0) return null; // '==' coerces null & undefined to be truthy to execute 'if' statement
+
+  console.log(currentThemes, '!!!!!!!!!!!!!!!!')
 
   return (
     <div className='themes-container'>

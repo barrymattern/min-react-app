@@ -23,7 +23,7 @@ function App() {
             <Route exact path="/">
               <h1>Home Page</h1>
               <p>Editor Preview</p>
-              <p>Color Wheel</p>
+              <p>Color Wheel</p>   
               <p>JSON Visualizer</p>
             </Route>
 
