@@ -11,13 +11,16 @@ const Theme = () => {
   useEffect(() => {
     // Request to server
     dispatch(
-      fetchAllThemes() // Thunk from themes.js
+      fetchAllThemes() // Thunk from /store/themes.js
     );
   }, [dispatch]);
 
   const currentThemes = useSelector(fullReduxState => {
-    return fullReduxState.themes.all;
+    return fullReduxState.themes.themes;
   });
+
+  // Prevents 'undefined' caused by tying to load before useEffect updates state
+  if (currentThemes === undefined) return null;
 
   return (
     <div className='themes-container'>
