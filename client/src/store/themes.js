@@ -10,12 +10,6 @@ const getAllThemes = (themes) => ({
   payload: themes,
 });
 
-// Doesn't use async all, no need for thunk (see SingleTheme.js setup)
-// export const getSingleTheme = (theme) => ({
-//   type: GET_SINGLE_THEME,
-//   payload: theme,
-// });
-
 // Thunk Action Creator – produces a function **********************************
 // Thunks are mainly for async
 export const fetchAllThemes = () => {
@@ -41,8 +35,6 @@ function reducer(state = initialState, action) {
         newState[theme.id] = theme; // sets theme.id as keys for object
       });
       return newState;
-    case GET_SINGLE_THEME:
-      console.log(state, action.payload, '!!!!!!!!!!!!!!!!!!!!');
     default:
       return state;
   }

@@ -29,10 +29,10 @@ const Theme = () => {
         return (
           <div className='individual-theme' key={idx}>
             <Link to={`/themes/${theme.id}`}>
-              <h3>{theme.id}</h3>
+              <h3 className="theme-id">{theme.id}</h3>
             </Link>
             {theme.Users.map((user, idx) => {
-              return <p key={idx}>{user.username}</p>;
+              return <p className='username' key={idx}>{user.username}</p>;
             })}
           </div>
         )
