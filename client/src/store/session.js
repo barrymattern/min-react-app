@@ -42,6 +42,9 @@ const removeUser = () => ({
 export const login = ({ credential, password }) => async (dispatch) => {
   const res = await fetch('/api/session', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({ credential, password })
   });
   dispatch(setUser(res.data.user));
@@ -58,6 +61,9 @@ export const signup = (user) => async (dispatch) => {
   const { username, email, password } = user;
   const response = await fetch('/api/users', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       username,
       email,

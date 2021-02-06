@@ -1,1 +1,10 @@
 /* TODO Add site wide styles */
+* {
+  box-sizing: border-box;
+  /* margin: 0;
+  padding: 0; */
+}
+
+.navbar {
+  /* position: fixed; */
+}

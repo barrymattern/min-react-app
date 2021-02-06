@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllThemes } from '../../store/themes';
 
-const Theme = () => {
+const Themes = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,9 +20,8 @@ const Theme = () => {
 
   // Prevents 'undefined' caused by tying to load before useEffect updates state
   // Can also use:  if (!currentThemes) return null
-  if (currentThemes.length === 0) return null; // '==' coerces null & undefined to be truthy to execute 'if' statement
-
-  console.log(currentThemes, '!!!!!!!!!!!!!!!!')
+  // if (currentThemes == null) return null // '==' coerces null & undefined to be truthy to execute 'if' statement
+  if (currentThemes.length === 0) return null;
 
   return (
     <div className='themes-container'>
@@ -31,7 +30,7 @@ const Theme = () => {
         return (
           <div className='individual-theme' key={idx}>
             <Link to={`/themes/${theme.id}`}>
-              <h3 className="theme-id">{theme.id}</h3>
+              <h3 className="theme-name">{theme.name}</h3>
             </Link>
             {theme.Users.map((user, idx) => {
               return <p className='username' key={idx}>{user.username}</p>;
@@ -43,4 +42,4 @@ const Theme = () => {
   );
 }
 
-export default Theme;
+export default Themes;

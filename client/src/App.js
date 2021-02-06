@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 // import UserList from "./components/UsersList";
-import Themes from './components/Themes';
-import SingleTheme from './components/SingleTheme';
-
+import Themes from "./components/Themes";
+import LightThemes from "./components/LightThemes";
+import SingleTheme from "./components/SingleTheme";
 
 function App() {
 
   return (
     <BrowserRouter>
-        <nav>
+        <nav className="navbar">
             <ul>
                 <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
                 <li><NavLink to="/themes" activeClassName="active">Themes</NavLink></li>
@@ -29,6 +29,10 @@ function App() {
 
             <Route exact path="/themes">
               <Themes />
+            </Route>
+
+            <Route exact path="/themes/light">
+              <LightThemes />
             </Route>
 
             <Route exact path="/themes/:themeId">

@@ -2,11 +2,17 @@ import { fetch } from './csrf'; // Custom csrf function
 
 // Variable set up to help avoid spelling errors *******************************
 const GET_ALL_THEMES = 'themes/getAllThemes';
+const GET_All_LIGHT_THEMES = 'themes/getAllLightThemes'
 const GET_SINGLE_THEME = 'themes/getSingleTheme';
 
 // Action Creator – produces an object *****************************************
 const getAllThemes = (themes) => ({
   type: GET_ALL_THEMES,
+  payload: themes,
+});
+
+const getAllLightThemes = (themes) => ({
+  type: GET_All_LIGHT_THEMES,
   payload: themes,
 });
 
@@ -22,7 +28,16 @@ export const fetchAllThemes = () => {
     // Interact with server
     const response = await fetch('/api/themes');
     dispatch(
-      getAllThemes(response.data) // Already JSON from custom csrf
+      getAllThemes(response.data) // Already JSON from custom csrf fetch
+    );
+  };
+};
+
+export const fetchAllLightThemes = () => {
+  return async (dispatch) => {
+    const response = await fetch('/api/themes/light');
+    dispatch(
+      getAllLightThemes(response.data)
     );
   };
 };
@@ -44,13 +59,19 @@ function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case GET_ALL_THEMES:
-      newState = {}; // payload from Action Creator, turned into object
+      newState = {}; // Payload from Action Creator, turned into object
       action.payload.forEach(theme => {
-        newState[theme.id] = theme; // sets theme.id as keys for object
+        newState[theme.id] = theme; // Sets theme.id as keys for object
       });
-      return newState;
+      return { ...state, ...newState }; // Spreads newState into existing state
+    case GET_All_LIGHT_THEMES:
+      newState = {};
+      action.payload.forEach(theme => {
+        newState[theme.id] = theme;
+      });
+      return { ...state, ...newState };
     case GET_SINGLE_THEME:
-      return { ...state, [action.payload.theme.id]: action.payload.theme };
+      return { ...state, [action.payload.id]: action.payload };
     default:
       return state;
   }

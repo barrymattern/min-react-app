@@ -9,18 +9,15 @@ const SingleTheme = () => {
   const { themeId } = params; // Destructure params obj to get themeId key
 
   const allThemes = useSelector(fullReduxState => {
-    console.log(fullReduxState, 'FULL STATE');
     return fullReduxState.themes;
   });
-
-  console.log(allThemes, '!!!!!!!!!!!!!');
   
   useEffect(() => {
     if (allThemes[themeId]) return;
     dispatch(
       fetchSingleTheme(themeId)
     );
-  }, [dispatch, themeId]);
+  }, [dispatch, themeId, allThemes]);
 
   // Prevents 'undefined' caused by tying to load before useEffect updates state
   // Can also use:  if (!currentThemes) return null
@@ -28,8 +25,8 @@ const SingleTheme = () => {
 
   return (
     <div className='individual-theme'>
-      <h3 className='theme-id'>
-        {allThemes[themeId].id}
+      <h3 className='theme-name'>
+        {allThemes[themeId].name}
       </h3>
         {allThemes[themeId].Users.map((user, idx) => {
           return <p className='username' key={idx}>{user.username}</p>;

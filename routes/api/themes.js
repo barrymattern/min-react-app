@@ -32,7 +32,7 @@ router.get('/light', asyncHandler(async function (req, res, next) {
       },
     }],
   });
-  return res.json({ lightTheme }); 
+  return res.json(lightTheme); 
 }));
 
 // GET all dark themes
@@ -49,7 +49,7 @@ router.get('/dark', asyncHandler(async function (req, res, next) {
       },
     }],
   });
-  return res.json({ darkTheme }); 
+  return res.json(darkTheme); 
 }));
 
 // GET one theme by id
@@ -63,7 +63,7 @@ router.get('/:themeId', asyncHandler(async function (req, res, next) {
       },
     }],
   });
-  return res.json({ theme });
+  return res.json(theme);
 }));
 
 module.exports = router;

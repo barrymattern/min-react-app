@@ -49,9 +49,9 @@ router.post(
 
     setTokenCookie(res, user);
 
-    return res.json({
+    return res.json(
       user,
-    });
+    );
   })
 );
 
@@ -62,7 +62,7 @@ router.get('/:userId', asyncHandler(async function (req, res, next) {
       exclude: ['hashedPassword', 'tokenId'],
     }
   });
-  res.json({ user });
+  res.json(user);
 }));
 
 // GET one user's themes
@@ -72,7 +72,7 @@ router.get('/:userId/themes', asyncHandler(async function (req, res, next) {
       user_id: `${req.params.userId}`,
     },
   });
-  return res.json({ userThemes });
+  return res.json(userThemes);
 }));
 
 // GET one user's light themes
@@ -108,7 +108,7 @@ router.get(
         user_id: `${req.params.userId}`,
       },
     });
-    return res.json({ favoriteThemes });
+    return res.json(favoriteThemes);
   }),
 );
 
@@ -125,7 +125,7 @@ router.get(
         user_id: `${req.params.userId}`,
       },
     });
-    return res.json({ userTheme });
+    return res.json(userTheme);
 }));
 
 module.exports = router;
