@@ -123,6 +123,7 @@ module.exports = {
     // 10 users, each with 3 themes
     const themes = await queryInterface.bulkInsert('Themes', [
       {
+        name: faker.random.words(),
         light: false,
         comment: faker.lorem.paragraph(),
         likes: 5,
@@ -131,6 +132,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: null,
         likes: 0,
@@ -139,6 +141,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 2,
@@ -147,6 +150,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: null,
         likes: 1,
@@ -155,6 +159,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 7,
@@ -163,6 +168,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: null,
         likes: 0,
@@ -171,6 +177,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: faker.lorem.paragraph(),
         likes: 29,
@@ -179,6 +186,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: faker.lorem.paragraph(),
         likes: 47,
@@ -187,6 +195,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: faker.lorem.paragraph(),
         likes: 34,
@@ -195,6 +204,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: null,
         likes: 14,
@@ -203,6 +213,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 79,
@@ -211,6 +222,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: null,
         likes: 28,
@@ -219,6 +231,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: faker.lorem.paragraph(),
         likes: 4,
@@ -227,6 +240,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 0,
@@ -235,6 +249,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: null,
         likes: 9,
@@ -243,6 +258,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: null,
         likes: 0,
@@ -251,6 +267,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: faker.lorem.paragraph(),
         likes: 58,
@@ -259,6 +276,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 2,
@@ -267,6 +285,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: null,
         likes: 26,
@@ -275,6 +294,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: null,
         likes: 83,
@@ -283,6 +303,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: null,
         likes: 45,
@@ -291,6 +312,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 7,
@@ -299,6 +321,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: null,
         likes: 13,
@@ -307,6 +330,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: false,
         comment: null,
         likes: 18,
@@ -315,6 +339,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 186,
@@ -323,6 +348,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 147,
@@ -331,6 +357,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 120,
@@ -339,6 +366,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 161,
@@ -347,6 +375,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 183,
@@ -355,6 +384,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        name: faker.random.words(),
         light: true,
         comment: faker.lorem.paragraph(),
         likes: 117,

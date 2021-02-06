@@ -1,6 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Theme = sequelize.define('Theme', {
+    name: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validates: {
+        len: [1, 50],
+      },
+    },
     light: {
       allowNull: false,
       type: DataTypes.BOOLEAN,
