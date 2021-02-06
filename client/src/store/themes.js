@@ -2,7 +2,8 @@ import { fetch } from './csrf'; // Custom csrf function
 
 // Variable set up to help avoid spelling errors *******************************
 const GET_ALL_THEMES = 'themes/getAllThemes';
-const GET_All_LIGHT_THEMES = 'themes/getAllLightThemes'
+const GET_All_LIGHT_THEMES = 'themes/getAllLightThemes';
+const GET_ALL_DARK_THEMES = 'themes/getAllDarkThemes';
 const GET_SINGLE_THEME = 'themes/getSingleTheme';
 
 // Action Creator – produces an object *****************************************
@@ -13,6 +14,11 @@ const getAllThemes = (themes) => ({
 
 const getAllLightThemes = (themes) => ({
   type: GET_All_LIGHT_THEMES,
+  payload: themes,
+});
+
+const getAllDarkThemes = (themes) => ({
+  type: GET_ALL_DARK_THEMES,
   payload: themes,
 });
 
@@ -42,6 +48,15 @@ export const fetchAllLightThemes = () => {
   };
 };
 
+export const fetchAllDarkThemes = () => {
+  return async (dispatch) => {
+    const response = await fetch('/api/themes/dark');
+    dispatch(
+      getAllDarkThemes(response.data)
+    );
+  };
+};
+
 export const fetchSingleTheme = (themeId) => {
   return async (dispatch) => {
     const response = await fetch(`/api/themes/${themeId}`);
@@ -65,6 +80,12 @@ function reducer(state = initialState, action) {
       });
       return { ...state, ...newState }; // Spreads newState into existing state
     case GET_All_LIGHT_THEMES:
+      newState = {};
+      action.payload.forEach(theme => {
+        newState[theme.id] = theme;
+      });
+      return { ...state, ...newState };
+    case GET_ALL_DARK_THEMES:
       newState = {};
       action.payload.forEach(theme => {
         newState[theme.id] = theme;
