@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import * as sessionActions from '../../store/session';
 import { fetchSingleTheme } from '../../store/themes';
 
 const SingleTheme = () => {
@@ -9,15 +8,12 @@ const SingleTheme = () => {
   const params = useParams(); // Returns obj
   const { themeId } = params; // Destructure params obj to get themeId key
 
+  // Persist state with logged in user
+  useSelector(state => state.session.user);
+
   const allThemes = useSelector(fullReduxState => {
     return fullReduxState.themes;
   });
-
-  useEffect(() => {
-    dispatch(
-      sessionActions.restoreUser()
-    );
-  }, [dispatch]);
   
   useEffect(() => {
     if (allThemes[themeId]) return;

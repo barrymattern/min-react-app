@@ -1,17 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as sessionActions from '../../store/session';
 import { fetchAllLightThemes } from '../../store/themes';
 
 const LightThemes = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(
-      sessionActions.restoreUser()
-    );
-  }, [dispatch]);
+  useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(

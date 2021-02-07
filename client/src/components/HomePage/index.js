@@ -1,16 +1,8 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-// import { Link } from 'react-router-dom';
-import * as sessionActions from '../../store/session';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(
-      sessionActions.restoreUser()
-    );
-  });
+  useSelector(state => state.session.user);
 
   return (
     <div>
