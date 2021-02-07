@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { restoreUser } from '../../store/session';
+import * as sessionActions from '../../store/session';
 import { fetchSingleTheme } from '../../store/themes';
 
 const SingleTheme = () => {
@@ -15,7 +15,7 @@ const SingleTheme = () => {
 
   useEffect(() => {
     dispatch(
-      restoreUser()
+      sessionActions.restoreUser()
     );
   }, [dispatch]);
   

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { restoreUser } from '../../store/session';
+import * as sessionActions from '../../store/session';
 import { fetchAllDarkThemes } from '../../store/themes';
 
 const DarkThemes = () => {
@@ -9,7 +9,7 @@ const DarkThemes = () => {
 
   useEffect(() => {
     dispatch(
-      restoreUser()
+      sessionActions.restoreUser()
     );
   }, [dispatch]);
 
