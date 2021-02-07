@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 const { User, Theme, Favorite } = require('../../db/models');
+const { restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
 
@@ -56,7 +57,10 @@ router.post(
 );
 
 // GET one user by id
-router.get('/:userId', asyncHandler(async function (req, res, next) {
+router.get(
+  '/:userId',
+  restoreUser,
+  asyncHandler(async function (req, res, next) {
   const user = await User.findByPk(`${req.params.userId}`, {
     attributes: {
       exclude: ['hashedPassword', 'tokenId'],
@@ -66,7 +70,10 @@ router.get('/:userId', asyncHandler(async function (req, res, next) {
 }));
 
 // GET one user's themes
-router.get('/:userId/themes', asyncHandler(async function (req, res, next) {
+router.get(
+  '/:userId/themes',
+  restoreUser,
+  asyncHandler(async function (req, res, next) {
   const userThemes = await Theme.findAll({
     where: {
       user_id: `${req.params.userId}`,
@@ -78,6 +85,7 @@ router.get('/:userId/themes', asyncHandler(async function (req, res, next) {
 // GET one user's light themes
 router.get(
   '/:userId/themes/light',
+  restoreUser,
   asyncHandler(async function (req, res, next) {
     const lightThemes = await Theme.findAll({
       where: {
@@ -90,6 +98,7 @@ router.get(
 // GET one user's dark themes
 router.get(
   '/:userId/themes/dark',
+  restoreUser,
   asyncHandler(async function (req, res, next) {
     const darkThemes = await Theme.findAll({
       where: {
@@ -102,6 +111,7 @@ router.get(
 // GET one user's favorite themes
 router.get(
   '/:userId/themes/favorites',
+  restoreUser,
   asyncHandler(async function (req, res, next) {
     const favoriteThemes = await Favorite.findAll({
       where: {
@@ -119,6 +129,7 @@ router.get(
 // GET one user's single theme
 router.get(
   '/:userId/themes/:themeId',
+  restoreUser,
   asyncHandler(async function (req, res, next) {
     const userTheme = await Theme.findByPk(`${req.params.themeId}`, {
       where: {

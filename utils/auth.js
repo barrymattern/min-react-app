@@ -26,6 +26,7 @@ const setTokenCookie = (res, user) => {
   return token;
 };
 
+// Chain restoreUser to any route that needs a user
 const restoreUser = (req, res, next) => {
   // token parsed from cookies
   const { token } = req.cookies;
