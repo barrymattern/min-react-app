@@ -11,8 +11,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-// useSelector((state) => console.log(state));
-
   if (sessionUser) return <Redirect to='/' />;
 
   const handleSubmit = (e) => {
