@@ -11,23 +11,23 @@ const router = express.Router();
 Route order matters, file reads top to bottom
 */
 
-// // GET all users
-// router.get('/', asyncHandler(async function (req, res, next) {
-//     const users = await User.findAll();
-//     res.json({ users });
-// }));
+// GET all users
+router.get('/', asyncHandler(async function (req, res, next) {
+    const users = await User.findAll();
+    res.json(users);
+}));
 
 // Validation for Sign Up (below)
 const validateSignup = [
-  check('email')
-    .exists({ checkFalsy: true })
-    .isEmail()
-    .withMessage('Please provide a valid email.'),
   check('username')
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
     .withMessage('Please provide a username with at least 4 characters.'),
   check('username').not().isEmail().withMessage('Username cannot be an email.'),
+  check('email')
+    .exists({ checkFalsy: true })
+    .isEmail()
+    .withMessage('Please provide a valid email.'),
   check('password')
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })

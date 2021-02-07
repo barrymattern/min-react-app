@@ -8,14 +8,14 @@ module.exports = (sequelize, DataTypes) => {
     property: {
       allowNull:false,
       type: DataTypes.STRING,
-      validates: {
+      validate: {
         len: [1, 500],
       },
     },
     value: {
       allowNull:false,
       type: DataTypes.STRING,
-      validates: {
+      validate: {
         len:[1, 50],
       },
     },

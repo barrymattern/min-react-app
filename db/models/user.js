@@ -1,41 +1,62 @@
 'use strict';
+const { Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
+    username: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        len: [1, 255],
+        isNotEmail(value) {
+          if (Validator.isEmail(value)) {
+            throw new Error('Cannot ben an email.');
+          }
+        },
+      },
+    },
     email: {
       allowNull: false,
       type: DataTypes.STRING,
-      validates: {
+      validate: {
         isEmail: true,
         len: [3, 255],
       }
     },
-    username: {
-      allowNull: false,
-      type: DataTypes.STRING,
-      validates: {
-        len: [1, 255],
-      },
-    },
     hashedPassword: {
       allowNull: false,
       type: DataTypes.STRING.BINARY,
-      validates: {
+      validate: {
         len: [60, 60],
       },
     },
     profileImageUrl: {
       allowNull: true,
       type: DataTypes.STRING,
-      validates: {
+      validate: {
         len: [3, 500],
       },
     },
     tokenId: {
       type: DataTypes.STRING
+    },
+  },
+  {
+    defaultScope: {
+      attributes: {
+        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
+      }
+    },
+    scopes: {
+      currentUser: {
+        attributes: { exclude: ['hashedPassword'] }
+      },
+      loginUser: {
+        attributes: {}
+      }
     }
-  }, {});
+  });
 
   User.associate = function(models) {
     // associations can be defined here
@@ -59,16 +80,14 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(id);
     };
 
-    User.login = async function ({ credential, password }) {
-      const { Op } = require('sequelize');
+    User.login = async function ({ username, email, password }) {
+      // const { Op } = require('sequelize');
       const user = await User.scope('loginUser').findOne({
-        where: {
-          [Op.or]: {
-            username: credential,
-            email: credential,
-          },
-        },
+          username,
+          email,
+          password,
       });
+
       if (user && user.validatePassword(password)) {
         return await User.scope('currentUser').findByPk(user.id);
       }

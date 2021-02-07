@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       allowNull: false,
       type: DataTypes.STRING,
-      validates: {
+      validate: {
         len: [1, 50],
       },
     },
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     comment: {
       allowNull: true,
       type: DataTypes.STRING,
-      validates: {
+      validate: {
         len: [1, 1000],
       },
     },

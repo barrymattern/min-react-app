@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 // import UserList from "./components/UsersList";
+import Login from "./components/Login";
 import Themes from "./components/Themes";
 import LightThemes from "./components/LightThemes";
 import DarkThemes from "./components/DarkThemes";
@@ -13,6 +14,7 @@ function App() {
       <nav className="navbar">
         <ul>
           <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
+          <li><NavLink to="/login" activeClassName="active">Login</NavLink></li>
           <li><NavLink to="/themes" activeClassName="active">Themes</NavLink></li>
           <li><NavLink to="/themes/light" activeClassName="active">Light</NavLink></li>
           <li><NavLink to="/themes/dark" activeClassName="active">Dark</NavLink></li>
@@ -28,6 +30,10 @@ function App() {
           <p>Editor Preview</p>
           <p>Color Wheel</p>   
           <p>JSON Visualizer</p>
+        </Route>
+
+        <Route exact path="/login">
+          <Login />
         </Route>
 
         <Route exact path="/themes">
