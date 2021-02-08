@@ -1,11 +1,12 @@
 {
   "name": "starter",
   "version": "0.0.0",
-  "private": false,
+  "private": true,
   "scripts": {
-    "sequelize": "sequelize",
-    "sequelize-cli": "sequelize-cli",
-    "start": "per-env",
+    "sequelize": "npm run sequelize",
+    "sequelize-cli": "npm run sequelize-cli",
+    "dev:backend": "npm install",
+    "start": "per-env && npm start",
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
