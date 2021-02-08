@@ -1,7 +1,7 @@
 {
   "name": "starter",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "sequelize": "sequelize",
     "sequelize-cli": "sequelize-cli",
