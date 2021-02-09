@@ -5,7 +5,6 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 // import UserList from "./components/UsersList";
 import HomePage from "./components/HomePage";
-import Login from "./components/Login";
 import Themes from "./components/Themes";
 import LightThemes from "./components/LightThemes";
 import DarkThemes from "./components/DarkThemes";
@@ -32,10 +31,6 @@ function App() {
 
           <Route exact path="/">
             <HomePage />
-          </Route>
-
-          <Route exact path="/login">
-            <Login />
           </Route>
 
           <Route exact path="/themes">
