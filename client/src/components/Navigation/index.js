@@ -20,10 +20,10 @@ const Navigation = ({ isLoaded }) => {
     sessionLinks = (
       <>
         {/* <Login /> */}
+        <NavLink to="/login">
+          <button id="nav-log-in">Log In</button>
+        </NavLink>
         <NavLink to="/signup">
-          <Link to="/login">
-            <button id="nav-log-in">Log In</button>
-          </Link>
           <button id="sign-up">Sign Up</button>
         </NavLink>
       </>

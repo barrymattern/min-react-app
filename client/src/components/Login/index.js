@@ -65,7 +65,7 @@ const LoginForm = () => {
               required
             />
           </div>
-          <div className='form__login'>
+          <div className='form__submit'>
             <button className='form__button'>Log In</button>
           </div>
         </div>
