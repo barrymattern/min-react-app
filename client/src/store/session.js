@@ -8,14 +8,14 @@ const setUser = (user) => ({
   payload: user
 });
 
-export const createUser = (user) => async (dispatch) => {
-  const { username, email, password } = user; // Add 'image' back for s3
-  const formData = new FormData();
-  formData.append('username', username);
-  formData.append('email', email);
-  formData.append('password', password);
+// AWS s3 ********************************************************************
 
-  // AWS s3 ********************************************************************
+// export const createUser = (user) => async (dispatch) => {
+//   const { username, email, password } = user; // Add 'image' back for s3
+//   const formData = new FormData();
+//   formData.append('username', username);
+//   formData.append('email', email);
+//   formData.append('password', password);
 
   // Multiple files
   // if (images && image.length !== 0) {
@@ -27,17 +27,17 @@ export const createUser = (user) => async (dispatch) => {
   // Single file
   // if (image) formData.append('image', image);
 
-  // AWS s3 ********************************************************************
+//   const res = await fetch(`/api/users/`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(formData),
+//   });
+//   dispatch(setUser(res.data.user));
+// };
 
-  const res = await fetch(`/api/users/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  });
-  dispatch(setUser(res.data.user));
-};
+// AWS s3 ********************************************************************
 
 const removeUser = () => ({
   type: REMOVE_USER,

@@ -4,6 +4,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 // import UserList from "./components/UsersList";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 import Themes from "./components/Themes";
 import LightThemes from "./components/LightThemes";
@@ -28,6 +30,14 @@ function App() {
           {/* <Route path="/users">
               <UserList />
           </Route> */}
+
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+
+          <Route exact path="/login">
+            <Login />
+          </Route>
 
           <Route exact path="/">
             <HomePage />

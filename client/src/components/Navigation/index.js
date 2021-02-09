@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import Login from "../Login";
@@ -14,10 +14,16 @@ const Navigation = ({ isLoaded }) => {
       <ProfileButton user={sessionUser} />
     );
   } else {
+    if (!<Login />) {
+
+    }
     sessionLinks = (
       <>
-        <Login />
+        {/* <Login /> */}
         <NavLink to="/signup">
+          <Link to="/login">
+            <button id="nav-log-in">Log In</button>
+          </Link>
           <button id="sign-up">Sign Up</button>
         </NavLink>
       </>
