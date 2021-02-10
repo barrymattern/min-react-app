@@ -8,6 +8,10 @@ const setUser = (user) => ({
   payload: user
 });
 
+const removeUser = () => ({
+  type: REMOVE_USER,
+});
+
 // AWS s3 ********************************************************************
 
 // export const createUser = (user) => async (dispatch) => {
@@ -38,10 +42,6 @@ const setUser = (user) => ({
 // };
 
 // AWS s3 ********************************************************************
-
-const removeUser = () => ({
-  type: REMOVE_USER,
-});
 
 export const login = ({ username, email, password }) => async (dispatch) => {
   const res = await fetch('/api/session', {
