@@ -35,9 +35,9 @@ app.use(routes);
 // Serve React Application
 // This should come after routes, but before 404 and error handling.
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("frontend/build"));
   app.get(/\/(?!api)*/, (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 }
 
