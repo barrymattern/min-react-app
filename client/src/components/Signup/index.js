@@ -27,10 +27,11 @@ const SignupForm = () => {
 
       history.push('/');
 
-      return dispatch(sessionActions.signup({ username, email, password }))
+      return (
+        dispatch(sessionActions.signup({ username, email, password }))
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
-        });
+        }));
     }
     return setErrors('Confirm Password field must match Password field');
   };

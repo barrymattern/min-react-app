@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import Login from "../Login";
@@ -18,15 +18,14 @@ const Navigation = ({ isLoaded }) => {
 
     }
     sessionLinks = (
-      <>
-        {/* <Login /> */}
+      <div className='session-links'>
         <NavLink to="/login">
           <button id="nav-log-in">Log In</button>
         </NavLink>
         <NavLink to="/signup">
           <button id="sign-up">Sign Up</button>
         </NavLink>
-      </>
+      </div>
     );
   }
 
