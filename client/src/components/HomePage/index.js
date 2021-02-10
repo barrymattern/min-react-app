@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
-  useSelector(state => state.session.user);
 
   return (
     <div>

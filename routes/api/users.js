@@ -51,7 +51,7 @@ router.post(
     setTokenCookie(res, user);
 
     return res.json(
-      user,
+      { user },
     );
   })
 );
