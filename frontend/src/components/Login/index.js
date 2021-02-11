@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 
-const LoginForm = ({ setAuthenticated }) => {
+const LoginForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [username, setUsername] = useState('');
@@ -24,6 +24,23 @@ const LoginForm = ({ setAuthenticated }) => {
       .catch((res) => {
         if (res.data && res.data.error.errors) setErrors(res.data.error.errors);
       });
+  };
+
+  const handleDemoSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+
+    return dispatch(sessionActions.login({
+      username: 'demo',
+      email: 'demo@demo.com',
+      password: 'password',
+    }))
+    .then(() => {
+      setAuthenticated(true)
+    })
+    .catch((res) => {
+      if (res.data && res.data.error.errors) setErrors(res.data.error.errors);
+    });
   };
 
   return (
@@ -69,7 +86,15 @@ const LoginForm = ({ setAuthenticated }) => {
             />
           </div>
           <div className='form__submit'>
-            <button className='form__button'>Log In</button>
+            <div className='form__button-container'>
+              <button className='form__button'>Log In</button>
+            </div>
+            <div className='form__button-container'>
+              <button
+                className='form__button'
+                onClick={handleDemoSubmit}  
+              >Demo</button>
+            </div>
           </div>
         </div>
       </form>

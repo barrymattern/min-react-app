@@ -66,19 +66,19 @@ function App() {
             <SingleTheme />
           </Route>
 
-          <ProtectedRoute exact path="/user/profile">
+          <ProtectedRoute exact path="/user/profile" authenticated={authenticated}>
             <UserProfile />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/user/themes">
+          <ProtectedRoute exact path="/user/themes" authenticated={authenticated}>
             <UserThemes />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/user/themes/dark">
+          <ProtectedRoute exact path="/user/themes/dark" authenticated={authenticated}>
             <UserDarkThemes />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/user/themes/:themeId">
+          <ProtectedRoute exact path="/user/themes/:themeId" authenticated={authenticated}>
             <UserSingleTheme />
           </ProtectedRoute>
 
