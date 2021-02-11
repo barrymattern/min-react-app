@@ -15,7 +15,7 @@ const DarkThemes = () => {
   }, [dispatch]);
 
   const currentDarkThemes = useSelector(fullReduxState => {
-    return Object.values(fullReduxState.themes).filter((theme) => {
+    return Object.values(fullReduxState.themes).filter(theme => {
       return theme.light === false;
     });
   });

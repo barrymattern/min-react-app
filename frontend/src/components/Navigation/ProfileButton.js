@@ -31,14 +31,14 @@ const ProfileButton = ({ user }) => {
 
   return (
     <>
-      <button onClick={openMenu}>Menu</button>
+      <button onClick={openMenu}>Profile</button>
       {showMenu && (
         <ul className='profile-dropdown'>
           <li>Logged in as 
             <Link to='/user/profile'> {user.username}</Link>
           </li>
           <Link to='/user/themes'>
-            <li>Your Themes</li>
+            <li>My Themes</li>
           </Link>
           <li>
             <button onClick={logout}>Log Out</button>

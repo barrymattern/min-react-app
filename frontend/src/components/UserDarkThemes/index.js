@@ -1,31 +1,33 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllUserThemes } from '../../store/userThemes';
 import { Link } from 'react-router-dom';
+import { fetchAllUserDarkThemes } from '../../store/userThemes';
 
-const UserThemes = () => {
+const UserDarkThemes = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(
-      fetchAllUserThemes(user.id)
+      fetchAllUserDarkThemes(user.id)
     );
   }, [dispatch, user.id]);
 
-  const currentUserThemes = useSelector(fullReduxState => {
-    return Object.values(fullReduxState.userThemes);
+  const currentUserDarkThemes = useSelector(fullReduxState => {
+    return Object.values(fullReduxState.userThemes).filter(theme => {
+      return theme.light === false && theme.user_id === 1;
+    });
   });
 
-  if (currentUserThemes.length === 0) {
+  if (currentUserDarkThemes.length === 0) {
     return (
-      <h3>Go ahead, create some themes. Your eyes will thank you.</h3>
+      <h3>It needs to be darker in here...</h3>
     );
-  }
+  };
 
   return (
     <div className='themes-container'>
-      {currentUserThemes && currentUserThemes.map((theme, idx) => {
+      {currentUserDarkThemes && currentUserDarkThemes.map((theme, idx) => {
         return (
           <div className='individual-theme' key={idx}>
             <Link to={`/user/themes/${theme.id}`}>
@@ -38,4 +40,4 @@ const UserThemes = () => {
   );
 };
 
-export default UserThemes;
+export default UserDarkThemes;
