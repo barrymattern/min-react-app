@@ -20,11 +20,14 @@ const LightThemes = () => {
     });
   });
   
-  if (currentLightThemes.length === 0) return null;
+  if (currentLightThemes.length === 0) {
+    return (
+      <h3>Maybe light themes were too bright??</h3>
+    );
+  };
 
   return (
     <div className='themes-container'>
-      {!currentLightThemes && <h3>Maybe light themes were too bright??</h3>}
       {currentLightThemes && currentLightThemes.map((theme, idx) => {
         return (
           <div className='individual-theme' key={idx}>

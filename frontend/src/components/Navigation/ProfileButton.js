@@ -40,6 +40,9 @@ const ProfileButton = ({ user }) => {
           <Link to='/user/themes'>
             <li>My Themes</li>
           </Link>
+          <Link to='/user/themes/dark'>
+            <li>My Dark Themes</li>
+          </Link>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>

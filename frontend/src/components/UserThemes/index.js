@@ -11,10 +11,12 @@ const UserThemes = () => {
     dispatch(
       fetchAllUserThemes(user.id)
     );
-  }, [dispatch, user.id]);
+  }, [dispatch, user, user.id]);
 
   const currentUserThemes = useSelector(fullReduxState => {
-    return Object.values(fullReduxState.userThemes);
+    return Object.values(fullReduxState.userThemes).filter(theme => {
+      return theme.user_id === user.id;
+    });
   });
 
   if (currentUserThemes.length === 0) {

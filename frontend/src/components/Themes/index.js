@@ -24,11 +24,15 @@ const Themes = () => {
   // Prevents 'undefined' caused by tying to load before useEffect updates state
   // Can also use:  if (!currentThemes) return null
   // if (currentThemes == null) return null // '==' coerces null & undefined to be truthy to execute 'if' statement
-  if (currentThemes.length === 0) return null;
+  if (currentThemes.length === 0) {
+    return (
+      <h3>Time to create more themes!</h3> // replace with loading gif
+    );
+  };
 
   return (
     <div className='themes-container'>
-      {!currentThemes && <h3>Time to create more themes!</h3>} {/* replace with loading gif */}
+      {/* {!currentThemes && <h3>Time to create more themes!</h3>} replace with loading gif */}
       {currentThemes && currentThemes.map((theme, idx) => {
         return (
           <div className='individual-theme' key={idx}>

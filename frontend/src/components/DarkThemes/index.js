@@ -20,11 +20,14 @@ const DarkThemes = () => {
     });
   });
 
-  if (currentDarkThemes.length === 0) return null;
+  if (currentDarkThemes.length === 0) {
+    return (
+      <h3>It needs to be darker in here...</h3>
+    );
+  };
 
   return (
     <div className='themes-container'>
-      {!currentDarkThemes && <h3>It needs to be darker in here...</h3>}
       {currentDarkThemes && currentDarkThemes.map((theme, idx) => {
         return (
           <div className='individual-theme' key={idx}>

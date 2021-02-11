@@ -10,12 +10,12 @@ const UserDarkThemes = () => {
   useEffect(() => {
     dispatch(
       fetchAllUserDarkThemes(user.id)
-    );
-  }, [dispatch, user.id]);
+    )
+  }, [dispatch, user, user.id]);
 
   const currentUserDarkThemes = useSelector(fullReduxState => {
     return Object.values(fullReduxState.userThemes).filter(theme => {
-      return theme.light === false && theme.user_id === 1;
+      return theme.light === false && theme.user_id === user.id;
     });
   });
 
