@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import ProtectedRoute from "./components/ProtectedRoute";
 // import UserList from "./components/UsersList";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -18,29 +19,32 @@ import UserSingleTheme from "./components/UserSingleTheme";
 
 function App() {
   const dispatch = useDispatch();
+  const [authenticated, setAuthenticated] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser()).then(() =>
+      (setIsLoaded(true) && setAuthenticated(true)));
   }, [dispatch]);
+
+  if (!isLoaded) return null;
 
   return (
     <BrowserRouter>
 
-      <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded} setAuthenticated={setAuthenticated}/>
       {isLoaded && (
         <Switch>
-        
-          {/* <Route path="/users">
-              <UserList />
-          </Route> */}
 
           <Route exact path="/signup">
             <Signup />
           </Route>
 
           <Route exact path="/login">
-            <Login />
+            <Login
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
           </Route>
 
           <Route exact path="/">
