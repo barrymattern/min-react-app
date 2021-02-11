@@ -14,6 +14,7 @@ import DarkThemes from "./components/DarkThemes";
 import SingleTheme from "./components/SingleTheme";
 import UserProfile from "./components/UserProfile";
 import UserThemes from "./components/UserThemes";
+import UserLightThemes from "./components/UserLightThemes";
 import UserDarkThemes from "./components/UserDarkThemes";
 import UserSingleTheme from "./components/UserSingleTheme";
 
@@ -74,6 +75,10 @@ function App() {
             <UserThemes />
           </ProtectedRoute>
 
+          <ProtectedRoute exact path="/user/themes/light" authenticated={authenticated}>
+            <UserLightThemes />
+          </ProtectedRoute>
+
           <ProtectedRoute exact path="/user/themes/dark" authenticated={authenticated}>
             <UserDarkThemes />
           </ProtectedRoute>
@@ -90,4 +95,3 @@ function App() {
 }
 
 export default App;
-
