@@ -26,6 +26,7 @@ const ProfileButton = ({ authenticated, user }) => {
 
   const logout = (e) => {
     e.preventDefault();
+    window.location.href = '/'; // Redirect to home page on logout
     dispatch(sessionActions.logout());
   };
 
