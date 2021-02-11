@@ -37,7 +37,10 @@ function App() {
         <Switch>
 
           <Route exact path="/signup">
-            <Signup />
+            <Signup
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
           </Route>
 
           <Route exact path="/login">

@@ -41,6 +41,9 @@ const ProfileButton = ({ authenticated, user }) => {
           <Link to='/user/themes'>
             <li>My Themes</li>
           </Link>
+          <Link to='/user/themes/light'>
+            <li>My Light Themes</li>
+          </Link>
           <Link to='/user/themes/dark'>
             <li>My Dark Themes</li>
           </Link>

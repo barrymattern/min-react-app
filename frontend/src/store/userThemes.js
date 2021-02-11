@@ -82,7 +82,7 @@ function reducer(state = initialState, action) {
       action.payload.forEach(theme => {
         newState[theme.id] = theme;
       });
-      return { ...state, newState };
+      return { ...state, ...newState };
     case GET_ALL_USER_DARK_THEMES:
       newState = {};
       action.payload.forEach(theme => {

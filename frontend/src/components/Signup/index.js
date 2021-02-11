@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 
-const SignupForm = () => {
+const SignupForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [username, setUsername] = useState('');
@@ -29,6 +29,9 @@ const SignupForm = () => {
 
       return (
         dispatch(sessionActions.signup({ username, email, password }))
+        .then(() => {
+          setAuthenticated(true)
+        })
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         }));
