@@ -66,6 +66,7 @@ router.get(
       exclude: ['hashedPassword', 'tokenId'],
     }
   });
+  console.log(user);
   res.json(user);
 }));
 
