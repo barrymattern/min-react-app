@@ -15,7 +15,6 @@ const UserDarkThemes = () => {
 
   const currentUserDarkThemes = useSelector(fullReduxState => {
     return Object.values(fullReduxState.userThemes).filter(theme => {
-      console.log(theme, 'ONE THEME?????????????????');
       return theme.light === false && theme.user_id === user.id;
     });
   });
