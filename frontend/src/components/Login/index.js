@@ -22,7 +22,7 @@ const LoginForm = ({ setAuthenticated }) => {
         setAuthenticated(true)
       })
       .catch((res) => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
+        if (res.data && res.data.error.errors) setErrors(res.data.error.errors);
       });
   };
 
