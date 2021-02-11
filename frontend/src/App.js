@@ -23,8 +23,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() =>
-      (setIsLoaded(true) && setAuthenticated(true)));
+    dispatch(sessionActions.restoreUser()).then(() => (setIsLoaded(true)));
   }, [dispatch]);
 
   if (!isLoaded) return null;
@@ -67,21 +66,21 @@ function App() {
             <SingleTheme />
           </Route>
 
-          <Route exact path="/user/profile">
+          <ProtectedRoute exact path="/user/profile">
             <UserProfile />
-          </Route>
+          </ProtectedRoute>
 
-          <Route exact path="/user/themes">
+          <ProtectedRoute exact path="/user/themes">
             <UserThemes />
-          </Route>
+          </ProtectedRoute>
 
-          <Route exact path="/user/themes/dark">
+          <ProtectedRoute exact path="/user/themes/dark">
             <UserDarkThemes />
-          </Route>
+          </ProtectedRoute>
 
-          <Route exact path="/user/themes/:themeId">
+          <ProtectedRoute exact path="/user/themes/:themeId">
             <UserSingleTheme />
-          </Route>
+          </ProtectedRoute>
 
         </Switch>
       )}
