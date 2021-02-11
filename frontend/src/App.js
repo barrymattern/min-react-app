@@ -13,6 +13,7 @@ import DarkThemes from "./components/DarkThemes";
 import SingleTheme from "./components/SingleTheme";
 import UserProfile from "./components/UserProfile";
 import UserThemes from "./components/UserThemes";
+import UserLightThemes from "./components/UserLightThemes";
 import UserDarkThemes from "./components/UserDarkThemes";
 import UserSingleTheme from "./components/UserSingleTheme";
 
@@ -30,10 +31,6 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-        
-          {/* <Route path="/users">
-              <UserList />
-          </Route> */}
 
           <Route exact path="/signup">
             <Signup />
@@ -69,6 +66,10 @@ function App() {
 
           <Route exact path="/user/themes">
             <UserThemes />
+          </Route>
+
+          <Route exact path="/user/themes/light">
+            <UserLightThemes />
           </Route>
 
           <Route exact path="/user/themes/dark">
