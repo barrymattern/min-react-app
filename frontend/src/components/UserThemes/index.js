@@ -26,7 +26,7 @@ const UserThemes = () => {
       {currentUserThemes && currentUserThemes.map((theme, idx) => {
         return (
           <div className='individual-theme' key={idx}>
-            <Link to={`/themes/${theme.id}`}>
+            <Link to={`/user/themes/${theme.id}`}>
               <h3 className='theme-name'>{theme.name}</h3>
             </Link>
           </div>

@@ -13,6 +13,7 @@ import DarkThemes from "./components/DarkThemes";
 import SingleTheme from "./components/SingleTheme";
 import UserProfile from "./components/UserProfile";
 import UserThemes from "./components/UserThemes";
+import UserSingleTheme from "./components/UserSingleTheme";
 
 function App() {
   const dispatch = useDispatch();
@@ -67,6 +68,10 @@ function App() {
 
           <Route exact path="/user/themes">
             <UserThemes />
+          </Route>
+
+          <Route exact path="/user/themes/:themeId">
+            <UserSingleTheme />
           </Route>
 
         </Switch>

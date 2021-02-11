@@ -23,17 +23,16 @@ const SingleTheme = () => {
   }, [dispatch, themeId, allThemes]);
 
   // Prevents 'undefined' caused by tying to load before useEffect updates state
-  // Can also use:  if (!currentThemes) return null
-  if (!allThemes[themeId]) return null; // '==' coerces null & undefined to be truthy to execute 'if' statement
+  if (!allThemes[themeId]) return null;
 
   return (
     <div className='individual-theme'>
       <h3 className='theme-name'>
         {allThemes[themeId].name}
       </h3>
-        {allThemes[themeId].Users.map((user, idx) => {
-          return <p className='username' key={idx}>{user.username}</p>;
-        })}
+      {allThemes[themeId].Users.map((user, idx) => {
+        return <p className='username' key={idx}>{user.username}</p>;
+      })}
     </div>
   );
 };
