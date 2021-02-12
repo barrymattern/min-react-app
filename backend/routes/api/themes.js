@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
-const { User, Theme } = require('../../db/models');
+const { User, Theme, Theme_Attribute } = require('../../db/models');
 
 const router = express.Router();
 
@@ -11,13 +11,19 @@ router.get(
   restoreUser,
   asyncHandler(async function (req, res, next) {
   const themes = await Theme.findAll({
-    include: [{
-      model: User,
-      attributes: ['id', 'username', 'profileImageUrl'],
-      through: {
-        attributes: [],
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'username', 'profileImageUrl'],
+        through: {
+          attributes: [],
+        },
       },
-    }],
+      {
+        model: Theme_Attribute,
+        attributes: ['property', 'value'],
+      },
+    ],
   });
   return res.json(themes);
 }));
@@ -31,13 +37,19 @@ router.get(
     where: {
       light: true,
     },
-    include: [{
-      model: User,
-      attributes: ['id', 'username', 'profileImageUrl'],
-      through: {
-        attributes: [],
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'username', 'profileImageUrl'],
+        through: {
+          attributes: [],
+        },
       },
-    }],
+      {
+        model: Theme_Attribute,
+        attributes: ['property', 'value'],
+      },
+    ],
   });
   return res.json(lightTheme); 
 }));
@@ -51,13 +63,19 @@ router.get(
     where: {
       light: false,
     },
-    include: [{
-      model: User,
-      attributes: ['id', 'username', 'profileImageUrl'],
-      through: {
-        attributes: [],
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'username', 'profileImageUrl'],
+        through: {
+          attributes: [],
+        },
       },
-    }],
+      {
+        model: Theme_Attribute,
+        attributes: ['property', 'value'],
+      },
+    ],
   });
   return res.json(darkTheme); 
 }));
@@ -68,13 +86,19 @@ router.get(
   restoreUser,
   asyncHandler(async function (req, res, next) {
   const theme = await Theme.findByPk(`${req.params.themeId}`, {
-    include: [{
-      model: User,
-      attributes: ['id', 'username', 'profileImageUrl'],
-      through: {
-        attributes: [],
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'username', 'profileImageUrl'],
+        through: {
+          attributes: [],
+        },
       },
-    }],
+      {
+        model: Theme_Attribute,
+        attributes: ['property', 'value'],
+      },
+    ],
   });
   return res.json(theme);
 }));

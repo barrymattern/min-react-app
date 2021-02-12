@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Theme_Attribute.associate = function(models) {
     // associations can be defined here
+    Theme_Attribute.belongsTo(models.Theme, { foreignKey: 'theme_id' });
   };
   return Theme_Attribute;
 };
