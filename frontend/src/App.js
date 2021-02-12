@@ -17,6 +17,7 @@ import UserThemes from "./components/UserThemes";
 import UserLightThemes from "./components/UserLightThemes";
 import UserDarkThemes from "./components/UserDarkThemes";
 import UserSingleTheme from "./components/UserSingleTheme";
+import NotFound from "./components/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -89,6 +90,10 @@ function App() {
           <ProtectedRoute exact path="/user/themes/:themeId" authenticated={authenticated}>
             <UserSingleTheme />
           </ProtectedRoute>
+
+          <Route>
+            <NotFound />
+          </Route>
 
         </Switch>
       )}
