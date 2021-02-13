@@ -1,0 +1,70 @@
+.textEditor__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.textEditor__window {
+  background-color: #1e1e1e;
+  width: 600px;
+  padding: 30px;
+  margin: 20px;
+  border-radius: 5px;
+  line-height: 1.125em;
+}
+
+.comment {
+  color: #6A9955;
+}
+
+.function-keyword {
+  color: #569CD6;
+}
+
+.function-name {
+  color: #DCDCAA;
+}
+
+.round-brace {
+  color: #d4d4d4;
+}
+
+.curly-brace {
+  color: #d4d4d4;
+}
+
+/* Why doesn't this work? */
+.parameter {
+  color: #9CDCFE;
+}
+
+.let-const {
+  color: #569CD6;
+}
+
+.variable {
+  color: #9CDCFE;
+}
+
+.operator {
+  color: #d4d4d4;
+}
+
+.number {
+  color: #B5CEA8;
+}
+
+.punctuation {
+  color: #d4d4d4;
+}
+
+.fat-arrow {
+  color: #569CD6;
+}
+
+.method {
+  color: #DCDCAA;
+}
+
+.string {
+  color: #CE9178;
+}

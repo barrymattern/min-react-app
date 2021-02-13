@@ -1,12 +1,11 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import TextEditor from "../TextEditor";
 
 const HomePage = () => {
 
   return (
     <div>
-      <h1>Home Page</h1>
-      <p>Editor Preview</p>
+      <TextEditor />
       <p>Color Wheel</p>   
       <p>JSON Visualizer</p>
     </div>
