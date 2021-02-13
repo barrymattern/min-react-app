@@ -9,7 +9,7 @@ const TextEditor = () => {
         <pre>
           <code className='textEditor__window--lang-js'>
             <span className='string-js comment'>
-              // Log how many color themes have ben generated
+              // Log how many color themes have been generated
             </span><br />
 
             <span className='string-js function-keyword'>function </span>
