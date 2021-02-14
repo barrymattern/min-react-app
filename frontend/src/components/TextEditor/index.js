@@ -8,6 +8,7 @@ const TextEditor = () => {
   const funcKeywordPopover = useRef();
   const funcNamePopover = useRef();
   const roundBracePopover = useRef();
+  const parameterPopover = useRef();
 
   const [commentIsOpen, commentToggle] = useState(false);
   const [commentColor, setCommentColor] = useState('#6A9955');
@@ -21,15 +22,20 @@ const TextEditor = () => {
   const [roundBraceIsOpen, setRoundBraceToggle] = useState(false);
   const [roundBraceColor, setRoundBraceColor] = useState('#d4d4d4');
 
+  const [parameterIsOpen, setParameterToggle] = useState(false);
+  const [parameterColor, setParameterColor] = useState('#9CDCFE');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
   const roundBraceClose = useCallback(() => setRoundBraceToggle(false), []);
+  const parameterClose = useCallback(() => setParameterToggle(false), []);
 
   ClickOutside(commentPopover, commentClose);
   ClickOutside(funcKeywordPopover, funcKeywordClose);
   ClickOutside(funcNamePopover, funcNameClose);
   ClickOutside(roundBracePopover, roundBraceClose);
+  ClickOutside(parameterPopover, parameterClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -72,7 +78,15 @@ const TextEditor = () => {
               >
                 (
               </span>
-              <span className='string-js parameter'>colorTheme</span>
+              
+              {/* PARAMETER ------------------- */}
+              <span
+                className='string-js parameter'
+                style={{ color: `${parameterColor}` }}
+                onChange={setParameterColor}
+              >
+                colorTheme
+              </span>
 
               {/* ROUND BRACE -------------------- */}
               <span
@@ -123,9 +137,25 @@ const TextEditor = () => {
               </span><br />
 
               <span className='string-js string'>{'            `A new ${'}</span>
-              <span className='string-js parameter'>colorTheme</span>
+              
+              {/* PARAMETER ------------------- */}
+              <span
+                className='string-js parameter'
+                style={{ color: `${parameterColor}` }}
+                onChange={setParameterColor}
+              >
+                colorTheme
+              </span>
               <span className='string-js string'>{'} has been created ${'}</span>
-              <span className='string-js parameter'>count</span>
+              
+              {/* PARAMETER ------------------- */}
+              <span
+                className='string-js parameter'
+                style={{ color: `${parameterColor}` }}
+                onChange={setParameterColor}
+              >
+                count
+              </span>
               <span className='string-js string'>{'} times!`'}</span><br />
 
               
@@ -188,7 +218,11 @@ const TextEditor = () => {
           </pre>
         </div>
       </div>
-      <div className='themeGenerator__commentPopoverPicker'>
+
+{/* POPOVER COLOR PICKERS ****************************************************/}
+
+      <div className='themeGenerator__popoverPickers'>
+        {/* COMMENT PICKER -------------------- */}
         <div className='picker' id='commentPicker'>
           <div
             className='swatch'
@@ -202,6 +236,8 @@ const TextEditor = () => {
             </div>
           )}
         </div>
+
+        {/* FUNCTION KEYWORD PICKER -------------------- */}
         <div className='picker' id='funcKeywordPicker'>
           <div
             className='swatch'
@@ -215,6 +251,8 @@ const TextEditor = () => {
             </div>
           )}
         </div>
+
+        {/* FUNCTION NAME PICKER -------------------- */}
         <div className='picker' id='funcNamePicker'>
           <div
             className='swatch'
@@ -228,6 +266,8 @@ const TextEditor = () => {
             </div>
           )}
         </div>
+
+        {/* ROUND BRACE PICKER -------------------- */}
         <div className='picker' id='roundBracePicker'>
           <div
             className='swatch'
@@ -238,6 +278,21 @@ const TextEditor = () => {
             <div className='roundBracePopover' ref={roundBracePopover}>
               <HexColorPicker color={roundBraceColor} onChange={setRoundBraceColor} />
               <HexColorInput color={roundBraceColor} onChange={setRoundBraceColor} />
+            </div>
+          )}
+        </div>
+
+        {/* PARAMETER PICKER -------------------- */}
+        <div className='picker' id='parameterPicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: parameterColor }}
+            onClick={() => setParameterToggle(true)}
+          />
+          {parameterIsOpen && (
+            <div className='parameterPopover' ref={parameterPopover}>
+              <HexColorPicker color={parameterColor} onChange={setParameterColor} />
+              <HexColorInput color={parameterColor} onChange={setParameterColor} />
             </div>
           )}
         </div>
