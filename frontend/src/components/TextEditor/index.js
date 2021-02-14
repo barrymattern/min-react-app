@@ -33,6 +33,9 @@ const TextEditor = () => {
   const [operatorIsOpen, setOperatorToggle] = useState(false);
   const [operatorColor, setOperatorColor] = useState('#d4d4d4');
 
+  const [numberIsOpen, setNumberToggle] = useState(false);
+  const [numberColor, setNumberColor] = useState('#B5CEA8');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
@@ -42,6 +45,7 @@ const TextEditor = () => {
   const letConstClose = useCallback(() => setLetConstToggle(false), []);
   const variableClose = useCallback(() => setVariableToggle(false), []);
   const operatorClose = useCallback(() => setOperatorToggle(false), []);
+  const numberClose = useCallback(() => setNumberToggle(false), []);
 
   ClickOutside(popover, commentClose);
   ClickOutside(popover, funcKeywordClose);
@@ -52,6 +56,7 @@ const TextEditor = () => {
   ClickOutside(popover, letConstClose);
   ClickOutside(popover, variableClose);
   ClickOutside(popover, operatorClose);
+  ClickOutside(popover, numberClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -129,7 +134,12 @@ const TextEditor = () => {
                 onChange={setOperatorColor}
               > = </span>
               
-              <span className='string-js number'>1</span>
+              {/* NUMBER PICKER */}
+              <span
+                className='string-js number'
+                value={{ color: `${numberColor}` }}
+                onChange={setNumberColor}
+              >1</span>
               
               <span className='string-js punctuation'>;</span><br /><br />
 
@@ -217,7 +227,12 @@ const TextEditor = () => {
                 onChange={setOperatorColor}
               > += </span>
               
-              <span className='string-js number'>1</span>
+              {/* NUMBER PICKER */}
+              <span
+                className='string-js number'
+                value={{ color: `${numberColor}` }}
+                onChange={setNumberColor}
+              >1</span>
               
               <span className='string-js punctuation'>;</span><br />
 
@@ -230,7 +245,12 @@ const TextEditor = () => {
               
               <span className='string-js punctuation'>, </span>
               
-              <span className='string-js number'>500</span>
+              {/* NUMBER PICKER */}
+              <span
+                className='string-js number'
+                value={{ color: `${numberColor}` }}
+                onChange={setNumberColor}
+              >500</span>
               
               {/* ROUND BRACE -------------------- */}
               <span
@@ -414,6 +434,21 @@ const TextEditor = () => {
             <div className='operatorPopover' ref={popover}>
               <HexColorPicker color={operatorColor} onChange={operatorColor} />
               <HexColorInput color={operatorColor} onChange={operatorColor} />
+            </div>
+          )}
+        </div>
+
+        {/* NUMBER PICKER */}
+        <div className='picker' id='numberPicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: numberColor }}
+            onClick={() => setNumberToggle(true)}
+          />
+          {numberIsOpen && (
+            <div className='numberPopover' ref={popover}>
+              <HexColorPicker color={numberColor} onChange={numberColor} />
+              <HexColorInput color={numberColor} onChange={numberColor} />
             </div>
           )}
         </div>
