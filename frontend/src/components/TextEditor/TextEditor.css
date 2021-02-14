@@ -1,3 +1,4 @@
+/* Text Editor */
 .textEditor__window {
   background-color: #1e1e1e;
   width: 600px;
@@ -61,4 +62,26 @@
 
 .string {
   color: #CE9178;
+}
+
+/* Color Picker */
+.picker {
+  position: relative;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  border-radius: 9px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

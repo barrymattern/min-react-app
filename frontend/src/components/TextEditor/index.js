@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from "react";
 import { HexColorPicker, HexColorInput } from "react-colorful";
+import ClickOutside from './ClickOutside';
 import './TextEditor.css';
 
 const TextEditor = () => {
+  const popover = useRef();
+  const [isOpen, toggle] = useState(false);
   const [color, setColor] = useState("#6A9955");
+
+  const close = useCallback(() => toggle(false), []);
+  ClickOutside(popover, close);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -70,10 +76,21 @@ const TextEditor = () => {
           </pre>
         </div>
       </div>
-    <div className="colorPicker__wrapper">
-      <HexColorPicker color={color} onChange={setColor} />
-      <HexColorInput color={color} onChange={setColor} />
-    </div>
+      <div className='themeGenerator__popoverPicker'>
+        <div className="picker">
+          <div
+            className="swatch"
+            style={{ backgroundColor: color }}
+            onClick={() => toggle(true)}
+          />
+          {isOpen && (
+            <div className="popover" ref={popover}>
+              <HexColorPicker color={color} onChange={setColor} />
+              <HexColorInput color={color} onChange={setColor} />
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
