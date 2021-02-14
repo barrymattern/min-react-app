@@ -4,17 +4,18 @@ import ClickOutside from './ClickOutside';
 import './TextEditor.css';
 
 const TextEditor = () => {
-  const popover = useRef();
+  const commentPopover = useRef();
+  const funcKeywordPopover = useRef();
   const [commentIsOpen, commentToggle] = useState(false);
   const [commentColor, setCommentColor] = useState('#6A9955');
   const [funcKeywordIsOpen, funcKeywordToggle] = useState(false);
   const [funcKeywordColor, setFuncKeywordColor] = useState('#569CD6');
 
   const commentClose = useCallback(() => commentToggle(false), []);
-  ClickOutside(popover, commentClose);
-
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
-  ClickOutside(popover, funcKeywordClose);
+
+  ClickOutside(commentPopover, commentClose);
+  ClickOutside(funcKeywordPopover, funcKeywordClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -91,16 +92,15 @@ const TextEditor = () => {
           </pre>
         </div>
       </div>
-      <div className='themeGenerator__popoverPicker'>
+      <div className='themeGenerator__commentPopoverPicker'>
         <div className='picker' id='commentPicker'>
           <div
             className='swatch'
-            id='commentSwatch'
             style={{ backgroundColor: commentColor }}
-            onClick={(e) => commentToggle(true)}
+            onClick={() => commentToggle(true)}
           />
           {commentIsOpen && (
-            <div className='popover' ref={popover}>
+            <div className='commentPopover' ref={commentPopover}>
               <HexColorPicker color={commentColor} onChange={setCommentColor} id='commentHexPicker'/>
               <HexColorInput color={commentColor} onChange={setCommentColor} id='commentHexInput'/>
             </div>
@@ -109,12 +109,11 @@ const TextEditor = () => {
         <div className='picker' id='funcKeywordPicker'>
           <div
             className='swatch'
-            id='funcKeywordSwatch'
             style={{ backgroundColor: funcKeywordColor }}
             onClick={() => funcKeywordToggle(true)}
           />
           {funcKeywordIsOpen && (
-            <div className='popover' ref={popover}>
+            <div className='funcKeywordPopover' ref={funcKeywordPopover}>
               <HexColorPicker color={funcKeywordColor} onChange={setFuncKeywordColor} id='funcKeywordHexPicker'/>
               <HexColorInput color={funcKeywordColor} onChange={setFuncKeywordColor} id='funcKeywordHexInput'/>
             </div>
