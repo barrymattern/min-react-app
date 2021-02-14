@@ -1,13 +1,12 @@
 import React from 'react';
 import TextEditor from "../TextEditor";
+import './HomePage.css';
 
 const HomePage = () => {
 
   return (
-    <div>
+    <div className='themeGenerator__wrapper'>
       <TextEditor />
-      <p>Color Wheel</p>   
-      <p>JSON Visualizer</p>
     </div>
   );
 };
