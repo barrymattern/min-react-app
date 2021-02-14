@@ -39,6 +39,9 @@ const TextEditor = () => {
   const [punctuationIsOpen, setPunctuationToggle] = useState(false);
   const [punctuationColor, setPunctuationColor] = useState('#d4d4d4');
 
+  const [fatArrowIsOpen, setFatArrowToggle] = useState(false);
+  const [fatArrowColor, setFatArrowColor] = useState('#569CD6');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
@@ -50,6 +53,7 @@ const TextEditor = () => {
   const operatorClose = useCallback(() => setOperatorToggle(false), []);
   const numberClose = useCallback(() => setNumberToggle(false), []);
   const punctuationClose = useCallback(() => setPunctuationToggle(false), []);
+  const fatArrowClose = useCallback(() => setFatArrowToggle(false), []);
 
   ClickOutside(popover, commentClose);
   ClickOutside(popover, funcKeywordClose);
@@ -62,6 +66,7 @@ const TextEditor = () => {
   ClickOutside(popover, operatorClose);
   ClickOutside(popover, numberClose);
   ClickOutside(popover, punctuationClose);
+  ClickOutside(popover, fatArrowClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -167,7 +172,12 @@ const TextEditor = () => {
                 onChange={setRoundBraceColor}
               >(()</span>
               
-              <span className='string-js fat-arrow'>{' => '}</span>
+              {/* FAT ARROW PICKER */}
+              <span
+                className='string-js fat-arrow'
+                value={{ color: `${fatArrowColor}` }}
+                onChange={setFatArrowColor}
+              >{' => '}</span>
               
               {/* CURLY BRACE PICKER -------------------- */}
               <span
@@ -447,7 +457,7 @@ const TextEditor = () => {
             onClick={() => setLetConstToggle(true)}
           />
           {letConstIsOpen && (
-            <div className='letConstPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={letConstColor} onChange={setLetConstColor} />
               <HexColorInput color={letConstColor} onChange={setLetConstColor} />
             </div>
@@ -462,7 +472,7 @@ const TextEditor = () => {
             onClick={() => setVariableToggle(true)}
           />
           {variableIsOpen && (
-            <div className='variablePopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={variableColor} onChange={variableColor} />
               <HexColorInput color={variableColor} onChange={variableColor} />
             </div>
@@ -477,7 +487,7 @@ const TextEditor = () => {
             onClick={() => setOperatorToggle(true)}
           />
           {operatorIsOpen && (
-            <div className='operatorPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={operatorColor} onChange={operatorColor} />
               <HexColorInput color={operatorColor} onChange={operatorColor} />
             </div>
@@ -492,7 +502,7 @@ const TextEditor = () => {
             onClick={() => setNumberToggle(true)}
           />
           {numberIsOpen && (
-            <div className='numberPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={numberColor} onChange={numberColor} />
               <HexColorInput color={numberColor} onChange={numberColor} />
             </div>
@@ -507,9 +517,24 @@ const TextEditor = () => {
             onClick={() => setPunctuationToggle(true)}
           />
           {punctuationIsOpen && (
-            <div className='numberPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={punctuationColor} onChange={punctuationColor} />
               <HexColorInput color={punctuationColor} onChange={punctuationColor} />
+            </div>
+          )}
+        </div>
+
+        {/* FAT ARROW PICKER */}
+        <div className='picker' id='fatArrowPicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: fatArrowColor }}
+            onClick={() => setFatArrowToggle(true)}
+          />
+          {fatArrowIsOpen && (
+            <div className='popover' ref={popover}>
+              <HexColorPicker color={fatArrowColor} onChange={fatArrowColor} />
+              <HexColorInput color={fatArrowColor} onChange={fatArrowColor} />
             </div>
           )}
         </div>
