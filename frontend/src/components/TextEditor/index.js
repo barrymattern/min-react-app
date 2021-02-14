@@ -11,6 +11,7 @@ const TextEditor = () => {
   const parameterPopover = useRef();
   const curlyBracePopover = useRef();
   const letConstPopover = useRef();
+  const variablePopover = useRef();
 
   const [commentIsOpen, commentToggle] = useState(false);
   const [commentColor, setCommentColor] = useState('#6A9955');
@@ -33,6 +34,9 @@ const TextEditor = () => {
   const [letConstIsOpen, setLetConstToggle] = useState(false);
   const [letConstColor, setLetConstColor] = useState('#569CD6');
 
+  const [variableIsOpen, setVariableToggle] = useState(false);
+  const [variableColor, setVariableColor] = useState('#9CDCFE');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
@@ -40,6 +44,7 @@ const TextEditor = () => {
   const parameterClose = useCallback(() => setParameterToggle(false), []);
   const curlyBraceClose = useCallback(() => setCurlyBraceToggle(false), []);
   const letConstClose = useCallback(() => setLetConstToggle(false), []);
+  const variableClose = useCallback(() => setVariableToggle(false), []);
 
   ClickOutside(commentPopover, commentClose);
   ClickOutside(funcKeywordPopover, funcKeywordClose);
@@ -48,6 +53,7 @@ const TextEditor = () => {
   ClickOutside(parameterPopover, parameterClose);
   ClickOutside(curlyBracePopover, curlyBraceClose);
   ClickOutside(letConstPopover, letConstClose);
+  ClickOutside(variablePopover, variableClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -114,6 +120,8 @@ const TextEditor = () => {
               {/* VARIABLE PICKER -------------------- */}
               <span 
                 className='string-js variable'
+                style={{ color: `${variableColor}` }}
+                onChange={setVariableColor}
               >count</span>
               
               <span className='string-js operator'> = </span>
@@ -148,6 +156,8 @@ const TextEditor = () => {
               {/* VARIABLE PICKER -------------------- */}
               <span 
                 className='string-js variable'
+                style={{ color: `${variableColor}` }}
+                onChange={setVariableColor}
               >        console</span>
               
               <span className='string-js punctuation'>.</span>
@@ -193,6 +203,8 @@ const TextEditor = () => {
               {/* VARIABLE PICKER -------------------- */}
               <span 
                 className='string-js variable'
+                style={{ color: `${variableColor}` }}
+                onChange={setVariableColor}
               >        count</span>
               
               <span className='string-js operator'> += </span>
@@ -363,6 +375,21 @@ const TextEditor = () => {
             <div className='letConstPopover' ref={letConstPopover}>
               <HexColorPicker color={letConstColor} onChange={setLetConstColor} />
               <HexColorInput color={letConstColor} onChange={setLetConstColor} />
+            </div>
+          )}
+        </div>
+
+        {/* VARIABLE PICKER */}
+        <div className='picker' id='variablePicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: variableColor }}
+            onClick={() => setVariableToggle(true)}
+          />
+          {variableIsOpen && (
+            <div className='variablePopover' ref={variablePopover}>
+              <HexColorPicker color={variableColor} onChange={variableColor} />
+              <HexColorInput color={variableColor} onChange={variableColor} />
             </div>
           )}
         </div>
