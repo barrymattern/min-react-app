@@ -42,6 +42,9 @@ const TextEditor = () => {
   const [fatArrowIsOpen, setFatArrowToggle] = useState(false);
   const [fatArrowColor, setFatArrowColor] = useState('#569CD6');
 
+  const [methodIsOpen, setMethodToggle] = useState(false);
+  const [methodColor, setMethodColor] = useState('#DCDCAA');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
@@ -54,6 +57,7 @@ const TextEditor = () => {
   const numberClose = useCallback(() => setNumberToggle(false), []);
   const punctuationClose = useCallback(() => setPunctuationToggle(false), []);
   const fatArrowClose = useCallback(() => setFatArrowToggle(false), []);
+  const methodClose = useCallback(() => setMethodToggle(false), []);
 
   ClickOutside(popover, commentClose);
   ClickOutside(popover, funcKeywordClose);
@@ -67,6 +71,7 @@ const TextEditor = () => {
   ClickOutside(popover, numberClose);
   ClickOutside(popover, punctuationClose);
   ClickOutside(popover, fatArrowClose);
+  ClickOutside(popover, methodClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -200,7 +205,12 @@ const TextEditor = () => {
                 onChange={setPunctuationColor}
               >.</span>
               
-              <span className='string-js method'>log</span>
+              {/* METHOD PICKER */}
+              <span
+                className='string-js method'
+                value={{ color: `${methodColor}` }}
+                onChange={setMethodColor}
+              >log</span>
               
               {/* ROUND BRACE -------------------- */}
               <span
@@ -535,6 +545,21 @@ const TextEditor = () => {
             <div className='popover' ref={popover}>
               <HexColorPicker color={fatArrowColor} onChange={fatArrowColor} />
               <HexColorInput color={fatArrowColor} onChange={fatArrowColor} />
+            </div>
+          )}
+        </div>
+
+        {/* METHOD PICKER */}
+        <div className='picker' id='methodPicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: methodColor }}
+            onClick={() => setMethodToggle(true)}
+          />
+          {methodIsOpen && (
+            <div className='popover' ref={popover}>
+              <HexColorPicker color={methodColor} onChange={methodColor} />
+              <HexColorInput color={methodColor} onChange={methodColor} />
             </div>
           )}
         </div>
