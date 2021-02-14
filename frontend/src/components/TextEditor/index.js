@@ -6,16 +6,30 @@ import './TextEditor.css';
 const TextEditor = () => {
   const commentPopover = useRef();
   const funcKeywordPopover = useRef();
+  const funcNamePopover = useRef();
+  const roundBracePopover = useRef();
+
   const [commentIsOpen, commentToggle] = useState(false);
   const [commentColor, setCommentColor] = useState('#6A9955');
+  
   const [funcKeywordIsOpen, funcKeywordToggle] = useState(false);
   const [funcKeywordColor, setFuncKeywordColor] = useState('#569CD6');
 
+  const [funcNameIsOpen, setFuncNameToggle] = useState(false);
+  const [funcNameColor, setFuncNameColor] = useState('#DCDCAA');
+
+  const [roundBraceIsOpen, setRoundBraceToggle] = useState(false);
+  const [roundBraceColor, setRoundBraceColor] = useState('#d4d4d4');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
+  const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
+  const roundBraceClose = useCallback(() => setRoundBraceToggle(false), []);
 
   ClickOutside(commentPopover, commentClose);
   ClickOutside(funcKeywordPopover, funcKeywordClose);
+  ClickOutside(funcNamePopover, funcNameClose);
+  ClickOutside(roundBracePopover, roundBraceClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -23,6 +37,7 @@ const TextEditor = () => {
         <div className='textEditor__window'>
           <pre>
             <code className='textEditor__window--lang-js'>
+              {/* COMMENT --------------------*/}
               <span
                 className='string-js comment'
                 style={{ color: `${commentColor}` }}
@@ -31,6 +46,7 @@ const TextEditor = () => {
                 {'// Log how many color themes have been generated'}
               </span><br />
 
+              {/* FUNCTION KEYWORD -------------------- */}
               <span 
                 className='string-js function-keyword'
                 style={{ color: `${funcKeywordColor}` }}
@@ -38,10 +54,34 @@ const TextEditor = () => {
               >
                 function
               </span>
-              <span className='string-js function-name'>themeCount</span>
-              <span className='string-js round-brace'>(</span>
+
+              {/* FUNCTION NAME -------------------- */}
+              <span
+                className='string-js function-name'
+                style={{ color: `${funcNameColor}` }}
+                onChange={setFuncNameColor}
+              >
+                themeCount
+              </span>
+
+              {/* ROUND BRACE -------------------- */}
+              <span
+                className='string-js round-brace'
+                style={{ color: `${roundBraceColor}` }}
+                onChange={setRoundBraceColor}
+              >
+                (
+              </span>
               <span className='string-js parameter'>colorTheme</span>
-              <span className='string-js round-brace'>) </span>
+
+              {/* ROUND BRACE -------------------- */}
+              <span
+                className='string-js round-brace'
+                style={{ color: `${roundBraceColor}` }}
+                onChange={setRoundBraceColor}
+              >
+                ) 
+              </span>
               <span className='string-js curly-brace'>{'{'}</span><br />
 
               <span className='string-js let-const'>    let </span>
@@ -50,15 +90,37 @@ const TextEditor = () => {
               <span className='string-js number'>1</span>
               <span className='string-js punctuation'>;</span><br /><br />
 
-              <span className='string-js function-name'>    setInterval</span>
-              <span className='string-js round-brace'>(()</span>
+              <span
+                className='string-js function-name'
+                style={{ color: `${funcNameColor}` }}
+                onChange={setFuncNameColor}
+              >
+                    setInterval
+              </span>
+              
+              {/* ROUND BRACE -------------------- */}
+              <span
+                className='string-js round-brace'
+                style={{ color: `${roundBraceColor}` }}
+                onChange={setRoundBraceColor}
+              >
+                (()
+              </span>
               <span className='string-js fat-arrow'>{' => '}</span>
               <span className='string-js curly-brace'>{'{'}</span><br />
 
               <span className='string-js variable'>        console</span>
               <span className='string-js punctuation'>.</span>
               <span className='string-js method'>log</span>
-              <span className='string-js round-brace'>(</span><br />
+              
+              {/* ROUND BRACE -------------------- */}
+              <span
+                className='string-js round-brace'
+                style={{ color: `${roundBraceColor}` }}
+                onChange={setRoundBraceColor}
+              >
+                (
+              </span><br />
 
               <span className='string-js string'>{'            `A new ${'}</span>
               <span className='string-js parameter'>colorTheme</span>
@@ -66,7 +128,15 @@ const TextEditor = () => {
               <span className='string-js parameter'>count</span>
               <span className='string-js string'>{'} times!`'}</span><br />
 
-              <span className='string-js round-brace'>        )</span>
+              
+              {/* ROUND BRACE -------------------- */}
+              <span
+                className='string-js round-brace'
+                style={{ color: `${roundBraceColor}` }}
+                onChange={setRoundBraceColor}
+              >
+                        )
+              </span>
               <span className='string-js punctuation'>;</span><br />
 
               <span className='string-js variable'>        count</span>
@@ -77,16 +147,42 @@ const TextEditor = () => {
               <span className='string-js curly-brace'>{'    }'}</span>
               <span className='string-js punctuation'>, </span>
               <span className='string-js number'>500</span>
-              <span className='string-js round-brace'>)</span>
+              
+              {/* ROUND BRACE -------------------- */}
+              <span
+                className='string-js round-brace'
+                style={{ color: `${roundBraceColor}` }}
+                onChange={setRoundBraceColor}
+              >
+                )
+              </span>
               <span className='string-js punctuation'>;</span><br />
 
               <span className='string-js curly-brace'>{'}'}</span>
               <span className='string-js punctuation'>;</span><br /><br />
 
-              <span className='string-js function-name'>themeCount</span>
-              <span className='string-js round-brace'>(</span>
+              <span
+                className='string-js function-name'
+                style={{ color: `${funcNameColor}` }}
+                onChange={setFuncNameColor}
+              >
+                themeCount
+              </span>
+              <span
+                className='string-js round-brace'
+                style={{ color: `${roundBraceColor}` }}
+                onChange={setRoundBraceColor}
+              >
+                (
+              </span>
               <span className='string-js string'>'color theme'</span>
-              <span className='string-js round-brace'>)</span>
+              <span
+                className='string-js round-brace'
+                style={{ color: `${roundBraceColor}` }}
+                onChange={setRoundBraceColor}
+              >
+                )
+              </span>
               <span className='string-js punctuation'>;</span>
             </code>
           </pre>
@@ -101,8 +197,8 @@ const TextEditor = () => {
           />
           {commentIsOpen && (
             <div className='commentPopover' ref={commentPopover}>
-              <HexColorPicker color={commentColor} onChange={setCommentColor} id='commentHexPicker'/>
-              <HexColorInput color={commentColor} onChange={setCommentColor} id='commentHexInput'/>
+              <HexColorPicker color={commentColor} onChange={setCommentColor} />
+              <HexColorInput color={commentColor} onChange={setCommentColor} />
             </div>
           )}
         </div>
@@ -114,8 +210,34 @@ const TextEditor = () => {
           />
           {funcKeywordIsOpen && (
             <div className='funcKeywordPopover' ref={funcKeywordPopover}>
-              <HexColorPicker color={funcKeywordColor} onChange={setFuncKeywordColor} id='funcKeywordHexPicker'/>
-              <HexColorInput color={funcKeywordColor} onChange={setFuncKeywordColor} id='funcKeywordHexInput'/>
+              <HexColorPicker color={funcKeywordColor} onChange={setFuncKeywordColor} />
+              <HexColorInput color={funcKeywordColor} onChange={setFuncKeywordColor} />
+            </div>
+          )}
+        </div>
+        <div className='picker' id='funcNamePicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: funcNameColor }}
+            onClick={() => setFuncNameToggle(true)}
+          />
+          {funcNameIsOpen && (
+            <div className='funcNamePopover' ref={funcNamePopover}>
+              <HexColorPicker color={funcNameColor} onChange={setFuncNameColor} />
+              <HexColorInput color={funcNameColor} onChange={setFuncNameColor} />
+            </div>
+          )}
+        </div>
+        <div className='picker' id='roundBracePicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: roundBraceColor }}
+            onClick={() => setRoundBraceToggle(true)}
+          />
+          {roundBraceIsOpen && (
+            <div className='roundBracePopover' ref={roundBracePopover}>
+              <HexColorPicker color={roundBraceColor} onChange={setRoundBraceColor} />
+              <HexColorInput color={roundBraceColor} onChange={setRoundBraceColor} />
             </div>
           )}
         </div>
