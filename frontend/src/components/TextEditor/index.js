@@ -60,63 +60,49 @@ const TextEditor = () => {
                 className='string-js comment'
                 style={{ color: `${commentColor}` }}
                 onChange={setCommentColor}
-              >
-                {'// Log how many color themes have been generated'}
-              </span><br />
+              >{'// Log how many color themes have been generated'}</span><br />
 
               {/* FUNCTION KEYWORD -------------------- */}
               <span 
                 className='string-js function-keyword'
                 style={{ color: `${funcKeywordColor}` }}
                 onChange={setFuncKeywordColor}
-              >
-                function
-              </span>
+              >function</span>
 
               {/* FUNCTION NAME -------------------- */}
               <span
                 className='string-js function-name'
                 style={{ color: `${funcNameColor}` }}
                 onChange={setFuncNameColor}
-              >
-                themeCount
-              </span>
+              > themeCount</span>
 
               {/* ROUND BRACE -------------------- */}
               <span
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >
-                (
-              </span>
+              >(</span>
               
               {/* PARAMETER ------------------- */}
               <span
                 className='string-js parameter'
                 style={{ color: `${parameterColor}` }}
                 onChange={setParameterColor}
-              >
-                colorTheme
-              </span>
+              >colorTheme</span>
 
               {/* ROUND BRACE -------------------- */}
               <span
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >
-                ) 
-              </span>
+              >) </span>
               
               {/* CURLY BRACE PICKER -------------------- */}
               <span
                 className='string-js curly-brace'
                 style={{ color: `${curlyBraceColor}` }}
                 onChange={setCurlyBraceColor}
-              >
-                {'{'}
-              </span><br />
+              >{'{'}</span><br />
 
               {/* LET-CONST PICKER -------------------- */}
               <span
@@ -124,11 +110,19 @@ const TextEditor = () => {
                 style={{ color: `${letConstColor}` }}
                 onChange={setLetConstColor}
               >    let </span>
-              <span className='string-js variable'>count</span>
+
+              {/* VARIABLE PICKER -------------------- */}
+              <span 
+                className='string-js variable'
+              >count</span>
+              
               <span className='string-js operator'> = </span>
+              
               <span className='string-js number'>1</span>
+              
               <span className='string-js punctuation'>;</span><br /><br />
 
+              {/* FUNCTION NAME PICKER */}
               <span
                 className='string-js function-name'
                 style={{ color: `${funcNameColor}` }}
@@ -140,9 +134,8 @@ const TextEditor = () => {
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >
-                (()
-              </span>
+              >(()</span>
+              
               <span className='string-js fat-arrow'>{' => '}</span>
               
               {/* CURLY BRACE PICKER -------------------- */}
@@ -150,12 +143,15 @@ const TextEditor = () => {
                 className='string-js curly-brace'
                 style={{ color: `${curlyBraceColor}` }}
                 onChange={setCurlyBraceColor}
-              >
-                {'{'}
-              </span><br />
+              >{'{'}</span><br />
 
-              <span className='string-js variable'>        console</span>
+              {/* VARIABLE PICKER -------------------- */}
+              <span 
+                className='string-js variable'
+              >        console</span>
+              
               <span className='string-js punctuation'>.</span>
+              
               <span className='string-js method'>log</span>
               
               {/* ROUND BRACE -------------------- */}
@@ -163,9 +159,7 @@ const TextEditor = () => {
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >
-                (
-              </span><br />
+              >(</span><br />
 
               <span className='string-js string'>{'            `A new ${'}</span>
               
@@ -174,9 +168,8 @@ const TextEditor = () => {
                 className='string-js parameter'
                 style={{ color: `${parameterColor}` }}
                 onChange={setParameterColor}
-              >
-                colorTheme
-              </span>
+              >colorTheme</span>
+              
               <span className='string-js string'>{'} has been created ${'}</span>
               
               {/* PARAMETER ------------------- */}
@@ -184,9 +177,8 @@ const TextEditor = () => {
                 className='string-js parameter'
                 style={{ color: `${parameterColor}` }}
                 onChange={setParameterColor}
-              >
-                count
-              </span>
+              >count</span>
+              
               <span className='string-js string'>{'} times!`'}</span><br />
 
               {/* ROUND BRACE -------------------- */}
@@ -194,13 +186,19 @@ const TextEditor = () => {
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >        )
-              </span>
+              >        )</span>
+              
               <span className='string-js punctuation'>;</span><br />
 
-              <span className='string-js variable'>        count</span>
+              {/* VARIABLE PICKER -------------------- */}
+              <span 
+                className='string-js variable'
+              >        count</span>
+              
               <span className='string-js operator'> += </span>
+              
               <span className='string-js number'>1</span>
+              
               <span className='string-js punctuation'>;</span><br />
 
               {/* CURLY BRACE PICKER -------------------- */}
@@ -208,10 +206,10 @@ const TextEditor = () => {
                 className='string-js curly-brace'
                 style={{ color: `${curlyBraceColor}` }}
                 onChange={setCurlyBraceColor}
-              >
-                {'    }'}
-              </span>
+              >{'    }'}</span>
+              
               <span className='string-js punctuation'>, </span>
+              
               <span className='string-js number'>500</span>
               
               {/* ROUND BRACE -------------------- */}
@@ -219,9 +217,7 @@ const TextEditor = () => {
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >
-                )
-              </span>
+              >)</span>
               <span className='string-js punctuation'>;</span><br />
 
               {/* CURLY BRACE PICKER -------------------- */}
@@ -229,26 +225,27 @@ const TextEditor = () => {
                 className='string-js curly-brace'
                 style={{ color: `${curlyBraceColor}` }}
                 onChange={setCurlyBraceColor}
-              >
-                {'}'}
-              </span>
+              >{'}'}</span>
+              
               <span className='string-js punctuation'>;</span><br /><br />
 
+              {/* FUNCTION NAME PICKER -------------------- */}
               <span
                 className='string-js function-name'
                 style={{ color: `${funcNameColor}` }}
                 onChange={setFuncNameColor}
-              >
-                themeCount
-              </span>
+              >themeCount</span>
+              
+              {/* ROUND BRACE PICKER */}
               <span
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >
-                (
-              </span>
+              >(</span>
+              
               <span className='string-js string'>'color theme'</span>
+              
+              {/* ROUND BRACE PICKER */}
               <span
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
