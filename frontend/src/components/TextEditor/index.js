@@ -10,6 +10,7 @@ const TextEditor = () => {
   const roundBracePopover = useRef();
   const parameterPopover = useRef();
   const curlyBracePopover = useRef();
+  const letConstPopover = useRef();
 
   const [commentIsOpen, commentToggle] = useState(false);
   const [commentColor, setCommentColor] = useState('#6A9955');
@@ -29,12 +30,16 @@ const TextEditor = () => {
   const [curlyBraceIsOpen, setCurlyBraceToggle] = useState(false);
   const [curlyBraceColor, setCurlyBraceColor] = useState('#d4d4d4');
 
+  const [letConstIsOpen, setLetConstToggle] = useState(false);
+  const [letConstColor, setLetConstColor] = useState('#569CD6');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
   const roundBraceClose = useCallback(() => setRoundBraceToggle(false), []);
   const parameterClose = useCallback(() => setParameterToggle(false), []);
   const curlyBraceClose = useCallback(() => setCurlyBraceToggle(false), []);
+  const letConstClose = useCallback(() => setLetConstToggle(false), []);
 
   ClickOutside(commentPopover, commentClose);
   ClickOutside(funcKeywordPopover, funcKeywordClose);
@@ -42,6 +47,7 @@ const TextEditor = () => {
   ClickOutside(roundBracePopover, roundBraceClose);
   ClickOutside(parameterPopover, parameterClose);
   ClickOutside(curlyBracePopover, curlyBraceClose);
+  ClickOutside(letConstPopover, letConstClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -112,7 +118,12 @@ const TextEditor = () => {
                 {'{'}
               </span><br />
 
-              <span className='string-js let-const'>    let </span>
+              {/* LET-CONST PICKER -------------------- */}
+              <span
+                className='string-js let-const'
+                style={{ color: `${letConstColor}` }}
+                onChange={setLetConstColor}
+              >    let </span>
               <span className='string-js variable'>count</span>
               <span className='string-js operator'> = </span>
               <span className='string-js number'>1</span>
@@ -122,9 +133,7 @@ const TextEditor = () => {
                 className='string-js function-name'
                 style={{ color: `${funcNameColor}` }}
                 onChange={setFuncNameColor}
-              >
-                    setInterval
-              </span>
+              >    setInterval</span>
               
               {/* ROUND BRACE -------------------- */}
               <span
@@ -185,8 +194,7 @@ const TextEditor = () => {
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >
-                        )
+              >        )
               </span>
               <span className='string-js punctuation'>;</span><br />
 
@@ -343,6 +351,21 @@ const TextEditor = () => {
             <div className='curlyBracePopover' ref={curlyBracePopover}>
               <HexColorPicker color={curlyBraceColor} onChange={setCurlyBraceColor} />
               <HexColorInput color={curlyBraceColor} onChange={setCurlyBraceColor} />
+            </div>
+          )}
+        </div>
+
+        {/* LET CONST PICKER -------------------- */}
+        <div className='picker' id='letConstPicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: letConstColor }}
+            onClick={() => setLetConstToggle(true)}
+          />
+          {letConstIsOpen && (
+            <div className='letConstPopover' ref={letConstPopover}>
+              <HexColorPicker color={letConstColor} onChange={setLetConstColor} />
+              <HexColorInput color={letConstColor} onChange={setLetConstColor} />
             </div>
           )}
         </div>
