@@ -1,15 +1,20 @@
-import React, { useCallback, useRef, useState } from "react";
-import { HexColorPicker, HexColorInput } from "react-colorful";
+import React, { useCallback, useRef, useState } from 'react';
+import { HexColorPicker, HexColorInput } from 'react-colorful';
 import ClickOutside from './ClickOutside';
 import './TextEditor.css';
 
 const TextEditor = () => {
   const popover = useRef();
-  const [isOpen, toggle] = useState(false);
-  const [color, setColor] = useState("#6A9955");
+  const [commentIsOpen, commentToggle] = useState(false);
+  const [commentColor, setCommentColor] = useState('#6A9955');
+  const [funcKeywordIsOpen, funcKeywordToggle] = useState(false);
+  const [funcKeywordColor, setFuncKeywordColor] = useState('#569CD6');
 
-  const close = useCallback(() => toggle(false), []);
-  ClickOutside(popover, close);
+  const commentClose = useCallback(() => commentToggle(false), []);
+  ClickOutside(popover, commentClose);
+
+  const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
+  ClickOutside(popover, funcKeywordClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -17,11 +22,21 @@ const TextEditor = () => {
         <div className='textEditor__window'>
           <pre>
             <code className='textEditor__window--lang-js'>
-              <span className='string-js comment' style={{ color: `${color}` }} onChange={setColor}>
+              <span
+                className='string-js comment'
+                style={{ color: `${commentColor}` }}
+                onChange={setCommentColor}
+              >
                 {'// Log how many color themes have been generated'}
               </span><br />
 
-              <span className='string-js function-keyword'>function </span>
+              <span 
+                className='string-js function-keyword'
+                style={{ color: `${funcKeywordColor}` }}
+                onChange={setFuncKeywordColor}
+              >
+                function
+              </span>
               <span className='string-js function-name'>themeCount</span>
               <span className='string-js round-brace'>(</span>
               <span className='string-js parameter'>colorTheme</span>
@@ -77,16 +92,31 @@ const TextEditor = () => {
         </div>
       </div>
       <div className='themeGenerator__popoverPicker'>
-        <div className="picker">
+        <div className='picker' id='commentPicker'>
           <div
-            className="swatch"
-            style={{ backgroundColor: color }}
-            onClick={() => toggle(true)}
+            className='swatch'
+            id='commentSwatch'
+            style={{ backgroundColor: commentColor }}
+            onClick={(e) => commentToggle(true)}
           />
-          {isOpen && (
-            <div className="popover" ref={popover}>
-              <HexColorPicker color={color} onChange={setColor} />
-              <HexColorInput color={color} onChange={setColor} />
+          {commentIsOpen && (
+            <div className='popover' ref={popover}>
+              <HexColorPicker color={commentColor} onChange={setCommentColor} id='commentHexPicker'/>
+              <HexColorInput color={commentColor} onChange={setCommentColor} id='commentHexInput'/>
+            </div>
+          )}
+        </div>
+        <div className='picker' id='funcKeywordPicker'>
+          <div
+            className='swatch'
+            id='funcKeywordSwatch'
+            style={{ backgroundColor: funcKeywordColor }}
+            onClick={() => funcKeywordToggle(true)}
+          />
+          {funcKeywordIsOpen && (
+            <div className='popover' ref={popover}>
+              <HexColorPicker color={funcKeywordColor} onChange={setFuncKeywordColor} id='funcKeywordHexPicker'/>
+              <HexColorInput color={funcKeywordColor} onChange={setFuncKeywordColor} id='funcKeywordHexInput'/>
             </div>
           )}
         </div>
