@@ -24,13 +24,13 @@
   color: #d4d4d4;
 } */
 
-.curly-brace {
-  color: #d4d4d4;
-}
-
 /* .parameter {
   color: #9CDCFE;
 } */
+
+.curly-brace {
+  color: #d4d4d4;
+}
 
 .let-const {
   color: #569CD6;

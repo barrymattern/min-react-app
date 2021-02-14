@@ -9,6 +9,7 @@ const TextEditor = () => {
   const funcNamePopover = useRef();
   const roundBracePopover = useRef();
   const parameterPopover = useRef();
+  const curlyBracePopover = useRef();
 
   const [commentIsOpen, commentToggle] = useState(false);
   const [commentColor, setCommentColor] = useState('#6A9955');
@@ -25,17 +26,22 @@ const TextEditor = () => {
   const [parameterIsOpen, setParameterToggle] = useState(false);
   const [parameterColor, setParameterColor] = useState('#9CDCFE');
 
+  const [curlyBraceIsOpen, setCurlyBraceToggle] = useState(false);
+  const [curlyBraceColor, setCurlyBraceColor] = useState('#d4d4d4');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
   const roundBraceClose = useCallback(() => setRoundBraceToggle(false), []);
   const parameterClose = useCallback(() => setParameterToggle(false), []);
+  const curlyBraceClose = useCallback(() => setCurlyBraceToggle(false), []);
 
   ClickOutside(commentPopover, commentClose);
   ClickOutside(funcKeywordPopover, funcKeywordClose);
   ClickOutside(funcNamePopover, funcNameClose);
   ClickOutside(roundBracePopover, roundBraceClose);
   ClickOutside(parameterPopover, parameterClose);
+  ClickOutside(curlyBracePopover, curlyBraceClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -96,7 +102,15 @@ const TextEditor = () => {
               >
                 ) 
               </span>
-              <span className='string-js curly-brace'>{'{'}</span><br />
+              
+              {/* CURLY BRACE PICKER -------------------- */}
+              <span
+                className='string-js curly-brace'
+                style={{ color: `${curlyBraceColor}` }}
+                onChange={setCurlyBraceColor}
+              >
+                {'{'}
+              </span><br />
 
               <span className='string-js let-const'>    let </span>
               <span className='string-js variable'>count</span>
@@ -121,7 +135,15 @@ const TextEditor = () => {
                 (()
               </span>
               <span className='string-js fat-arrow'>{' => '}</span>
-              <span className='string-js curly-brace'>{'{'}</span><br />
+              
+              {/* CURLY BRACE PICKER -------------------- */}
+              <span
+                className='string-js curly-brace'
+                style={{ color: `${curlyBraceColor}` }}
+                onChange={setCurlyBraceColor}
+              >
+                {'{'}
+              </span><br />
 
               <span className='string-js variable'>        console</span>
               <span className='string-js punctuation'>.</span>
@@ -158,7 +180,6 @@ const TextEditor = () => {
               </span>
               <span className='string-js string'>{'} times!`'}</span><br />
 
-              
               {/* ROUND BRACE -------------------- */}
               <span
                 className='string-js round-brace'
@@ -174,7 +195,14 @@ const TextEditor = () => {
               <span className='string-js number'>1</span>
               <span className='string-js punctuation'>;</span><br />
 
-              <span className='string-js curly-brace'>{'    }'}</span>
+              {/* CURLY BRACE PICKER -------------------- */}
+              <span
+                className='string-js curly-brace'
+                style={{ color: `${curlyBraceColor}` }}
+                onChange={setCurlyBraceColor}
+              >
+                {'    }'}
+              </span>
               <span className='string-js punctuation'>, </span>
               <span className='string-js number'>500</span>
               
@@ -188,7 +216,14 @@ const TextEditor = () => {
               </span>
               <span className='string-js punctuation'>;</span><br />
 
-              <span className='string-js curly-brace'>{'}'}</span>
+              {/* CURLY BRACE PICKER -------------------- */}
+              <span
+                className='string-js curly-brace'
+                style={{ color: `${curlyBraceColor}` }}
+                onChange={setCurlyBraceColor}
+              >
+                {'}'}
+              </span>
               <span className='string-js punctuation'>;</span><br /><br />
 
               <span
@@ -220,8 +255,8 @@ const TextEditor = () => {
       </div>
 
 {/* POPOVER COLOR PICKERS ****************************************************/}
-
       <div className='themeGenerator__popoverPickers'>
+      
         {/* COMMENT PICKER -------------------- */}
         <div className='picker' id='commentPicker'>
           <div
@@ -293,6 +328,21 @@ const TextEditor = () => {
             <div className='parameterPopover' ref={parameterPopover}>
               <HexColorPicker color={parameterColor} onChange={setParameterColor} />
               <HexColorInput color={parameterColor} onChange={setParameterColor} />
+            </div>
+          )}
+        </div>
+
+        {/* CURLY BRACE PICKER -------------------- */}
+        <div className='picker' id='curlyBracePicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: curlyBraceColor }}
+            onClick={() => setCurlyBraceToggle(true)}
+          />
+          {curlyBraceIsOpen && (
+            <div className='curlyBracePopover' ref={curlyBracePopover}>
+              <HexColorPicker color={curlyBraceColor} onChange={setCurlyBraceColor} />
+              <HexColorInput color={curlyBraceColor} onChange={setCurlyBraceColor} />
             </div>
           )}
         </div>
