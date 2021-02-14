@@ -36,6 +36,9 @@ const TextEditor = () => {
   const [numberIsOpen, setNumberToggle] = useState(false);
   const [numberColor, setNumberColor] = useState('#B5CEA8');
 
+  const [punctuationIsOpen, setPunctuationToggle] = useState(false);
+  const [punctuationColor, setPunctuationColor] = useState('#d4d4d4');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
@@ -46,6 +49,7 @@ const TextEditor = () => {
   const variableClose = useCallback(() => setVariableToggle(false), []);
   const operatorClose = useCallback(() => setOperatorToggle(false), []);
   const numberClose = useCallback(() => setNumberToggle(false), []);
+  const punctuationClose = useCallback(() => setPunctuationToggle(false), []);
 
   ClickOutside(popover, commentClose);
   ClickOutside(popover, funcKeywordClose);
@@ -57,6 +61,7 @@ const TextEditor = () => {
   ClickOutside(popover, variableClose);
   ClickOutside(popover, operatorClose);
   ClickOutside(popover, numberClose);
+  ClickOutside(popover, punctuationClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -141,7 +146,12 @@ const TextEditor = () => {
                 onChange={setNumberColor}
               >1</span>
               
-              <span className='string-js punctuation'>;</span><br /><br />
+              {/* PUNCTUATION PICKER */}
+              <span
+                className='string-js punctuation'
+                value={{ color: `${punctuationColor}` }}
+                onChange={setPunctuationColor}
+              >;</span><br /><br />
 
               {/* FUNCTION NAME PICKER */}
               <span
@@ -173,7 +183,12 @@ const TextEditor = () => {
                 onChange={setVariableColor}
               >        console</span>
               
-              <span className='string-js punctuation'>.</span>
+              {/* PUNCTUATION PICKER */}
+              <span
+                className='string-js punctuation'
+                value={{ color: `${punctuationColor}` }}
+                onChange={setPunctuationColor}
+              >.</span>
               
               <span className='string-js method'>log</span>
               
@@ -211,7 +226,12 @@ const TextEditor = () => {
                 onChange={setRoundBraceColor}
               >        )</span>
               
-              <span className='string-js punctuation'>;</span><br />
+              {/* PUNCTUATION PICKER */}
+              <span
+                className='string-js punctuation'
+                value={{ color: `${punctuationColor}` }}
+                onChange={setPunctuationColor}
+              >;</span><br />
 
               {/* VARIABLE PICKER -------------------- */}
               <span 
@@ -234,7 +254,12 @@ const TextEditor = () => {
                 onChange={setNumberColor}
               >1</span>
               
-              <span className='string-js punctuation'>;</span><br />
+              {/* PUNCTUATION PICKER */}
+              <span
+                className='string-js punctuation'
+                value={{ color: `${punctuationColor}` }}
+                onChange={setPunctuationColor}
+              >;</span><br />
 
               {/* CURLY BRACE PICKER -------------------- */}
               <span
@@ -243,7 +268,12 @@ const TextEditor = () => {
                 onChange={setCurlyBraceColor}
               >{'    }'}</span>
               
-              <span className='string-js punctuation'>, </span>
+              {/* PUNCTUATION PICKER */}
+              <span
+                className='string-js punctuation'
+                value={{ color: `${punctuationColor}` }}
+                onChange={setPunctuationColor}
+              >, </span>
               
               {/* NUMBER PICKER */}
               <span
@@ -258,7 +288,13 @@ const TextEditor = () => {
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
               >)</span>
-              <span className='string-js punctuation'>;</span><br />
+              
+              {/* PUNCTUATION PICKER */}
+              <span
+                className='string-js punctuation'
+                value={{ color: `${punctuationColor}` }}
+                onChange={setPunctuationColor}
+              >;</span><br />
 
               {/* CURLY BRACE PICKER -------------------- */}
               <span
@@ -267,7 +303,12 @@ const TextEditor = () => {
                 onChange={setCurlyBraceColor}
               >{'}'}</span>
               
-              <span className='string-js punctuation'>;</span><br /><br />
+              {/* PUNCTUATION PICKER */}
+              <span
+                className='string-js punctuation'
+                value={{ color: `${punctuationColor}` }}
+                onChange={setPunctuationColor}
+              >;</span><br /><br />
 
               {/* FUNCTION NAME PICKER -------------------- */}
               <span
@@ -293,7 +334,12 @@ const TextEditor = () => {
               >
                 )
               </span>
-              <span className='string-js punctuation'>;</span>
+              {/* PUNCTUATION PICKER */}
+              <span
+                className='string-js punctuation'
+                value={{ color: `${punctuationColor}` }}
+                onChange={setPunctuationColor}
+              >;</span>
             </code>
           </pre>
         </div>
@@ -449,6 +495,21 @@ const TextEditor = () => {
             <div className='numberPopover' ref={popover}>
               <HexColorPicker color={numberColor} onChange={numberColor} />
               <HexColorInput color={numberColor} onChange={numberColor} />
+            </div>
+          )}
+        </div>
+
+        {/* PUNCTUATION PICKER */}
+        <div className='picker' id='punctuationPicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: punctuationColor }}
+            onClick={() => setPunctuationToggle(true)}
+          />
+          {punctuationIsOpen && (
+            <div className='numberPopover' ref={popover}>
+              <HexColorPicker color={punctuationColor} onChange={punctuationColor} />
+              <HexColorInput color={punctuationColor} onChange={punctuationColor} />
             </div>
           )}
         </div>
