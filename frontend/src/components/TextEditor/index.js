@@ -4,14 +4,7 @@ import ClickOutside from './ClickOutside';
 import './TextEditor.css';
 
 const TextEditor = () => {
-  const commentPopover = useRef();
-  const funcKeywordPopover = useRef();
-  const funcNamePopover = useRef();
-  const roundBracePopover = useRef();
-  const parameterPopover = useRef();
-  const curlyBracePopover = useRef();
-  const letConstPopover = useRef();
-  const variablePopover = useRef();
+  const popover = useRef();
 
   const [commentIsOpen, commentToggle] = useState(false);
   const [commentColor, setCommentColor] = useState('#6A9955');
@@ -37,6 +30,9 @@ const TextEditor = () => {
   const [variableIsOpen, setVariableToggle] = useState(false);
   const [variableColor, setVariableColor] = useState('#9CDCFE');
 
+  const [operatorIsOpen, setOperatorToggle] = useState(false);
+  const [operatorColor, setOperatorColor] = useState('#d4d4d4');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
@@ -45,15 +41,17 @@ const TextEditor = () => {
   const curlyBraceClose = useCallback(() => setCurlyBraceToggle(false), []);
   const letConstClose = useCallback(() => setLetConstToggle(false), []);
   const variableClose = useCallback(() => setVariableToggle(false), []);
+  const operatorClose = useCallback(() => setOperatorToggle(false), []);
 
-  ClickOutside(commentPopover, commentClose);
-  ClickOutside(funcKeywordPopover, funcKeywordClose);
-  ClickOutside(funcNamePopover, funcNameClose);
-  ClickOutside(roundBracePopover, roundBraceClose);
-  ClickOutside(parameterPopover, parameterClose);
-  ClickOutside(curlyBracePopover, curlyBraceClose);
-  ClickOutside(letConstPopover, letConstClose);
-  ClickOutside(variablePopover, variableClose);
+  ClickOutside(popover, commentClose);
+  ClickOutside(popover, funcKeywordClose);
+  ClickOutside(popover, funcNameClose);
+  ClickOutside(popover, roundBraceClose);
+  ClickOutside(popover, parameterClose);
+  ClickOutside(popover, curlyBraceClose);
+  ClickOutside(popover, letConstClose);
+  ClickOutside(popover, variableClose);
+  ClickOutside(popover, operatorClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -124,7 +122,12 @@ const TextEditor = () => {
                 onChange={setVariableColor}
               >count</span>
               
-              <span className='string-js operator'> = </span>
+              {/* OPERATOR PICKER */}
+              <span 
+                className='string-js operator'
+                style={{ color: `${operatorColor}` }}
+                onChange={setOperatorColor}
+              > = </span>
               
               <span className='string-js number'>1</span>
               
@@ -207,7 +210,12 @@ const TextEditor = () => {
                 onChange={setVariableColor}
               >        count</span>
               
-              <span className='string-js operator'> += </span>
+              {/* OPERATOR PICKER */}
+              <span 
+                className='string-js operator'
+                style={{ color: `${operatorColor}` }}
+                onChange={setOperatorColor}
+              > += </span>
               
               <span className='string-js number'>1</span>
               
@@ -278,11 +286,12 @@ const TextEditor = () => {
         <div className='picker' id='commentPicker'>
           <div
             className='swatch'
+            id="commentSwatch"
             style={{ backgroundColor: commentColor }}
             onClick={() => commentToggle(true)}
           />
           {commentIsOpen && (
-            <div className='commentPopover' ref={commentPopover}>
+            <div className='commentPopover' ref={popover}>
               <HexColorPicker color={commentColor} onChange={setCommentColor} />
               <HexColorInput color={commentColor} onChange={setCommentColor} />
             </div>
@@ -297,7 +306,7 @@ const TextEditor = () => {
             onClick={() => funcKeywordToggle(true)}
           />
           {funcKeywordIsOpen && (
-            <div className='funcKeywordPopover' ref={funcKeywordPopover}>
+            <div className='funcKeywordPopover' ref={popover}>
               <HexColorPicker color={funcKeywordColor} onChange={setFuncKeywordColor} />
               <HexColorInput color={funcKeywordColor} onChange={setFuncKeywordColor} />
             </div>
@@ -312,7 +321,7 @@ const TextEditor = () => {
             onClick={() => setFuncNameToggle(true)}
           />
           {funcNameIsOpen && (
-            <div className='funcNamePopover' ref={funcNamePopover}>
+            <div className='funcNamePopover' ref={popover}>
               <HexColorPicker color={funcNameColor} onChange={setFuncNameColor} />
               <HexColorInput color={funcNameColor} onChange={setFuncNameColor} />
             </div>
@@ -327,7 +336,7 @@ const TextEditor = () => {
             onClick={() => setRoundBraceToggle(true)}
           />
           {roundBraceIsOpen && (
-            <div className='roundBracePopover' ref={roundBracePopover}>
+            <div className='roundBracePopover' ref={popover}>
               <HexColorPicker color={roundBraceColor} onChange={setRoundBraceColor} />
               <HexColorInput color={roundBraceColor} onChange={setRoundBraceColor} />
             </div>
@@ -342,7 +351,7 @@ const TextEditor = () => {
             onClick={() => setParameterToggle(true)}
           />
           {parameterIsOpen && (
-            <div className='parameterPopover' ref={parameterPopover}>
+            <div className='parameterPopover' ref={popover}>
               <HexColorPicker color={parameterColor} onChange={setParameterColor} />
               <HexColorInput color={parameterColor} onChange={setParameterColor} />
             </div>
@@ -357,7 +366,7 @@ const TextEditor = () => {
             onClick={() => setCurlyBraceToggle(true)}
           />
           {curlyBraceIsOpen && (
-            <div className='curlyBracePopover' ref={curlyBracePopover}>
+            <div className='curlyBracePopover' ref={popover}>
               <HexColorPicker color={curlyBraceColor} onChange={setCurlyBraceColor} />
               <HexColorInput color={curlyBraceColor} onChange={setCurlyBraceColor} />
             </div>
@@ -372,7 +381,7 @@ const TextEditor = () => {
             onClick={() => setLetConstToggle(true)}
           />
           {letConstIsOpen && (
-            <div className='letConstPopover' ref={letConstPopover}>
+            <div className='letConstPopover' ref={popover}>
               <HexColorPicker color={letConstColor} onChange={setLetConstColor} />
               <HexColorInput color={letConstColor} onChange={setLetConstColor} />
             </div>
@@ -387,9 +396,24 @@ const TextEditor = () => {
             onClick={() => setVariableToggle(true)}
           />
           {variableIsOpen && (
-            <div className='variablePopover' ref={variablePopover}>
+            <div className='variablePopover' ref={popover}>
               <HexColorPicker color={variableColor} onChange={variableColor} />
               <HexColorInput color={variableColor} onChange={variableColor} />
+            </div>
+          )}
+        </div>
+
+        {/* OPERATOR PICKER */}
+        <div className='picker' id='operatorPicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: operatorColor }}
+            onClick={() => setOperatorToggle(true)}
+          />
+          {operatorIsOpen && (
+            <div className='operatorPopover' ref={popover}>
+              <HexColorPicker color={operatorColor} onChange={operatorColor} />
+              <HexColorInput color={operatorColor} onChange={operatorColor} />
             </div>
           )}
         </div>
