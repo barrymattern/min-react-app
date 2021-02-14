@@ -45,6 +45,9 @@ const TextEditor = () => {
   const [methodIsOpen, setMethodToggle] = useState(false);
   const [methodColor, setMethodColor] = useState('#DCDCAA');
 
+  const [stringIsOpen, setStringToggle] = useState(false);
+  const [stringColor, setStringColor] = useState('#CE9178');
+
   const commentClose = useCallback(() => commentToggle(false), []);
   const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
   const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
@@ -58,6 +61,7 @@ const TextEditor = () => {
   const punctuationClose = useCallback(() => setPunctuationToggle(false), []);
   const fatArrowClose = useCallback(() => setFatArrowToggle(false), []);
   const methodClose = useCallback(() => setMethodToggle(false), []);
+  const stringClose = useCallback(() => setStringToggle(false), []);
 
   ClickOutside(popover, commentClose);
   ClickOutside(popover, funcKeywordClose);
@@ -72,6 +76,7 @@ const TextEditor = () => {
   ClickOutside(popover, punctuationClose);
   ClickOutside(popover, fatArrowClose);
   ClickOutside(popover, methodClose);
+  ClickOutside(popover, stringClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -219,7 +224,12 @@ const TextEditor = () => {
                 onChange={setRoundBraceColor}
               >(</span><br />
 
-              <span className='string-js string'>{'            `A new ${'}</span>
+              {/* STRING PICKER */}
+              <span
+                className='string-js string'
+                value={{ color: `${stringColor}` }}
+                onChange={setStringColor}
+              >{'            `A new ${'}</span>
               
               {/* PARAMETER ------------------- */}
               <span
@@ -228,7 +238,12 @@ const TextEditor = () => {
                 onChange={setParameterColor}
               >colorTheme</span>
               
-              <span className='string-js string'>{'} has been created ${'}</span>
+              {/* STRING PICKER */}
+              <span
+                className='string-js string'
+                value={{ color: `${stringColor}` }}
+                onChange={setStringColor}
+              >{'} has been created ${'}</span>
               
               {/* PARAMETER ------------------- */}
               <span
@@ -237,7 +252,12 @@ const TextEditor = () => {
                 onChange={setParameterColor}
               >count</span>
               
-              <span className='string-js string'>{'} times!`'}</span><br />
+              {/* STRING PICKER */}
+              <span
+                className='string-js string'
+                value={{ color: `${stringColor}` }}
+                onChange={setStringColor}
+              >{'} times!`'}</span><br />
 
               {/* ROUND BRACE -------------------- */}
               <span
@@ -344,7 +364,12 @@ const TextEditor = () => {
                 onChange={setRoundBraceColor}
               >(</span>
               
-              <span className='string-js string'>'color theme'</span>
+              {/* STRING PICKER */}
+              <span
+                className='string-js string'
+                value={{ color: `${stringColor}` }}
+                onChange={setStringColor}
+              >'color theme'</span>
               
               {/* ROUND BRACE PICKER */}
               <span
@@ -560,6 +585,21 @@ const TextEditor = () => {
             <div className='popover' ref={popover}>
               <HexColorPicker color={methodColor} onChange={methodColor} />
               <HexColorInput color={methodColor} onChange={methodColor} />
+            </div>
+          )}
+        </div>
+
+        {/* STRING PICKER */}
+        <div className='picker' id='stringPicker'>
+          <div
+            className='swatch'
+            style={{ backgroundColor: stringColor }}
+            onClick={() => setStringToggle(true)}
+          />
+          {stringIsOpen && (
+            <div className='popover' ref={popover}>
+              <HexColorPicker color={stringColor} onChange={stringColor} />
+              <HexColorInput color={stringColor} onChange={stringColor} />
             </div>
           )}
         </div>
