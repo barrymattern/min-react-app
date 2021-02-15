@@ -291,7 +291,7 @@ const TextEditor = () => {
             onClick={() => commentToggle(true)}
           />
           {commentIsOpen && (
-            <div className='commentPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={commentColor} onChange={setCommentColor} />
               <HexColorInput color={commentColor} onChange={setCommentColor} />
             </div>
@@ -306,7 +306,7 @@ const TextEditor = () => {
             onClick={() => funcKeywordToggle(true)}
           />
           {funcKeywordIsOpen && (
-            <div className='funcKeywordPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={funcKeywordColor} onChange={setFuncKeywordColor} />
               <HexColorInput color={funcKeywordColor} onChange={setFuncKeywordColor} />
             </div>
@@ -321,7 +321,7 @@ const TextEditor = () => {
             onClick={() => setFuncNameToggle(true)}
           />
           {funcNameIsOpen && (
-            <div className='funcNamePopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={funcNameColor} onChange={setFuncNameColor} />
               <HexColorInput color={funcNameColor} onChange={setFuncNameColor} />
             </div>
@@ -336,7 +336,7 @@ const TextEditor = () => {
             onClick={() => setRoundBraceToggle(true)}
           />
           {roundBraceIsOpen && (
-            <div className='roundBracePopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={roundBraceColor} onChange={setRoundBraceColor} />
               <HexColorInput color={roundBraceColor} onChange={setRoundBraceColor} />
             </div>
@@ -351,7 +351,7 @@ const TextEditor = () => {
             onClick={() => setParameterToggle(true)}
           />
           {parameterIsOpen && (
-            <div className='parameterPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={parameterColor} onChange={setParameterColor} />
               <HexColorInput color={parameterColor} onChange={setParameterColor} />
             </div>
@@ -366,7 +366,7 @@ const TextEditor = () => {
             onClick={() => setCurlyBraceToggle(true)}
           />
           {curlyBraceIsOpen && (
-            <div className='curlyBracePopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={curlyBraceColor} onChange={setCurlyBraceColor} />
               <HexColorInput color={curlyBraceColor} onChange={setCurlyBraceColor} />
             </div>
@@ -381,7 +381,7 @@ const TextEditor = () => {
             onClick={() => setLetConstToggle(true)}
           />
           {letConstIsOpen && (
-            <div className='letConstPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={letConstColor} onChange={setLetConstColor} />
               <HexColorInput color={letConstColor} onChange={setLetConstColor} />
             </div>
@@ -396,7 +396,7 @@ const TextEditor = () => {
             onClick={() => setVariableToggle(true)}
           />
           {variableIsOpen && (
-            <div className='variablePopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={variableColor} onChange={variableColor} />
               <HexColorInput color={variableColor} onChange={variableColor} />
             </div>
@@ -411,7 +411,7 @@ const TextEditor = () => {
             onClick={() => setOperatorToggle(true)}
           />
           {operatorIsOpen && (
-            <div className='operatorPopover' ref={popover}>
+            <div className='popover' ref={popover}>
               <HexColorPicker color={operatorColor} onChange={operatorColor} />
               <HexColorInput color={operatorColor} onChange={operatorColor} />
             </div>

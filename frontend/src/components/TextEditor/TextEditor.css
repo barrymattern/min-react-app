@@ -1,11 +1,73 @@
+.themeGenerator__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Text Editor */
 .textEditor__window {
   background-color: #1e1e1e;
   width: 600px;
   padding: 30px;
-  /* margin: 20px; */
   border-radius: 5px;
   line-height: 1.125em;
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+pre {
+  background-color: #1e1e1e;
+}
+
+span {
+  background-color: #1e1e1e;
+}
+
+.themeGenerator__popoverPickers {
+  position: relative;
+  display: flex;
+  margin-top: 15px;
+}
+
+/* Color Picker */
+.picker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  /* border: 3px solid #fff; */
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 18px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  /* box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25); */
+}
+
+.popover input {
+  background-color: #151516;
+  color: #d4d4d4;
+  width: 100%;
+  border: 0;
+  font-size: 1.5em;
+  text-align: center;
+  letter-spacing: 1.5px;
+  padding-top: 12px;
+}
+
+.popover input:focus {
+  outline: none;
 }
 
 /* .comment {
@@ -62,26 +124,4 @@
 
 .string {
   color: #CE9178;
-}
-
-/* Color Picker */
-.picker {
-  position: relative;
-}
-
-.swatch {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  border: 3px solid #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.popover {
-  position: absolute;
-  top: calc(100% + 2px);
-  left: 0;
-  border-radius: 9px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
