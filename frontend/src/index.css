@@ -3,6 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -10,5 +11,9 @@ body {
 }
 
 button {
-  background-color: lightcoral;
+  background-color: #888888;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 5px;
 }

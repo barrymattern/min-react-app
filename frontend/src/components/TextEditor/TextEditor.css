@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 }
 
 /* Text Editor */
 .textEditor__window {
   background-color: #1e1e1e;
-  width: 600px;
-  padding: 30px;
+  width: 850px;
+  padding: 40px;
   border-radius: 5px;
   line-height: 1.125em;
   box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
@@ -20,6 +21,10 @@ pre {
 
 span {
   background-color: #1e1e1e;
+  font-family: monospace;
+  font-size: 18px;
+  line-height: 1.65em;
+  letter-spacing: 1px;
 }
 
 .themeGenerator__popoverPickers {
@@ -33,14 +38,13 @@ span {
   position: relative;
   display: flex;
   justify-content: center;
-  margin: 5px;
+  margin: 10px;
 }
 
 .swatch {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   border-radius: 5px;
-  /* border: 3px solid #fff; */
   box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
@@ -63,7 +67,7 @@ span {
   font-size: 1.5em;
   text-align: center;
   letter-spacing: 1.5px;
-  padding-top: 12px;
+  padding-top: 15px;
 }
 
 .popover input:focus {
