@@ -23,6 +23,10 @@ a {
   text-align: center;
 }
 
+/* button#sign-up.active {
+  border: none;
+} */
+
 .active {
   color: #888888;
   padding-bottom: 15px;

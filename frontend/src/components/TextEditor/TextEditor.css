@@ -36,28 +36,31 @@ span {
   margin-top: 20px;
 }
 
-/* Tooltip container -------------------- */
+/* Tooltip Container -------------------- */
 .tooltip {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
+  font-family:Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 9pt;
   text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
+  letter-spacing: 2px;
+  line-height: 15px;
+  visibility: hidden;
+  background-color: #888888;
+  color: #151516;
+  padding: 6px 7px 4px 9px;
+  border-radius: 3px;
 
   /* Position text */
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
 
   /* Fade-in*/
   opacity: 0;
@@ -73,7 +76,7 @@ span {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: #888888 transparent transparent transparent;
 }
 
 /* Show text when you mouse over swatch */
