@@ -1,11 +1,30 @@
-/* Text Editor */
+.themeGenerator__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+/* Text Editor -------------------- */
 .textEditor__window {
   background-color: #1e1e1e;
-  width: 600px;
-  padding: 30px;
-  /* margin: 20px; */
+  width: 850px;
+  padding: 40px;
   border-radius: 5px;
   line-height: 1.125em;
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+pre {
+  background-color: #1e1e1e;
+}
+
+span {
+  background-color: #1e1e1e;
+  font-family: monospace;
+  font-size: 18px;
+  line-height: 1.65em;
+  letter-spacing: 1px;
 }
 
 /* .comment {
@@ -64,24 +83,8 @@
   color: #CE9178;
 } */
 
-/* Color Picker */
-.picker {
-  position: relative;
-}
+/* Color Pickers -------------------- */
 
-.swatch {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  border: 3px solid #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.popover {
-  position: absolute;
-  top: calc(100% + 2px);
-  left: 0;
-  border-radius: 9px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.colorPicker__wrapper {
+  display: flex;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import Login from "../Login";
+import './Navigation.css';
 
 const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
@@ -14,9 +14,6 @@ const Navigation = ({ isLoaded }) => {
       <ProfileButton user={sessionUser} />
     );
   } else {
-    if (!<Login />) {
-
-    }
     sessionLinks = (
       <div className='session-links'>
         <NavLink to="/login">
