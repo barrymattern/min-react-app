@@ -1,57 +1,17 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { HexColorPicker, HexColorInput } from 'react-colorful';
-import ClickOutside from './ClickOutside';
+import React, { useState } from 'react';
+import PopoverPicker from '../PopoverPicker';
 import './TextEditor.css';
 
 const TextEditor = () => {
-  const popover = useRef();
-
-  const [commentIsOpen, commentToggle] = useState(false);
   const [commentColor, setCommentColor] = useState('#6A9955');
-  
-  const [funcKeywordIsOpen, funcKeywordToggle] = useState(false);
   const [funcKeywordColor, setFuncKeywordColor] = useState('#569CD6');
-
-  const [funcNameIsOpen, setFuncNameToggle] = useState(false);
   const [funcNameColor, setFuncNameColor] = useState('#DCDCAA');
-
-  const [roundBraceIsOpen, setRoundBraceToggle] = useState(false);
   const [roundBraceColor, setRoundBraceColor] = useState('#d4d4d4');
-
-  const [parameterIsOpen, setParameterToggle] = useState(false);
   const [parameterColor, setParameterColor] = useState('#9CDCFE');
-
-  const [curlyBraceIsOpen, setCurlyBraceToggle] = useState(false);
   const [curlyBraceColor, setCurlyBraceColor] = useState('#d4d4d4');
-
-  const [letConstIsOpen, setLetConstToggle] = useState(false);
   const [letConstColor, setLetConstColor] = useState('#569CD6');
-
-  const [variableIsOpen, setVariableToggle] = useState(false);
   const [variableColor, setVariableColor] = useState('#9CDCFE');
-
-  const [operatorIsOpen, setOperatorToggle] = useState(false);
   const [operatorColor, setOperatorColor] = useState('#d4d4d4');
-
-  const commentClose = useCallback(() => commentToggle(false), []);
-  const funcKeywordClose = useCallback(() => funcKeywordToggle(false), []);
-  const funcNameClose = useCallback(() => setFuncNameToggle(false), []);
-  const roundBraceClose = useCallback(() => setRoundBraceToggle(false), []);
-  const parameterClose = useCallback(() => setParameterToggle(false), []);
-  const curlyBraceClose = useCallback(() => setCurlyBraceToggle(false), []);
-  const letConstClose = useCallback(() => setLetConstToggle(false), []);
-  const variableClose = useCallback(() => setVariableToggle(false), []);
-  const operatorClose = useCallback(() => setOperatorToggle(false), []);
-
-  ClickOutside(popover, commentClose);
-  ClickOutside(popover, funcKeywordClose);
-  ClickOutside(popover, funcNameClose);
-  ClickOutside(popover, roundBraceClose);
-  ClickOutside(popover, parameterClose);
-  ClickOutside(popover, curlyBraceClose);
-  ClickOutside(popover, letConstClose);
-  ClickOutside(popover, variableClose);
-  ClickOutside(popover, operatorClose);
 
   return (
     <div className='themeGenerator__wrapper'>
@@ -203,14 +163,14 @@ const TextEditor = () => {
               
               <span className='string-js punctuation'>;</span><br />
 
-              {/* VARIABLE PICKER -------------------- */}
+              {/* VARIABLE -------------------- */}
               <span 
                 className='string-js variable'
                 style={{ color: `${variableColor}` }}
                 onChange={setVariableColor}
               >        count</span>
               
-              {/* OPERATOR PICKER */}
+              {/* OPERATOR */}
               <span 
                 className='string-js operator'
                 style={{ color: `${operatorColor}` }}
@@ -221,7 +181,7 @@ const TextEditor = () => {
               
               <span className='string-js punctuation'>;</span><br />
 
-              {/* CURLY BRACE PICKER -------------------- */}
+              {/* CURLY BRACE -------------------- */}
               <span
                 className='string-js curly-brace'
                 style={{ color: `${curlyBraceColor}` }}
@@ -240,7 +200,7 @@ const TextEditor = () => {
               >)</span>
               <span className='string-js punctuation'>;</span><br />
 
-              {/* CURLY BRACE PICKER -------------------- */}
+              {/* CURLY BRACE -------------------- */}
               <span
                 className='string-js curly-brace'
                 style={{ color: `${curlyBraceColor}` }}
@@ -249,14 +209,14 @@ const TextEditor = () => {
               
               <span className='string-js punctuation'>;</span><br /><br />
 
-              {/* FUNCTION NAME PICKER -------------------- */}
+              {/* FUNCTION NAME -------------------- */}
               <span
                 className='string-js function-name'
                 style={{ color: `${funcNameColor}` }}
                 onChange={setFuncNameColor}
               >themeCount</span>
               
-              {/* ROUND BRACE PICKER */}
+              {/* ROUND BRACE -------------------- */}
               <span
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
@@ -265,158 +225,27 @@ const TextEditor = () => {
               
               <span className='string-js string'>'color theme'</span>
               
-              {/* ROUND BRACE PICKER */}
+              {/* ROUND BRACE -------------------- */}
               <span
                 className='string-js round-brace'
                 style={{ color: `${roundBraceColor}` }}
                 onChange={setRoundBraceColor}
-              >
-                )
-              </span>
+              >)</span>
               <span className='string-js punctuation'>;</span>
             </code>
           </pre>
         </div>
       </div>
-
-{/* POPOVER COLOR PICKERS ****************************************************/}
-      <div className='themeGenerator__popoverPickers'>
-      
-        {/* COMMENT PICKER -------------------- */}
-        <div className='picker' id='commentPicker'>
-          <div
-            className='swatch'
-            id="commentSwatch"
-            style={{ backgroundColor: commentColor }}
-            onClick={() => commentToggle(true)}
-          />
-          {commentIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={commentColor} onChange={setCommentColor} />
-              <HexColorInput color={commentColor} onChange={setCommentColor} />
-            </div>
-          )}
-        </div>
-
-        {/* FUNCTION KEYWORD PICKER -------------------- */}
-        <div className='picker' id='funcKeywordPicker'>
-          <div
-            className='swatch'
-            style={{ backgroundColor: funcKeywordColor }}
-            onClick={() => funcKeywordToggle(true)}
-          />
-          {funcKeywordIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={funcKeywordColor} onChange={setFuncKeywordColor} />
-              <HexColorInput color={funcKeywordColor} onChange={setFuncKeywordColor} />
-            </div>
-          )}
-        </div>
-
-        {/* FUNCTION NAME PICKER -------------------- */}
-        <div className='picker' id='funcNamePicker'>
-          <div
-            className='swatch'
-            style={{ backgroundColor: funcNameColor }}
-            onClick={() => setFuncNameToggle(true)}
-          />
-          {funcNameIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={funcNameColor} onChange={setFuncNameColor} />
-              <HexColorInput color={funcNameColor} onChange={setFuncNameColor} />
-            </div>
-          )}
-        </div>
-
-        {/* ROUND BRACE PICKER -------------------- */}
-        <div className='picker' id='roundBracePicker'>
-          <div
-            className='swatch'
-            style={{ backgroundColor: roundBraceColor }}
-            onClick={() => setRoundBraceToggle(true)}
-          />
-          {roundBraceIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={roundBraceColor} onChange={setRoundBraceColor} />
-              <HexColorInput color={roundBraceColor} onChange={setRoundBraceColor} />
-            </div>
-          )}
-        </div>
-
-        {/* PARAMETER PICKER -------------------- */}
-        <div className='picker' id='parameterPicker'>
-          <div
-            className='swatch'
-            style={{ backgroundColor: parameterColor }}
-            onClick={() => setParameterToggle(true)}
-          />
-          {parameterIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={parameterColor} onChange={setParameterColor} />
-              <HexColorInput color={parameterColor} onChange={setParameterColor} />
-            </div>
-          )}
-        </div>
-
-        {/* CURLY BRACE PICKER -------------------- */}
-        <div className='picker' id='curlyBracePicker'>
-          <div
-            className='swatch'
-            style={{ backgroundColor: curlyBraceColor }}
-            onClick={() => setCurlyBraceToggle(true)}
-          />
-          {curlyBraceIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={curlyBraceColor} onChange={setCurlyBraceColor} />
-              <HexColorInput color={curlyBraceColor} onChange={setCurlyBraceColor} />
-            </div>
-          )}
-        </div>
-
-        {/* LET CONST PICKER -------------------- */}
-        <div className='picker' id='letConstPicker'>
-          <div
-            className='swatch'
-            style={{ backgroundColor: letConstColor }}
-            onClick={() => setLetConstToggle(true)}
-          />
-          {letConstIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={letConstColor} onChange={setLetConstColor} />
-              <HexColorInput color={letConstColor} onChange={setLetConstColor} />
-            </div>
-          )}
-        </div>
-
-        {/* VARIABLE PICKER */}
-        <div className='picker' id='variablePicker'>
-          <div
-            className='swatch'
-            style={{ backgroundColor: variableColor }}
-            onClick={() => setVariableToggle(true)}
-          />
-          {variableIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={variableColor} onChange={variableColor} />
-              <HexColorInput color={variableColor} onChange={variableColor} />
-            </div>
-          )}
-        </div>
-
-        {/* OPERATOR PICKER */}
-        <div className='picker' id='operatorPicker'>
-          <div
-            className='swatch'
-            style={{ backgroundColor: operatorColor }}
-            onClick={() => setOperatorToggle(true)}
-          />
-          {operatorIsOpen && (
-            <div className='popover' ref={popover}>
-              <HexColorPicker color={operatorColor} onChange={operatorColor} />
-              <HexColorInput color={operatorColor} onChange={operatorColor} />
-            </div>
-          )}
-        </div>
+      <div className='colorPicker__wrapper'>
+        <PopoverPicker color={commentColor} onChange={setCommentColor} />
+        <PopoverPicker color={funcKeywordColor} onChange={setFuncKeywordColor} />
+        <PopoverPicker color={funcNameColor} onChange={setFuncNameColor} />
+        <PopoverPicker color={roundBraceColor} onChange={setRoundBraceColor} />
+        <PopoverPicker color={parameterColor} onChange={setParameterColor} />
+        <PopoverPicker color={curlyBraceColor} onChange={setCurlyBraceColor} />
+        <PopoverPicker color={letConstColor} onChange={setLetConstColor} />
+        <PopoverPicker color={variableColor} onChange={setVariableColor} />
+        <PopoverPicker color={operatorColor} onChange={setOperatorColor} />
       </div>
     </div>
   );

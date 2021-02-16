@@ -5,7 +5,7 @@
   margin-top: 50px;
 }
 
-/* Text Editor */
+/* Text Editor -------------------- */
 .textEditor__window {
   background-color: #1e1e1e;
   width: 850px;
@@ -25,53 +25,6 @@ span {
   font-size: 18px;
   line-height: 1.65em;
   letter-spacing: 1px;
-}
-
-.themeGenerator__popoverPickers {
-  position: relative;
-  display: flex;
-  margin-top: 15px;
-}
-
-/* Color Picker */
-.picker {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin: 10px;
-}
-
-.swatch {
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
-
-.popover {
-  position: absolute;
-  top: calc(100% + 18px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 5px;
-  /* box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25); */
-}
-
-.popover input {
-  background-color: #151516;
-  color: #d4d4d4;
-  width: 100%;
-  border: 0;
-  font-size: 1.5em;
-  text-align: center;
-  letter-spacing: 1.5px;
-  padding-top: 15px;
-}
-
-.popover input:focus {
-  outline: none;
 }
 
 /* .comment {
@@ -128,4 +81,10 @@ span {
 
 .string {
   color: #CE9178;
+}
+
+/* Color Pickers -------------------- */
+
+.colorPicker__wrapper {
+  display: flex;
 }
