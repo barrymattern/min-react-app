@@ -329,20 +329,62 @@ const TextEditor = () => {
         </div>
       </div>
       <div className='colorPicker__wrapper'>
-        <PopoverPicker color={commentColor} onChange={setCommentColor} />
-        <PopoverPicker color={funcKeywordColor} onChange={setFuncKeywordColor} />
-        <PopoverPicker color={funcNameColor} onChange={setFuncNameColor} />
-        <PopoverPicker color={roundBraceColor} onChange={setRoundBraceColor} />
-        <PopoverPicker color={parameterColor} onChange={setParameterColor} />
-        <PopoverPicker color={curlyBraceColor} onChange={setCurlyBraceColor} />
-        <PopoverPicker color={letConstColor} onChange={setLetConstColor} />
-        <PopoverPicker color={variableColor} onChange={setVariableColor} />
-        <PopoverPicker color={operatorColor} onChange={setOperatorColor} />
-        <PopoverPicker color={numberColor} onChange={setNumberColor} />
-        <PopoverPicker color={punctuationColor} onChange={setPunctuationColor} />
-        <PopoverPicker color={fatArrowColor} onChange={setFatArrowColor} />
-        <PopoverPicker color={methodColor} onChange={setMethodColor} />
-        <PopoverPicker color={stringColor} onChange={setStringColor} />
+        <div className='tooltip'>
+          <PopoverPicker color={commentColor} onChange={setCommentColor} />
+          <span className='tooltiptext'>Comment</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={funcKeywordColor} onChange={setFuncKeywordColor} />
+          <span className='tooltiptext'>Function Keyword</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={funcNameColor} onChange={setFuncNameColor} />
+          <span className='tooltiptext'>Function Name</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={roundBraceColor} onChange={setRoundBraceColor} />
+          <span className='tooltiptext'>Round Brace</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={parameterColor} onChange={setParameterColor} />
+          <span className='tooltiptext'>Parameter</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={curlyBraceColor} onChange={setCurlyBraceColor} />
+          <span className='tooltiptext'>Curly Brace</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={letConstColor} onChange={setLetConstColor} />
+          <span className='tooltiptext'>Let/Const</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={variableColor} onChange={setVariableColor} />
+          <span className='tooltiptext'>Variable</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={operatorColor} onChange={setOperatorColor} />
+          <span className='tooltiptext'>Operator</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={numberColor} onChange={setNumberColor} />
+          <span className='tooltiptext'>Number</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={punctuationColor} onChange={setPunctuationColor} />
+          <span className='tooltiptext'>Punctuation</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={fatArrowColor} onChange={setFatArrowColor} />
+          <span className='tooltiptext'>Fat Arrow</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={methodColor} onChange={setMethodColor} />
+          <span className='tooltiptext'>Method</span>
+        </div>
+        <div className='tooltip'>
+          <PopoverPicker color={stringColor} onChange={setStringColor} />
+          <span className='tooltiptext'>String</span>
+        </div>
       </div>
     </div>
   );

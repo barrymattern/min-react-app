@@ -27,64 +27,57 @@ span {
   letter-spacing: 1px;
 }
 
-/* .comment {
-  color: #6A9955;
-} */
-
-/* .function-keyword {
-  color: #569CD6;
-} */
-
-/* .function-name {
-  color: #DCDCAA;
-} */
-
-/* .round-brace {
-  color: #d4d4d4;
-} */
-
-/* .parameter {
-  color: #9CDCFE;
-} */
-
-/* .curly-brace {
-  color: #d4d4d4;
-} */
-
-/* .let-const {
-  color: #569CD6;
-} */
-
-/* .variable {
-  color: #9CDCFE;
-} */
-
-/* .operator {
-  color: #d4d4d4;
-} */
-
-/* .number {
-  color: #B5CEA8;
-} */
-
-/* .punctuation {
-  color: #d4d4d4;
-} */
-
-/* .fat-arrow {
-  color: #569CD6;
-} */
-
-/* .method {
-  color: #DCDCAA;
-} */
-
-/* .string {
-  color: #CE9178;
-} */
-
 /* Color Pickers -------------------- */
 
 .colorPicker__wrapper {
   display: flex;
+  justify-content: space-between;
+  width: 850px;
+  margin-top: 20px;
+}
+
+/* Tooltip container -------------------- */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade-in*/
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show text when you mouse over swatch */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
