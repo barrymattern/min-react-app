@@ -19,9 +19,26 @@ const TextEditor = () => {
   const [methodColor, setMethodColor] = useState('#DCDCAA');
   const [stringColor, setStringColor] = useState('#CE9178');
 
-  const copyJson = (e) => {
+  const download = (filename, data) => {
+    const blob = new Blob([data], {type: 'text/csv'});
+    
+    if (window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveBlob(blob, filename);
+    } else {
+      const elem = window.document.createElement('a');
+      elem.href = window.URL.createObjectURL(blob);
+      elem.download = filename;        
+      document.body.appendChild(elem);
+      elem.click();        
+      document.body.removeChild(elem);
+    }
+  };
+
+  // Write & download JSON theme file on button click
+  const createThemeJsonFile = (e) => {
     e.preventDefault();
-    console.log(replaceHexColor(
+
+    let themeJSON = replaceHexColor(
       commentColor,
       funcKeywordColor,
       funcNameColor,
@@ -36,7 +53,9 @@ const TextEditor = () => {
       fatArrowColor,
       methodColor,
       stringColor
-    ))
+    );
+
+    download('myTheme.json', themeJSON);
   };
 
   return (
@@ -45,8 +64,8 @@ const TextEditor = () => {
       <div className='json__wrapper'>
         <button
           id='copy-btn'
-          onClick={copyJson}
-        >Copy JSON</button>
+          onClick={createThemeJsonFile}
+        >Download</button>
       </div>
 
       {/* Text Editor */}
