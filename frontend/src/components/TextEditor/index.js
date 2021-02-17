@@ -1,40 +1,42 @@
 import React, { useState } from 'react';
 import PopoverPicker from '../PopoverPicker';
-import { replaceHexColor } from './themeJson';
+import { replaceHexColor, downloadFile, createThemeJsonFile } from './themeJson';
 import './TextEditor.css';
 
 const TextEditor = () => {
-  const [commentColor, setCommentColor] = useState('#6A9955');
-  const [funcKeywordColor, setFuncKeywordColor] = useState('#569CD6');
-  const [funcNameColor, setFuncNameColor] = useState('#DCDCAA');
-  const [roundBraceColor, setRoundBraceColor] = useState('#d4d4d4');
-  const [parameterColor, setParameterColor] = useState('#9CDCFE');
-  const [curlyBraceColor, setCurlyBraceColor] = useState('#d4d4d4');
-  const [letConstColor, setLetConstColor] = useState('#569CD6');
-  const [variableColor, setVariableColor] = useState('#9CDCFE');
-  const [operatorColor, setOperatorColor] = useState('#d4d4d4');
-  const [numberColor, setNumberColor] = useState('#B5CEA8');
-  const [punctuationColor, setPunctuationColor] = useState('#d4d4d4');
-  const [fatArrowColor, setFatArrowColor] = useState('#569CD6');
-  const [methodColor, setMethodColor] = useState('#DCDCAA');
-  const [stringColor, setStringColor] = useState('#CE9178');
-
-  const download = (filename, data) => {
-    const blob = new Blob([data], {type: 'text/csv'});
-    
-    if (window.navigator.msSaveOrOpenBlob) {
-      window.navigator.msSaveBlob(blob, filename);
-    } else {
-      const elem = window.document.createElement('a');
-      elem.href = window.URL.createObjectURL(blob);
-      elem.download = filename;        
-      document.body.appendChild(elem);
-      elem.click();        
-      document.body.removeChild(elem);
-    }
+  const originalColorState = {
+    commentColor: '#6A9955',
+    funcKeywordColor: '#569CD6',
+    funcNameColor: '#DCDCAA',
+    roundBraceColor: '#d4d4d4',
+    parameterColor: '#9CDCFE',
+    curlyBraceColor: '#d4d4d4',
+    letConstColor: '#569CD6',
+    variableColor: '#9CDCFE',
+    operatorColor: '#d4d4d4',
+    numberColor: '#B5CEA8',
+    punctuationColor: '#d4d4d4',
+    fatArrowColor: '#569CD6',
+    methodColor: '#DCDCAA',
+    stringColor: '#CE9178',
   };
 
-  // Write & download JSON theme file on button click
+  const [commentColor, setCommentColor] = useState(originalColorState.commentColor);
+  const [funcKeywordColor, setFuncKeywordColor] = useState(originalColorState.funcKeywordColor);
+  const [funcNameColor, setFuncNameColor] = useState(originalColorState.funcNameColor);
+  const [roundBraceColor, setRoundBraceColor] = useState(originalColorState.roundBraceColor);
+  const [parameterColor, setParameterColor] = useState(originalColorState.parameterColor);
+  const [curlyBraceColor, setCurlyBraceColor] = useState(originalColorState.curlyBraceColor);
+  const [letConstColor, setLetConstColor] = useState(originalColorState.letConstColor);
+  const [variableColor, setVariableColor] = useState(originalColorState.variableColor);
+  const [operatorColor, setOperatorColor] = useState(originalColorState.operatorColor);
+  const [numberColor, setNumberColor] = useState(originalColorState.numberColor);
+  const [punctuationColor, setPunctuationColor] = useState(originalColorState.punctuationColor);
+  const [fatArrowColor, setFatArrowColor] = useState(originalColorState.fatArrowColor);
+  const [methodColor, setMethodColor] = useState(originalColorState.methodColor);
+  const [stringColor, setStringColor] = useState(originalColorState.stringColor);
+
+  // Populate & download JSON theme file on button click
   const createThemeJsonFile = (e) => {
     e.preventDefault();
 
@@ -55,17 +57,64 @@ const TextEditor = () => {
       stringColor
     );
 
-    download('myTheme.json', themeJSON);
+    downloadFile('myTheme.json', themeJSON);
+  };
+
+  const resetThemeColors = () => {
+    setCommentColor(originalColorState.commentColor);
+    setFuncKeywordColor(originalColorState.funcKeywordColor);
+    setFuncNameColor(originalColorState.funcNameColor);
+    setRoundBraceColor(originalColorState.roundBraceColor);
+    setParameterColor(originalColorState.parameterColor);
+    setCurlyBraceColor(originalColorState.curlyBraceColor);
+    setLetConstColor(originalColorState.letConstColor);
+    setVariableColor(originalColorState.variableColor);
+    setOperatorColor(originalColorState.operatorColor);
+    setNumberColor(originalColorState.numberColor);
+    setPunctuationColor(originalColorState.punctuationColor);
+    setFatArrowColor(originalColorState.fatArrowColor);
+    setMethodColor(originalColorState.methodColor);
+    setStringColor(originalColorState.stringColor);
+  };
+
+  const setThemeToWhite = () => {
+    const white = '#ffffff';
+    setCommentColor(white);
+    setFuncKeywordColor(white);
+    setFuncNameColor(white);
+    setRoundBraceColor(white);
+    setParameterColor(white);
+    setCurlyBraceColor(white);
+    setLetConstColor(white);
+    setVariableColor(white);
+    setOperatorColor(white);
+    setNumberColor(white);
+    setPunctuationColor(white);
+    setFatArrowColor(white);
+    setMethodColor(white);
+    setStringColor(white);
   };
 
   return (
     <div className='themeGenerator__wrapper'>
-      {/* JSON return */}
-      <div className='json__wrapper'>
-        <button
-          id='copy-btn'
-          onClick={createThemeJsonFile}
-        >Download</button>
+      {/* Buttons above theme editor */}
+      <div className='btn__wrapper'>
+        <div id='btn__wrapper--mutate'>
+          <button
+            id='reset-btn'
+            onClick={resetThemeColors}
+          >Reset</button>
+          <button
+            id='whiteout-btn'
+            onClick={setThemeToWhite}
+          >Whiteout</button>
+        </div>
+        <div id='btn__wrapper--download'>
+          <button
+            id='download-btn'
+            onClick={createThemeJsonFile}
+          >Download</button>
+        </div>
       </div>
 
       {/* Text Editor */}

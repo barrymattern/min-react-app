@@ -23,14 +23,14 @@ a {
   text-align: center;
 }
 
-/* button#sign-up.active {
-  border: none;
-} */
-
-.active {
+.navbar .active {
   color: #888888;
   padding-bottom: 15px;
   padding-left: 4px;
   border-bottom: 1.5px solid #888888;
   text-align: center;
+}
+
+button#nav-log-in {
+  margin-right: 10px;
 }

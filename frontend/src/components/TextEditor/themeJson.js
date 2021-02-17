@@ -1,3 +1,4 @@
+// JSON theme data
 export const replaceHexColor = (
   commentColor,
   funcKeywordColor,
@@ -162,4 +163,20 @@ export const replaceHexColor = (
   // TODO: Define function to remove first/last curly brace
 
   return JSON.stringify(themeJson);
+};
+
+// Allow file download in browser
+export const downloadFile = (filename, data) => {
+  const blob = new Blob([data], {type: 'text/csv'});
+  
+  if (window.navigator.msSaveOrOpenBlob) {
+    window.navigator.msSaveBlob(blob, filename);
+  } else {
+    const elem = window.document.createElement('a');
+    elem.href = window.URL.createObjectURL(blob);
+    elem.download = filename;        
+    document.body.appendChild(elem);
+    elem.click();        
+    document.body.removeChild(elem);
+  }
 };
