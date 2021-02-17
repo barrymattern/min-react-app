@@ -6,29 +6,30 @@
   margin: 20px;
 }
 
+/* Nav link container */
 ul {
   list-style-type: none;
   display: flex;
 }
 
+/* Nav links */
 li {
-  margin: 20px;
   text-transform: uppercase;
+  text-align: center;
   letter-spacing: 3px;
+  padding-bottom: 15px;
+  margin: 15px;
 }
 
 a {
   text-decoration: none;
   color: #4A4A4A;
-  text-align: center;
 }
 
 .navbar .active {
   color: #888888;
-  padding-bottom: 15px;
-  padding-left: 4px;
   border-bottom: 1.5px solid #888888;
-  text-align: center;
+  padding-bottom: 15px;
 }
 
 button#nav-log-in {
