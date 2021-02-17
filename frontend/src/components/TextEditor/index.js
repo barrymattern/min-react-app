@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PopoverPicker from '../PopoverPicker';
+import { replaceHexColor } from './themeJson';
 import './TextEditor.css';
 
 const TextEditor = () => {
@@ -18,8 +19,37 @@ const TextEditor = () => {
   const [methodColor, setMethodColor] = useState('#DCDCAA');
   const [stringColor, setStringColor] = useState('#CE9178');
 
+  const copyJson = (e) => {
+    e.preventDefault();
+    console.log(replaceHexColor(
+      commentColor,
+      funcKeywordColor,
+      funcNameColor,
+      roundBraceColor,
+      parameterColor,
+      curlyBraceColor,
+      letConstColor,
+      variableColor,
+      operatorColor,
+      numberColor,
+      punctuationColor,
+      fatArrowColor,
+      methodColor,
+      stringColor
+    ))
+  };
+
   return (
     <div className='themeGenerator__wrapper'>
+      {/* JSON return */}
+      <div className='json__wrapper'>
+        <button
+          id='copy-btn'
+          onClick={copyJson}
+        >Copy JSON</button>
+      </div>
+
+      {/* Text Editor */}
       <div className='textEditor__wrapper'>
         <div className='textEditor__window'>
           <pre>
@@ -328,6 +358,8 @@ const TextEditor = () => {
           </pre>
         </div>
       </div>
+
+      {/* Color Picker Swatches */}
       <div className='colorPicker__wrapper'>
         <div className='tooltip'>
           <PopoverPicker color={commentColor} onChange={setCommentColor} />
@@ -355,7 +387,7 @@ const TextEditor = () => {
         </div>
         <div className='tooltip'>
           <PopoverPicker color={letConstColor} onChange={setLetConstColor} />
-          <span className='tooltiptext'>Let/Const</span>
+          <span className='tooltiptext'>Let & Const</span>
         </div>
         <div className='tooltip'>
           <PopoverPicker color={variableColor} onChange={setVariableColor} />
