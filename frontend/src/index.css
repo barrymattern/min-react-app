@@ -15,10 +15,19 @@ button {
   border: none;
   border-radius: 3px;
   padding: 10px;
-  /* margin: 5px; */
   color: #151516;
   letter-spacing: 0.5px;
   font-size: 10pt;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #646464;
+}
+
+button:active {
+  background-color: #646464;
+  transform: translateY(1px);
 }
 
 button:focus {
