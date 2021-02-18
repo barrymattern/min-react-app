@@ -12,9 +12,65 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(50),
       },
-      light: {
+      // light: {
+      //   allowNull: false,
+      //   type: Sequelize.BOOLEAN
+      // },
+      commentColor: {
         allowNull: false,
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING(25),
+      },
+      funcKeywordColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      funcNameColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      roundBraceColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      parameterColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      curlyBraceColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      letConstColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      variableColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      operatorColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      numberColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      punctuationColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      fatArrowColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      methodColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
+      },
+      stringColor: {
+        allowNull: false,
+        type: Sequelize.STRING(25),
       },
       comment: {
         allowNull: true,

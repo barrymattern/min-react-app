@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
-const { User, Theme, Theme_Attribute } = require('../../db/models');
+const { User, Theme } = require('../../db/models');
 
 const router = express.Router();
 
@@ -19,65 +19,9 @@ router.get(
           attributes: [],
         },
       },
-      {
-        model: Theme_Attribute,
-        attributes: ['property', 'value'],
-      },
     ],
   });
   return res.json(themes);
-}));
-
-// GET all light themes
-router.get(
-  '/light',
-  restoreUser,
-  asyncHandler(async function (req, res, next) {
-  const lightTheme = await Theme.findAll({
-    where: {
-      light: true,
-    },
-    include: [
-      {
-        model: User,
-        attributes: ['id', 'username', 'profileImageUrl'],
-        through: {
-          attributes: [],
-        },
-      },
-      {
-        model: Theme_Attribute,
-        attributes: ['property', 'value'],
-      },
-    ],
-  });
-  return res.json(lightTheme); 
-}));
-
-// GET all dark themes
-router.get(
-  '/dark',
-  restoreUser,
-  asyncHandler(async function (req, res, next) {
-  const darkTheme = await Theme.findAll({
-    where: {
-      light: false,
-    },
-    include: [
-      {
-        model: User,
-        attributes: ['id', 'username', 'profileImageUrl'],
-        through: {
-          attributes: [],
-        },
-      },
-      {
-        model: Theme_Attribute,
-        attributes: ['property', 'value'],
-      },
-    ],
-  });
-  return res.json(darkTheme); 
 }));
 
 // GET one theme by id
@@ -94,13 +38,55 @@ router.get(
           attributes: [],
         },
       },
-      {
-        model: Theme_Attribute,
-        attributes: ['property', 'value'],
-      },
     ],
   });
   return res.json(theme);
 }));
+
+// BONUS FEATURES **************************************************************
+
+// // GET all light themes
+// router.get(
+//   '/light',
+//   restoreUser,
+//   asyncHandler(async function (req, res, next) {
+//   const lightTheme = await Theme.findAll({
+//     where: {
+//       light: true,
+//     },
+//     include: [
+//       {
+//         model: User,
+//         attributes: ['id', 'username', 'profileImageUrl'],
+//         through: {
+//           attributes: [],
+//         },
+//       },
+//     ],
+//   });
+//   return res.json(lightTheme); 
+// }));
+
+// // GET all dark themes
+// router.get(
+//   '/dark',
+//   restoreUser,
+//   asyncHandler(async function (req, res, next) {
+//   const darkTheme = await Theme.findAll({
+//     where: {
+//       light: false,
+//     },
+//     include: [
+//       {
+//         model: User,
+//         attributes: ['id', 'username', 'profileImageUrl'],
+//         through: {
+//           attributes: [],
+//         },
+//       },
+//     ],
+//   });
+//   return res.json(darkTheme); 
+// }));
 
 module.exports = router;

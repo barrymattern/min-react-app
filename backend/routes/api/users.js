@@ -82,31 +82,31 @@ router.get(
   return res.json(userThemes);
 }));
 
-// GET one user's light themes
-router.get(
-  '/:userId/themes/light',
-  restoreUser,
-  asyncHandler(async function (req, res, next) {
-    const lightThemes = await Theme.findAll({
-      where: {
-        light: true,
-      },
-    });
-    return res.json(lightThemes);
-}));
+// // GET one user's light themes
+// router.get(
+//   '/:userId/themes/light',
+//   restoreUser,
+//   asyncHandler(async function (req, res, next) {
+//     const lightThemes = await Theme.findAll({
+//       where: {
+//         light: true,
+//       },
+//     });
+//     return res.json(lightThemes);
+// }));
 
-// GET one user's dark themes
-router.get(
-  '/:userId/themes/dark',
-  restoreUser,
-  asyncHandler(async function (req, res, next) {
-    const darkThemes = await Theme.findAll({
-      where: {
-        light: false,
-      },
-    });
-    return res.json(darkThemes);
-}));
+// // GET one user's dark themes
+// router.get(
+//   '/:userId/themes/dark',
+//   restoreUser,
+//   asyncHandler(async function (req, res, next) {
+//     const darkThemes = await Theme.findAll({
+//       where: {
+//         light: false,
+//       },
+//     });
+//     return res.json(darkThemes);
+// }));
 
 // GET one user's favorite themes
 router.get(
@@ -138,5 +138,14 @@ router.get(
     });
     return res.json(userTheme);
 }));
+
+// // POST one user's new theme
+// router.post(
+//   '/themes',
+//   restoreUser,
+//   asyncHandler(req, res, next) {
+//     const 
+//   }
+// );
 
 module.exports = router;

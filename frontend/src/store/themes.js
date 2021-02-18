@@ -2,23 +2,11 @@ import { fetch } from './csrf'; // Custom csrf function
 
 // Variable set up to help avoid spelling errors *******************************
 const GET_ALL_THEMES = 'themes/getAllThemes';
-const GET_All_LIGHT_THEMES = 'themes/getAllLightThemes';
-const GET_ALL_DARK_THEMES = 'themes/getAllDarkThemes';
 const GET_SINGLE_THEME = 'themes/getSingleTheme';
 
 // Action Creator – produces an object *****************************************
 const getAllThemes = (themes) => ({
   type: GET_ALL_THEMES,
-  payload: themes,
-});
-
-const getAllLightThemes = (themes) => ({
-  type: GET_All_LIGHT_THEMES,
-  payload: themes,
-});
-
-const getAllDarkThemes = (themes) => ({
-  type: GET_ALL_DARK_THEMES,
   payload: themes,
 });
 
@@ -35,24 +23,6 @@ export const fetchAllThemes = () => {
     const response = await fetch('/api/themes');
     dispatch(
       getAllThemes(response.data) // Already JSON from custom csrf fetch
-    );
-  };
-};
-
-export const fetchAllLightThemes = () => {
-  return async (dispatch) => {
-    const response = await fetch('/api/themes/light');
-    dispatch(
-      getAllLightThemes(response.data)
-    );
-  };
-};
-
-export const fetchAllDarkThemes = () => {
-  return async (dispatch) => {
-    const response = await fetch('/api/themes/dark');
-    dispatch(
-      getAllDarkThemes(response.data)
     );
   };
 };
@@ -79,18 +49,6 @@ function reducer(state = initialState, action) {
         newState[theme.id] = theme; // Sets theme.id as keys for object
       });
       return { ...state, ...newState }; // Spreads newState into existing state
-    case GET_All_LIGHT_THEMES:
-      newState = {};
-      action.payload.forEach(theme => {
-        newState[theme.id] = theme;
-      });
-      return { ...state, ...newState };
-    case GET_ALL_DARK_THEMES:
-      newState = {};
-      action.payload.forEach(theme => {
-        newState[theme.id] = theme;
-      });
-      return { ...state, ...newState };
     case GET_SINGLE_THEME:
       return { ...state, [action.payload.id]: action.payload };
     default:

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PopoverPicker from '../PopoverPicker';
-import { replaceHexColor, downloadFile, createThemeJsonFile } from './themeJson';
+import { replaceHexColor, downloadFile } from './themeJson';
 import './TextEditor.css';
 
 const TextEditor = () => {
@@ -40,7 +40,7 @@ const TextEditor = () => {
   const createThemeJsonFile = (e) => {
     e.preventDefault();
 
-    let themeJSON = replaceHexColor(
+    const themeJSON = replaceHexColor(
       commentColor,
       funcKeywordColor,
       funcNameColor,
@@ -95,6 +95,10 @@ const TextEditor = () => {
     setStringColor(white);
   };
 
+  const saveThemeToDB = () => {
+    return null;
+  };
+
   return (
     <div className='themeGenerator__wrapper'>
       {/* Buttons above theme editor */}
@@ -108,6 +112,12 @@ const TextEditor = () => {
             id='whiteout-btn'
             onClick={setThemeToWhite}
           >Whiteout</button>
+        </div>
+        <div id='btn__wrapper--save'>
+          <button
+            id='save-btn'
+            onClick={saveThemeToDB}
+          >Save</button>
         </div>
         <div id='btn__wrapper--download'>
           <button
