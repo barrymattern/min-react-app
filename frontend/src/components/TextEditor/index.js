@@ -118,8 +118,6 @@ const TextEditor = () => {
             id='save-btn'
             onClick={saveThemeToDB}
           >Save</button>
-        </div>
-        <div id='btn__wrapper--download'>
           <button
             id='download-btn'
             onClick={createThemeJsonFile}

@@ -13,7 +13,23 @@
   margin-bottom: 15px;
 }
 
+.btn__wrapper button {
+  background-color: #1e1e1e;
+  color: #888888;
+  border: 1px solid #292929;
+  height: 25px;
+  padding: 0px 10px;
+}
+
+.btn__wrapper button:hover {
+  background-color: #343434;
+}
+
 button#reset-btn {
+  margin-right: 10px;
+}
+
+button#save-btn {
   margin-right: 10px;
 }
 
