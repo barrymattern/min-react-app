@@ -1,7 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
+import logo from './min.svg';
 import './Navigation.css';
 
 const Navigation = ({ isLoaded }) => {
@@ -31,8 +32,25 @@ const Navigation = ({ isLoaded }) => {
       {isLoaded && sessionLinks}
       <nav className="navbar">
         <ul>
-          <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
-          <li><NavLink exact to="/themes" activeClassName="active">Themes</NavLink></li>
+          <li><Link exact to="/" activeClassName="active">
+            <img src={logo} alt="mīn logo" id='min-logo'/>
+          </Link></li>
+          <li>
+            <NavLink
+              exact to="/"
+              activeClassName="active"
+              id='home'
+            >Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              exact to="/themes"
+              activeClassName="active"
+              id='themes'
+            >Themes
+            </NavLink>
+          </li>
           {/* <li><NavLink exact to="/themes/light" activeClassName="active">Light</NavLink></li>
           <li><NavLink exact to="/themes/dark" activeClassName="active">Dark</NavLink></li> */}
         </ul>

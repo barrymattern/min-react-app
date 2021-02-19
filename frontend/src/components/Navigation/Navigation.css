@@ -6,6 +6,13 @@
   margin: 20px;
 }
 
+/* mīn logo */
+#min-logo {
+  width: 45px;
+  position: absolute;
+  top: 22px;
+}
+
 /* Nav link container */
 ul {
   list-style-type: none;
@@ -19,6 +26,10 @@ li {
   letter-spacing: 3px;
   padding-bottom: 15px;
   margin: 15px;
+}
+
+#home {
+  margin-left: 45px;
 }
 
 a {
