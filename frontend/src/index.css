@@ -6,8 +6,18 @@
   font-family:Arial, Helvetica, sans-serif;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   background-color: #151516;
+}
+
+input {
+  background-color: #151516;
+  color: #888888;
+  letter-spacing: 1.5px;
 }
 
 button {
@@ -28,8 +38,4 @@ button:hover {
 button:active {
   background-color: #646464;
   transform: translateY(1px);
-}
-
-button:focus {
-  outline: none;
 }

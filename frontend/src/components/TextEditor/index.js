@@ -21,6 +21,7 @@ const TextEditor = () => {
     stringColor: '#CE9178',
   };
 
+  const [themeName, setThemeName] = useState('Default Dark+');
   const [commentColor, setCommentColor] = useState(originalColorState.commentColor);
   const [funcKeywordColor, setFuncKeywordColor] = useState(originalColorState.funcKeywordColor);
   const [funcNameColor, setFuncNameColor] = useState(originalColorState.funcNameColor);
@@ -112,6 +113,13 @@ const TextEditor = () => {
             id='whiteout-btn'
             onClick={setThemeToWhite}
           >Whiteout</button>
+        </div>
+        <div className='themeName__wrapper'>
+          <input 
+            id='themeName'
+            value={themeName}
+            onChange={(e) => setThemeName(e.target.value)}
+          />
         </div>
         <div id='btn__wrapper--save'>
           <button

@@ -24,16 +24,9 @@
 }
 
 .popover input {
-  background-color: #151516;
-  color: #888888;
   width: 100%;
   border: 0;
   font-size: 1.5em;
   text-align: center;
-  letter-spacing: 1.5px;
   padding-top: 15px;
-}
-
-.popover input:focus {
-  outline: none;
 }

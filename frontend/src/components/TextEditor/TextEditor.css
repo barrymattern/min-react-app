@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
-/* Buttons above text editor */
+/* Buttons above text editor -------------------- */
 .btn__wrapper {
   display: flex;
   justify-content: space-between;
@@ -25,12 +25,30 @@
   background-color: #343434;
 }
 
+#btn__wrapper--mutate {
+  margin-top: 15px;
+}
+
+#btn__wrapper--save {
+  margin-top: 15px;
+}
+
 button#reset-btn {
   margin-right: 10px;
 }
 
 button#save-btn {
   margin-right: 10px;
+}
+
+/* Theme Name Input -------------------- */
+input#themeName {
+  border: none;
+  border-bottom: 1px solid #262626;
+  text-align: center;
+  font-size: 1.75em;
+  padding-bottom: 7px;
+  margin-bottom: 5px;
 }
 
 /* Text Editor -------------------- */
