@@ -33,8 +33,8 @@ const Navigation = ({ isLoaded }) => {
         <ul>
           <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
           <li><NavLink exact to="/themes" activeClassName="active">Themes</NavLink></li>
-          <li><NavLink exact to="/themes/light" activeClassName="active">Light</NavLink></li>
-          <li><NavLink exact to="/themes/dark" activeClassName="active">Dark</NavLink></li>
+          {/* <li><NavLink exact to="/themes/light" activeClassName="active">Light</NavLink></li>
+          <li><NavLink exact to="/themes/dark" activeClassName="active">Dark</NavLink></li> */}
         </ul>
       </nav>
     </div>
