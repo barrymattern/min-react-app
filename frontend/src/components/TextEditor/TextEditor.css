@@ -12,22 +12,31 @@
 /* 'Saved!' popup */
 div#textEditor__wrapper--savedPopup {
   position: absolute;
-  background-color: chartreuse;
+  opacity: 1;
+  transition: visibility ease 550ms;
+  /* transition-timing-function: ease, cubic-bezier(0.1, 0.7, 1.0, 0.1); */
+  top: 203px;
+  background-color: rgba(106, 153, 85, 0.125);
   width: 850px;
   height: 435px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 p#saved-popup {
-  /* position: absolute; */
-  /* z-index: 1; */
-  background-color: chocolate;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 435px; */
+  box-shadow: 3px 3px 11px 1px rgba(31, 48, 23, 1);
+  background-color: rgba(106, 153, 85, 1);
+  border: 1px solid #1f3017;
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  font-size: 1.125em;
+  color: #1f3017;
 }
 
 /* Buttons above text editor -------------------- */
@@ -78,7 +87,6 @@ input#themeName {
 
 /* Text Editor -------------------- */
 .textEditor__window {
-  z-index: auto;
   background-color: #1e1e1e;
   width: 850px;
   padding: 40px;

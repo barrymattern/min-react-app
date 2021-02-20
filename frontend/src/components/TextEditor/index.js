@@ -10,15 +10,14 @@ const TextEditor = ({ originalColorState }) => {
   const user = useSelector(state => state.session.user);
 
   // Controls "Saved!" popup when saving a theme
-  let [themeSaved, setThemeSaved] = useState(false);
-  let [savedPopup, setSavedPop] = useState('hidden');
+  let [savedPopupVisibility, toggleSavedPopupVisibility] = useState('hidden');
+  let [savedPopupOpacity, toggleSavedPopupOpacity] = useState('1');
   useEffect(() => {
-    if (themeSaved) {
-      setTimeout(() => {
-
-      });
-    }
-  }, [themeSaved]); // setTimeout() to disappear after allotted time
+    setTimeout(() => {
+      toggleSavedPopupVisibility('hidden');
+      toggleSavedPopupOpacity('0');
+    }, 550);
+  }, [savedPopupVisibility, savedPopupOpacity]); // setTimeout() to disappear after allotted time
 
   const [themeName, setThemeName] = useState('Default Dark+');
   const [commentColor, setCommentColor] = useState(originalColorState.commentColor);
@@ -120,7 +119,10 @@ const TextEditor = ({ originalColorState }) => {
     };
     // Returns a promise, can chain .then().catch()
     dispatch(postNewTheme(newTheme))
-      .then(() => setThemeSaved(true))
+      .then(() => (
+        toggleSavedPopupVisibility('visible'),
+        toggleSavedPopupOpacity('1')
+      ))
       .catch((err) => console.log(err));
   };
 
@@ -156,7 +158,10 @@ const TextEditor = ({ originalColorState }) => {
           >Download</button>
         </div>
       </div>
-      <div id='textEditor__wrapper--savedPopup'>
+      {/* 'Saved!' popup */}
+      <div
+        id='textEditor__wrapper--savedPopup'
+        style={{ visibility: savedPopupVisibility }}>
         <p id='saved-popup'>Saved!</p>
       </div>
 
