@@ -5,6 +5,31 @@
   margin-top: 30px;
 }
 
+/* .textEditor__wrapper {
+  position: relative;
+} */
+
+/* 'Saved!' popup */
+div#textEditor__wrapper--savedPopup {
+  position: absolute;
+  background-color: chartreuse;
+  width: 850px;
+  height: 435px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p#saved-popup {
+  /* position: absolute; */
+  /* z-index: 1; */
+  background-color: chocolate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 435px; */
+}
+
 /* Buttons above text editor -------------------- */
 .btn__wrapper {
   display: flex;
@@ -53,6 +78,7 @@ input#themeName {
 
 /* Text Editor -------------------- */
 .textEditor__window {
+  z-index: auto;
   background-color: #1e1e1e;
   width: 850px;
   padding: 40px;

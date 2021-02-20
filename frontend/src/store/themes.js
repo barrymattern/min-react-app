@@ -3,6 +3,7 @@ import { fetch } from './csrf'; // Custom csrf function
 // Variable set up to help avoid spelling errors *******************************
 const GET_ALL_THEMES = 'themes/getAllThemes';
 const GET_SINGLE_THEME = 'themes/getSingleTheme';
+const SAVE_NEW_THEME = 'themes/postNewTheme'
 
 // Action Creator – produces an object *****************************************
 const getAllThemes = (themes) => ({
@@ -12,6 +13,11 @@ const getAllThemes = (themes) => ({
 
 const getSingleTheme = (theme) => ({
   type: GET_SINGLE_THEME,
+  payload: theme,
+});
+
+const saveNewTheme = (theme) => ({
+  type: SAVE_NEW_THEME,
   payload: theme,
 });
 
@@ -36,6 +42,20 @@ export const fetchSingleTheme = (themeId) => {
   };
 };
 
+export const postNewTheme = (theme) => {
+  return async (dispatch) => {
+    const response = await fetch('/api/themes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+        theme
+      ),
+    });
+  // Don't need response.ok as custom csrf fetch takes that into account
+  dispatch(saveNewTheme(response.data))
+  };
+};
+
 // Reducer *********************************************************************
 
 const initialState = {};
@@ -51,6 +71,8 @@ function reducer(state = initialState, action) {
       return { ...state, ...newState }; // Spreads newState into existing state
     case GET_SINGLE_THEME:
       return { ...state, [action.payload.id]: action.payload };
+    case SAVE_NEW_THEME:
+      return { ...action.payload }
     default:
       return state;
   }

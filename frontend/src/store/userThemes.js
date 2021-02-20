@@ -40,18 +40,6 @@ export const fetchSingleUserTheme = (themeId) => {
   };
 };
 
-// export const postSingleTheme = () => {
-//   return async (dispatch) => {
-//     const response = await fetch('/api/themes', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(
-
-//       ),
-//     });
-//   };
-// };
-
 // Reducer *********************************************************************
 
 const initialState = {};

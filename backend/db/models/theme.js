@@ -134,42 +134,42 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'theme_id'
     };
 
-  Theme.save = async function ({
-    name,
-    commentColor,
-    funcKeywordColor,
-    funcNameColor,
-    roundBraceColor,
-    parameterColor,
-    curlyBraceColor,
-    letConstColor,
-    variableColor,
-    operatorColor,
-    numberColor,
-    punctuationColor,
-    fatArrowColor,
-    methodColor,
-    stringColor,
-  }) {
-    const theme = await Theme.create({
-      name,
-      commentColor,
-      funcKeywordColor,
-      funcNameColor,
-      roundBraceColor,
-      parameterColor,
-      curlyBraceColor,
-      letConstColor,
-      variableColor,
-      operatorColor,
-      numberColor,
-      punctuationColor,
-      fatArrowColor,
-      methodColor,
-      stringColor,
-    });
-    return await Theme.findByPk(theme.id);
-  };
+  // Theme.save = async function ({
+  //   name,
+  //   commentColor,
+  //   funcKeywordColor,
+  //   funcNameColor,
+  //   roundBraceColor,
+  //   parameterColor,
+  //   curlyBraceColor,
+  //   letConstColor,
+  //   variableColor,
+  //   operatorColor,
+  //   numberColor,
+  //   punctuationColor,
+  //   fatArrowColor,
+  //   methodColor,
+  //   stringColor,
+  // }) {
+  //   const theme = await Theme.create({
+  //     name,
+  //     commentColor,
+  //     funcKeywordColor,
+  //     funcNameColor,
+  //     roundBraceColor,
+  //     parameterColor,
+  //     curlyBraceColor,
+  //     letConstColor,
+  //     variableColor,
+  //     operatorColor,
+  //     numberColor,
+  //     punctuationColor,
+  //     fatArrowColor,
+  //     methodColor,
+  //     stringColor,
+  //   });
+  //   return await Theme.findByPk(theme.id);
+  // };
 
     // Theme.belongsTo(models.User, { foreignKey: 'user_id' });
     Theme.belongsToMany(models.User, columnMapping);

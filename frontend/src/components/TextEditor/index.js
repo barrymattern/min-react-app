@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PopoverPicker from '../PopoverPicker';
 import { replaceHexColor, downloadFile } from './themeJson';
+import { postNewTheme } from '../../store/themes';
 import './TextEditor.css';
 
 const TextEditor = ({ originalColorState }) => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user);
+
+  // Controls "Saved!" popup when saving a theme
+  let [themeSaved, setThemeSaved] = useState(false);
+  let [savedPopup, setSavedPop] = useState('hidden');
+  useEffect(() => {
+    if (themeSaved) {
+      setTimeout(() => {
+
+      });
+    }
+  }, [themeSaved]); // setTimeout() to disappear after allotted time
+
   const [themeName, setThemeName] = useState('Default Dark+');
   const [commentColor, setCommentColor] = useState(originalColorState.commentColor);
   const [funcKeywordColor, setFuncKeywordColor] = useState(originalColorState.funcKeywordColor);
@@ -40,7 +56,6 @@ const TextEditor = ({ originalColorState }) => {
       methodColor,
       stringColor
     );
-
     downloadFile('myTheme.json', themeJSON);
   };
 
@@ -79,8 +94,34 @@ const TextEditor = ({ originalColorState }) => {
     setStringColor(white);
   };
 
-  const saveThemeToDB = () => {
-    return null;
+  const saveThemeToDB = (e) => {
+    e.preventDefault();
+
+    // Send info to db
+    const newTheme = {
+      name: themeName,
+      commentColor,
+      funcKeywordColor,
+      funcNameColor,
+      roundBraceColor,
+      parameterColor,
+      curlyBraceColor,
+      letConstColor,
+      variableColor,
+      operatorColor,
+      numberColor,
+      punctuationColor,
+      fatArrowColor,
+      methodColor,
+      stringColor,
+      comment: null,
+      likes: null,
+      user_id: user.id,
+    };
+    // Returns a promise, can chain .then().catch()
+    dispatch(postNewTheme(newTheme))
+      .then(() => setThemeSaved(true))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -115,9 +156,13 @@ const TextEditor = ({ originalColorState }) => {
           >Download</button>
         </div>
       </div>
+      <div id='textEditor__wrapper--savedPopup'>
+        <p id='saved-popup'>Saved!</p>
+      </div>
 
       {/* Text Editor */}
       <div className='textEditor__wrapper'>
+        {/* 'Saved!' popup */}
         <div className='textEditor__window'>
           <pre>
             <code className='textEditor__window--lang-js'>

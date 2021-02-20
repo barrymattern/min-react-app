@@ -43,6 +43,35 @@ router.get(
   return res.json(theme);
 }));
 
+// POST new theme saved
+router.post(
+  '/',
+  restoreUser,
+  asyncHandler(async function (req, res, next) {
+    const newTheme = await Theme.create({
+      name: req.body.name,
+      commentColor: req.body.commentColor,
+      funcKeywordColor: req.body.funcKeywordColor,
+      funcNameColor: req.body.funcNameColor,
+      roundBraceColor: req.body.roundBraceColor,
+      parameterColor: req.body.parameterColor,
+      curlyBraceColor: req.body.curlyBraceColor,
+      letConstColor: req.body.letConstColor,
+      variableColor: req.body.variableColor,
+      operatorColor: req.body.operatorColor,
+      numberColor: req.body.numberColor,
+      punctuationColor: req.body.punctuationColor,
+      fatArrowColor: req.body.fatArrowColor,
+      methodColor: req.body.methodColor,
+      stringColor: req.body.stringColor,
+      comment: req.body.comment,
+      likes: req.body.likes,
+      user_id: req.body.user_id,
+    });
+    res.status(201).json(newTheme);
+  })
+);
+
 // BONUS FEATURES **************************************************************
 
 // // GET all light themes
