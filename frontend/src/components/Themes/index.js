@@ -7,14 +7,14 @@ const Themes = () => {
   const dispatch = useDispatch();
 
   // Persist state with logged in user
-  useSelector(state => state.session.user);
+  const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     // Request to server
     dispatch(
       fetchAllThemes() // Thunk from /store/themes.js
     );
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   // Turns object from store into an array
   const currentThemes = useSelector(fullReduxState => {

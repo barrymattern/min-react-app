@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PopoverPicker from '../PopoverPicker';
 import { replaceHexColor, downloadFile } from './themeJson';
-import { postNewTheme } from '../../store/themes';
+import { fetchAllThemes, postNewTheme } from '../../store/themes';
 import './TextEditor.css';
 
 const TextEditor = ({ originalColorState }) => {
@@ -117,9 +117,8 @@ const TextEditor = ({ originalColorState }) => {
     };
     // Returns a promise, can chain .then().catch()
     dispatch(postNewTheme(newTheme))
-      .then(() => (
-        toggleSavedPopupOpacity('1')
-      ))
+      .then(() => toggleSavedPopupOpacity('1'))
+      .then(() => dispatch(fetchAllThemes()))
       .catch((err) => console.log(err));
   };
 
