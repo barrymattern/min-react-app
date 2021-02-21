@@ -5,16 +5,9 @@
   margin-top: 30px;
 }
 
-/* .textEditor__wrapper {
-  position: relative;
-} */
-
-/* 'Saved!' popup */
+/* 'Saved!' popup -------------------- */
 div#textEditor__wrapper--savedPopup {
   position: absolute;
-  opacity: 1;
-  transition: visibility ease 550ms;
-  /* transition-timing-function: ease, cubic-bezier(0.1, 0.7, 1.0, 0.1); */
   top: 203px;
   background-color: rgba(106, 153, 85, 0.125);
   width: 850px;
@@ -29,9 +22,9 @@ p#saved-popup {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 3px 3px 11px 1px rgba(31, 48, 23, 1);
+  box-shadow: 1px 1px 35px 15px rgba(30, 30, 30, 1);
   background-color: rgba(106, 153, 85, 1);
-  border: 1px solid #1f3017;
+  border: 1px solid #84C265;
   border-radius: 20px;
   width: 150px;
   height: 40px;
