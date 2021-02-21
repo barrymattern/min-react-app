@@ -39,14 +39,14 @@ const ProfileButton = ({ authenticated, user }) => {
             <Link to='/user/profile'> {user.username}</Link>
           </li>
           <Link to='/user/themes'>
-            <li>My Themes</li>
+            <li>Themes</li>
           </Link>
-          <Link to='/user/themes/light'>
+          {/* <Link to='/user/themes/light'>
             <li>My Light Themes</li>
           </Link>
           <Link to='/user/themes/dark'>
             <li>My Dark Themes</li>
-          </Link>
+          </Link> */}
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
