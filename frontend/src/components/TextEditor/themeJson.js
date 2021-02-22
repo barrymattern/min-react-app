@@ -68,7 +68,7 @@ export const replaceHexColor = (
               "meta.brace.square.js"
             ],
             "settings": {
-              "foreground": "#235C6C"
+              "foreground": curlyBraceColor
             }
           },
           { // Parameters
@@ -137,9 +137,11 @@ export const replaceHexColor = (
               "foreground": fatArrowColor
             }
           },
-          { // Methods
+          { // Method & Keyword Control
             "scope": [
-              "entity.name.function"
+              "entity.name.function",
+              "keyword.control", // 'import', 'from', 'return', etc.
+              "support.class" // React component
             ],
             "settings": {
               "foreground": methodColor
@@ -149,7 +151,8 @@ export const replaceHexColor = (
             "scope": [
               "string.quoted.single.js",
               "string.quoted.double.js",
-              "string.quoted.template.js"
+              "string.quoted.template.js",
+              "string"
             ],
             "settings": {
               "foreground": stringColor
