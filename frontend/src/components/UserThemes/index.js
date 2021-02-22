@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUserThemes } from '../../store/userThemes';
 import { Link } from 'react-router-dom';
 
 const UserThemes = () => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(
       fetchAllUserThemes(user.id)
-    );
+    ).then((res) => setIsLoaded(true));
   }, [dispatch, user, user.id]);
 
   const currentUserThemes = useSelector(fullReduxState => {
@@ -25,7 +27,7 @@ const UserThemes = () => {
     );
   }
 
-  return (
+  return isLoaded &&
     <div className='themes-container'>
       {currentUserThemes && currentUserThemes.map((theme, idx) => {
         return (
@@ -37,7 +39,6 @@ const UserThemes = () => {
         );
       })}
     </div>
-  );
 };
 
 export default UserThemes;

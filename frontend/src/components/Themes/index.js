@@ -8,10 +8,10 @@ const Themes = () => {
 
   // Persist state with logged in user
   const user = useSelector(state => state.session.user);
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [themesArray, setThemesArray] = useState();
 
-  // Turns object from store into an array
   const currentThemes = useSelector(fullReduxState => {
     return fullReduxState.themes;
   });
@@ -36,8 +36,8 @@ const Themes = () => {
     );
   };
 
-  return isLoaded && <div className='themes-container'>
-      {/* {!currentThemes && <h3>Time to create more themes!</h3>} replace with loading gif */}
+  return isLoaded &&
+    <div className='themes-container'>
       {currentThemes && themesArray.map((theme, idx) => {
         return (
           <div className='individual-theme' key={idx}>

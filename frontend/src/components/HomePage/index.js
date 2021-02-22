@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import TextEditor from "../TextEditor";
 import './HomePage.css';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, [dispatch]);
+
   const originalColors = {
     commentColor: '#6A9955',
     funcKeywordColor: '#569CD6',
@@ -21,11 +29,10 @@ const HomePage = () => {
   };
 
 
-  return (
+  return isLoaded &&
     <div className='themeGenerator__wrapper'>
       <TextEditor originalColorState={originalColors} />
     </div>
-  );
 };
 
 export default HomePage;

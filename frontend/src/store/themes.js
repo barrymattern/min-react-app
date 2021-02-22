@@ -2,7 +2,6 @@ import { fetch } from './csrf'; // Custom csrf function
 
 // Variable set up to help avoid spelling errors *******************************
 const GET_ALL_THEMES = 'themes/getAllThemes';
-// const GET_SINGLE_THEME = 'themes/getSingleTheme';
 const SAVE_NEW_THEME = 'themes/postNewTheme'
 
 // Action Creator – produces an object *****************************************
@@ -11,18 +10,13 @@ const getAllThemes = (themes) => ({
   payload: themes,
 });
 
-// const getSingleTheme = (theme) => ({
-//   type: GET_SINGLE_THEME,
-//   payload: theme,
-// });
-
 const saveNewTheme = (theme) => ({
   type: SAVE_NEW_THEME,
   payload: theme,
 });
 
 // Thunk Action Creator – produces a function **********************************
-// Thunks are mainly for async
+// Thunks are mainly for async calls
 export const fetchAllThemes = () => {
   return async (dispatch) => {
     // Interact with server
@@ -32,15 +26,6 @@ export const fetchAllThemes = () => {
     );
   };
 };
-
-// export const fetchSingleTheme = (themeId) => {
-//   return async (dispatch) => {
-//     const response = await fetch(`/api/themes/${themeId}`);
-//     dispatch(
-//       getSingleTheme(response.data)
-//     );
-//   };
-// };
 
 export const postNewTheme = (theme) => {
   return async (dispatch) => {
@@ -69,8 +54,6 @@ function reducer(state = initialState, action) {
         newState[theme.id] = theme; // Sets theme.id as keys for object
       });
       return { ...state, ...newState }; // Spreads newState into existing state
-    // case GET_SINGLE_THEME:
-      // return { ...state, [action.payload.id]: action.payload };
     case SAVE_NEW_THEME:
       return { ...state, [action.payload.id]: action.payload }
     default:

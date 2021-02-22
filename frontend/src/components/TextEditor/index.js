@@ -7,7 +7,13 @@ import './TextEditor.css';
 
 const TextEditor = ({ originalColorState }) => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const user = useSelector(state => state.session.user);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, [dispatch]);
 
   // Controls "Saved!" popup when saving a theme
   let [savedPopupOpacity, toggleSavedPopupOpacity] = useState('0');
@@ -124,7 +130,7 @@ const TextEditor = ({ originalColorState }) => {
       .catch((err) => console.log(err));
   };
 
-  return (
+  return isLoaded &&
     <div className='themeGenerator__wrapper'>
       {/* Buttons above theme editor */}
       <div className='btn__wrapper'>
@@ -537,7 +543,6 @@ const TextEditor = ({ originalColorState }) => {
         </div>
       </div>
     </div>
-  );
 };
 
 export default TextEditor;

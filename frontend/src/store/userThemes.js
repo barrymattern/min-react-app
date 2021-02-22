@@ -4,8 +4,6 @@ import { fetch } from './csrf';
 const GET_ALL_USER_THEMES = 'themes/getAllUserThemes';
 const GET_SINGLE_USER_THEME = 'themes/getSingleUserTheme';
 
-// const POST_SINGLE_THEME = 'themes/postSingleTheme';
-
 // Action Creator – produces an object *****************************************
 const getAllUserThemes = (themes) => ({
   type: GET_ALL_USER_THEMES,
@@ -16,11 +14,6 @@ const getSingleUserTheme = (theme) => ({
   type: GET_SINGLE_USER_THEME,
   payload: theme,
 });
-
-// const postSingleTheme = (theme) => ({
-//   type: POST_SINGLE_THEME,
-//   payload: theme,
-// });
 
 // Thunk Action Creator – produces a function **********************************
 export const fetchAllUserThemes = (userId) => {
