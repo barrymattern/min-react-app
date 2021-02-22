@@ -152,10 +152,10 @@ const TextEditor = ({ originalColorState }) => {
           />
         </div>
         <div id='btn__wrapper--save'>
-          <button
+          {user && <button
             id='save-btn'
             onClick={saveThemeToDB}
-          >Save</button>
+          >Save</button> }
           <button
             id='download-btn'
             onClick={createThemeJsonFile}
