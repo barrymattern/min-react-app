@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchSingleTheme } from '../../store/themes';
+import { fetchAllThemes } from '../../store/themes';
+// import { fetchSingleTheme } from '../../store/themes';
 
 const SingleTheme = () => {
   const dispatch = useDispatch();
   const params = useParams(); // Returns obj
+  const [isLoaded, setIsLoaded] = useState(false);
   const { themeId } = params; // Destructure params obj to get themeId key
+  const [currentTheme, setCurrentTheme] = useState();
+  const [isDispatched, setIsDispatched] = useState(false);
 
   // Persist state with logged in user
   useSelector(state => state.session.user);
@@ -16,25 +20,31 @@ const SingleTheme = () => {
   });
   
   useEffect(() => {
-    if (allThemes[themeId]) return;
-    dispatch(
-      fetchSingleTheme(themeId)
-    );
-  }, [dispatch, themeId, allThemes]);
+    // if (allThemes[themeId]) return;
+    // dispatch(
+    //   fetchSingleTheme(themeId)
+    // );
+    if (allThemes[themeId]) { // Looks in current store
+      setCurrentTheme(allThemes[themeId]);
+      setIsLoaded(true);
+    } else if (!isDispatched) { // If no theme, send backend request to get all themes
+      dispatch(
+        fetchAllThemes()
+      ).then((res) => setIsDispatched(true)); // Avoids running request multiple times
+    }
+  }, [dispatch, themeId, allThemes, isDispatched]);
 
   // Prevents 'undefined' caused by tying to load before useEffect updates state
-  if (!allThemes[themeId]) return null;
+  if (!currentTheme) return null;
 
-  return (
-    <div className='individual-theme'>
+  return isLoaded && <div className='individual-theme'> 
       <h3 className='theme-name'>
-        {allThemes[themeId].name}
+        {currentTheme.name}
       </h3>
-      {allThemes[themeId].Users.map((user, idx) => {
+      {currentTheme.Users.map((user, idx) => {
         return <p className='username' key={idx}>{user.username}</p>;
       })}
     </div>
-  );
 };
 
 export default SingleTheme;

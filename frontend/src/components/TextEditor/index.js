@@ -12,9 +12,11 @@ const TextEditor = ({ originalColorState }) => {
   // Controls "Saved!" popup when saving a theme
   let [savedPopupOpacity, toggleSavedPopupOpacity] = useState('0');
   useEffect(() => {
-    setTimeout(() => {
-      toggleSavedPopupOpacity('0');
-    }, 1500);
+    if (savedPopupOpacity === '1') {
+      setTimeout(() => {
+        toggleSavedPopupOpacity('0');
+      }, 1500);
+    }
   }, [savedPopupOpacity]);
 
   const [themeName, setThemeName] = useState('Default Dark+');
