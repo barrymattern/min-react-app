@@ -68,16 +68,6 @@ button#save-btn {
   margin-right: 10px;
 }
 
-/* Theme Name Input -------------------- */
-input#themeName {
-  border: none;
-  border-bottom: 1px solid #262626;
-  text-align: center;
-  font-size: 1.75em;
-  padding-bottom: 7px;
-  margin-bottom: 5px;
-}
-
 /* Text Editor -------------------- */
 .textEditor__window {
   background-color: #1e1e1e;

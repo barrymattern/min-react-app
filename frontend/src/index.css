@@ -14,12 +14,20 @@ body {
   background-color: #151516;
 }
 
+/* Form Input -------------------- */
 input {
   background-color: #151516;
   color: #888888;
   letter-spacing: 1.5px;
+  border: none;
+  border-bottom: 1px solid #262626;
+  text-align: center;
+  font-size: 1.75em;
+  padding-bottom: 7px;
+  margin-bottom: 5px;
 }
 
+/* Buttons -------------------- */
 button {
   background-color: #888888;
   border: none;
@@ -38,4 +46,24 @@ button:hover {
 button:active {
   background-color: #646464;
   transform: translateY(1px);
+}
+
+/* Form -------------------- */
+.form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+
+/* Outer Form Button Container -------------------- */
+.form__submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Inner Form Button Container -------------------- */
+.form__button-container {
+  margin: 5px;
 }

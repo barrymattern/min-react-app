@@ -45,7 +45,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <div className='form__container'>
-      <h1 className='form__heading'>Log In</h1>
       <form className='form' onSubmit={handleSubmit}>
         <div className='form__list-container'>
           <ul className='form__list'>
