@@ -61,7 +61,7 @@ const TextEditor = ({ originalColorState }) => {
       methodColor,
       stringColor
     );
-    downloadFile('myTheme.json', themeJSON);
+    downloadFile(`${themeName}.json`, themeJSON);
   };
 
   const resetThemeColors = () => {
