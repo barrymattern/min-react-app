@@ -1,15 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PopoverPicker from '../PopoverPicker';
-import { createThemeJsonFile, resetThemeColors, setThemeToWhite } from './utils';
 import { fetchAllThemes, postNewTheme } from '../../store/themes';
+import { replaceHexColor, downloadFile } from './themeJson';
 import './TextEditor.css';
 
 const TextEditor = ({ originalColorState }) => {
   const dispatch = useDispatch();
     
   const [isLoaded, setIsLoaded] = useState(false);
-  const [themeName, setThemeName] = useState('Default Dark+');
+
+  const user = useSelector(state => state.session.user);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, [dispatch]);
+
+  // Controls "Saved!" popup when saving a theme
+  let [savedPopupOpacity, toggleSavedPopupOpacity] = useState('0');
+  useEffect(() => {
+    if (savedPopupOpacity === '1') {
+      setTimeout(() => {
+        toggleSavedPopupOpacity('0');
+      }, 1500);
+    }
+  }, [savedPopupOpacity]);
+
+  const [themeName, setThemeName] = useState('Default Dark+'); // this works now
   const [commentColor, setCommentColor] = useState(originalColorState.commentColor);
   const [funcKeywordColor, setFuncKeywordColor] = useState(originalColorState.funcKeywordColor);
   const [funcNameColor, setFuncNameColor] = useState(originalColorState.funcNameColor);
@@ -24,22 +41,66 @@ const TextEditor = ({ originalColorState }) => {
   const [fatArrowColor, setFatArrowColor] = useState(originalColorState.fatArrowColor);
   const [methodColor, setMethodColor] = useState(originalColorState.methodColor);
   const [stringColor, setStringColor] = useState(originalColorState.stringColor);
-  let [savedPopupOpacity, toggleSavedPopupOpacity] = useState('0');
 
-  const user = useSelector(state => state.session.user);
+  // Populate & download JSON theme file on button click *************************
+const createThemeJsonFile = (e) => {
+  e.preventDefault();
 
-  useEffect(() => {
-    setIsLoaded(true);
-  }, [dispatch]);
+  const themeJSON = replaceHexColor(
+    commentColor,
+    funcKeywordColor,
+    funcNameColor,
+    roundBraceColor,
+    parameterColor,
+    curlyBraceColor,
+    letConstColor,
+    variableColor,
+    operatorColor,
+    numberColor,
+    punctuationColor,
+    fatArrowColor,
+    methodColor,
+    stringColor
+  );
+  downloadFile(`${themeName}.json`, themeJSON);
+};
 
-  // Controls "Saved!" popup when saving a theme
-  useEffect(() => {
-    if (savedPopupOpacity === '1') {
-      setTimeout(() => {
-        toggleSavedPopupOpacity('0');
-      }, 1500);
-    }
-  }, [savedPopupOpacity]);
+// Reset colors to original Default Dark+ **************************************
+const resetThemeColors = () => {
+  setCommentColor(originalColorState.commentColor);
+  setFuncKeywordColor(originalColorState.funcKeywordColor);
+  setFuncNameColor(originalColorState.funcNameColor);
+  setRoundBraceColor(originalColorState.roundBraceColor);
+  setParameterColor(originalColorState.parameterColor);
+  setCurlyBraceColor(originalColorState.curlyBraceColor);
+  setLetConstColor(originalColorState.letConstColor);
+  setVariableColor(originalColorState.variableColor);
+  setOperatorColor(originalColorState.operatorColor);
+  setNumberColor(originalColorState.numberColor);
+  setPunctuationColor(originalColorState.punctuationColor);
+  setFatArrowColor(originalColorState.fatArrowColor);
+  setMethodColor(originalColorState.methodColor);
+  setStringColor(originalColorState.stringColor);
+};
+
+// Reset colors to original Default Dark+ **************************************
+const setThemeToWhite = () => {
+  const white = '#ffffff';
+  setCommentColor(white);
+  setFuncKeywordColor(white);
+  setFuncNameColor(white);
+  setRoundBraceColor(white);
+  setParameterColor(white);
+  setCurlyBraceColor(white);
+  setLetConstColor(white);
+  setVariableColor(white);
+  setOperatorColor(white);
+  setNumberColor(white);
+  setPunctuationColor(white);
+  setFatArrowColor(white);
+  setMethodColor(white);
+  setStringColor(white);
+};
 
   const saveThemeToDB = (e) => {
     e.preventDefault();
