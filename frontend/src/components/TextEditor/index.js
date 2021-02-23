@@ -25,7 +25,7 @@ const TextEditor = ({ originalColorState }) => {
     }
   }, [savedPopupOpacity]);
 
-  const [themeName, setThemeName] = useState('Default Dark+');
+  const [themeName, setThemeName] = useState('Default Dark+'); // this works now
   const [commentColor, setCommentColor] = useState(originalColorState.commentColor);
   const [funcKeywordColor, setFuncKeywordColor] = useState(originalColorState.funcKeywordColor);
   const [funcNameColor, setFuncNameColor] = useState(originalColorState.funcNameColor);
