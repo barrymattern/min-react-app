@@ -6,21 +6,22 @@
   margin: 20px;
 }
 
-/* mīn logo */
+/* mīn logo --------------------  */
 #min-logo {
   width: 45px;
   position: absolute;
   top: 22px;
 }
 
-/* Nav link container */
+/* Nav link container -------------------- */
 ul {
   list-style-type: none;
   display: flex;
 }
 
-/* Nav links */
-li {
+/* Nav links -------------------- */
+#home,
+#themes {
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 3px;
@@ -29,7 +30,7 @@ li {
 }
 
 #home {
-  margin-left: 45px;
+  margin-left: 80px;
 }
 
 a {
@@ -37,12 +38,14 @@ a {
   color: #4A4A4A;
 }
 
+/* Active link -------------------- */
 .navbar .active {
   color: #888888;
   border-bottom: 1.5px solid #888888;
   padding-bottom: 15px;
 }
 
+/* Login Button -------------------- */
 button#nav-log-in {
   margin-right: 10px;
 }

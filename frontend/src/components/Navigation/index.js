@@ -35,19 +35,17 @@ const Navigation = ({ isLoaded }) => {
           <li><Link to="/" >
             <img src={logo} alt="mīn logo" id='min-logo'/>
           </Link></li>
-          <li>
+          <li id='home'>
             <NavLink
               exact to="/"
               activeClassName="active"
-              id='home'
             >Home
             </NavLink>
           </li>
-          <li>
+          <li id='themes'>
             <NavLink
               exact to="/themes"
               activeClassName="active"
-              id='themes'
             >Themes
             </NavLink>
           </li>

@@ -34,23 +34,28 @@ const ProfileButton = ({ authenticated, user }) => {
     <>
       <button onClick={openMenu}>Profile</button>
       {showMenu && (
-        <ul className='profile-dropdown'>
-          <li>Logged in as 
-            <Link to='/user/profile'> {user.username}</Link>
-          </li>
-          <Link to='/user/themes'>
-            <li>Themes</li>
-          </Link>
-          {/* <Link to='/user/themes/light'>
-            <li>My Light Themes</li>
-          </Link>
-          <Link to='/user/themes/dark'>
-            <li>My Dark Themes</li>
-          </Link> */}
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+        <div className='profile__dropdown'>
+          <ul className='profile__dropdown--content'>
+            <Link to='/user/themes'>
+              <li className='profile__dropdown--menuitem'>Themes</li>
+            </Link>
+            <Link to='/user/profile'>
+              <li className='profile__dropdown--menuitem'>Account</li>
+            </Link>
+            {/* <li className='profile__dropdown--user'> 
+              <Link to='/user/profile'> Logged in as {user.username}</Link>
+            </li> */}
+            {/* <Link to='/user/themes/light'>
+              <li>My Light Themes</li>
+            </Link>
+            <Link to='/user/themes/dark'>
+              <li>My Dark Themes</li>
+            </Link> */}
+            <li id='profile__dropdown--logout'>
+              <button onClick={logout}>Log Out</button>
+            </li>
+          </ul>
+        </div>
       )}
     </>
   );
