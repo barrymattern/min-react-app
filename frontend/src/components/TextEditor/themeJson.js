@@ -22,9 +22,9 @@ export const replaceHexColor = (
         "textMateRules": [
           { // Comments
             "scope": [
-              "comment.line.double-slash.js",
-              "comment.block.js",
-              "comment.block.documentation.js"
+              "comment.line.double-slash",
+              "comment.block",
+              "comment.block.documentation"
             ],
             "settings": {
               "foreground": commentColor
@@ -32,7 +32,7 @@ export const replaceHexColor = (
           },
           { // Function Keyword
             "scope": [
-              "storage.type.function.js"
+              "storage.type.function"
             ],
             "settings": {
               "foreground": funcKeywordColor
@@ -40,9 +40,11 @@ export const replaceHexColor = (
           },
           { // Function Names
             "scope": [
-              "entity.name.function.js",
-              "support.function.js",
-              "entity.other.attribute-name" // HTML attribute
+              "entity.name.function",
+              "support.function",
+              "entity.other.attribute-name",  // HTML attribute
+              "variable.other.constant.property",
+              "variable.other.constant"
             ],
             "settings": {
               "foreground": funcNameColor
@@ -50,7 +52,7 @@ export const replaceHexColor = (
           },
           { // Round Braces
             "scope": [
-              "meta.brace.round.js"
+              "meta.brace.round"
             ],
             "settings": {
               "foreground": roundBraceColor
@@ -58,7 +60,7 @@ export const replaceHexColor = (
           },
           { // Curly Braces
             "scope": [
-              "meta.brace.curly.js",
+              "meta.brace.curly",
             ],
             "settings": {
               "foreground": curlyBraceColor
@@ -66,7 +68,7 @@ export const replaceHexColor = (
           },
           { // Square Braces
             "scope": [
-              "meta.brace.square.js"
+              "meta.brace.square"
             ],
             "settings": {
               "foreground": curlyBraceColor
@@ -74,7 +76,8 @@ export const replaceHexColor = (
           },
           { // Parameters
             "scope": [
-              "variable.parameter"
+              "variable.parameter",
+              "constant.language" // booleans, null, etc.
             ],
             "settings": {
               "foreground": parameterColor
@@ -82,8 +85,10 @@ export const replaceHexColor = (
           },
           { // Let / Const
             "scope": [
-              "storage.type.js",
-              "punctuation.definition.tag" // Tag brackets, '</>'
+              "storage.type",
+              "punctuation.definition.tag",  // Tag brackets, '</>'
+              "support.type",
+              "keyword.operator.new" // Keyword "new"
             ],
             "settings": {
               "foreground": letConstColor
@@ -91,10 +96,11 @@ export const replaceHexColor = (
           },
           { // Variables
             "scope": [
-              "variable.other.readwrite.js",
-              "variable.other.constant.object.js",
+              "variable.other.readwrite",
+              "variable.other.constant.object",
               "support.variable",
               "entity.name.tag", // HTML element tag
+              "support.type.property-name",
               "variable"
             ],
             "settings": {
@@ -111,7 +117,7 @@ export const replaceHexColor = (
           },
           { // Numbers
             "scope": [
-              "constant.numeric.js"
+              "constant.numeric"
             ],
             "settings": {
               "foreground": numberColor
@@ -119,7 +125,7 @@ export const replaceHexColor = (
           },
           { // Punctuation Terminator
             "scope": [
-              "punctuation.terminator.statement.js"
+              "punctuation.terminator.statement"
             ],
             "settings": {
               "foreground": punctuationColor
@@ -127,7 +133,7 @@ export const replaceHexColor = (
           },
           { // Comma Delimeter
             "scope": [
-              "meta.delimiter.comma.js"
+              "meta.delimiter.comma"
             ],
             "settings": {
               "foreground": punctuationColor
@@ -135,7 +141,7 @@ export const replaceHexColor = (
           },
           { // Fat Arrow
             "scope": [
-              "storage.type.function.arrow.js",
+              "storage.type.function.arrow",
               "punctuation.section.embedded" // JSX comment braces, '{}'
             ],
             "settings": {
@@ -154,9 +160,9 @@ export const replaceHexColor = (
           },
           { // Strings
             "scope": [
-              "string.quoted.single.js",
-              "string.quoted.double.js",
-              "string.quoted.template.js",
+              "string.quoted.single",
+              "string.quoted.double",
+              "string.quoted.template",
               "string"
             ],
             "settings": {
