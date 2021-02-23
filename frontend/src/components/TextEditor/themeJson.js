@@ -41,7 +41,8 @@ export const replaceHexColor = (
           { // Function Names
             "scope": [
               "entity.name.function.js",
-              "support.function.js"
+              "support.function.js",
+              "entity.other.attribute-name" // HTML attribute
             ],
             "settings": {
               "foreground": funcNameColor
@@ -57,7 +58,7 @@ export const replaceHexColor = (
           },
           { // Curly Braces
             "scope": [
-              "meta.brace.curly.js"
+              "meta.brace.curly.js",
             ],
             "settings": {
               "foreground": curlyBraceColor
@@ -81,7 +82,8 @@ export const replaceHexColor = (
           },
           { // Let / Const
             "scope": [
-              "storage.type.js"
+              "storage.type.js",
+              "punctuation.definition.tag" // Tag brackets, '</>'
             ],
             "settings": {
               "foreground": letConstColor
@@ -91,7 +93,9 @@ export const replaceHexColor = (
             "scope": [
               "variable.other.readwrite.js",
               "variable.other.constant.object.js",
-              "support.variable"
+              "support.variable",
+              "entity.name.tag", // HTML element tag
+              "variable"
             ],
             "settings": {
               "foreground": variableColor
@@ -131,7 +135,8 @@ export const replaceHexColor = (
           },
           { // Fat Arrow
             "scope": [
-              "storage.type.function.arrow.js"
+              "storage.type.function.arrow.js",
+              "punctuation.section.embedded" // JSX comment braces, '{}'
             ],
             "settings": {
               "foreground": fatArrowColor
