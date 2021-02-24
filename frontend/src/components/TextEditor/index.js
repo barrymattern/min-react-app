@@ -174,7 +174,7 @@ const setThemeToWhite = () => {
         <p id='saved-popup'>Saved!</p>
       </div>
 
-      {/* Text Editor */}
+{/* Text Editor ************************************************************ */}
       <div className='textEditor__wrapper'>
         {/* 'Saved!' popup */}
         <div className='textEditor__window'>
@@ -485,7 +485,7 @@ const setThemeToWhite = () => {
         </div>
       </div>
 
-      {/* Color Picker Swatches */}
+{/* Color Picker Swatches ************************************************** */}
       <div className='colorPicker__wrapper'>
         <div className='tooltip'>
           <PopoverPicker color={commentColor} onChange={setCommentColor} />

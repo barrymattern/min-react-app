@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import TextEditor from "../TextEditor";
 import './HomePage.css';
+import MiniTextEditor from '../MiniTextEditor';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -28,10 +29,29 @@ const HomePage = () => {
     stringColor: '#CE9178',
   };
 
-
   return isLoaded &&
-    <div className='themeGenerator__wrapper'>
-      <TextEditor originalColorState={originalColors} />
+    <div>
+      <div className='themeGenerator__wrapper'>
+        <TextEditor originalColorState={originalColors} />
+      </div>
+      {/* <div className='themeGenerator__wrapper'>
+        <MiniTextEditor
+          commentColor={originalColors.commentColor}
+          funcKeywordColor={originalColors.funcKeywordColor}
+          funcNameColor={originalColors.funcNameColor}
+          roundBraceColor={originalColors.roundBraceColor}
+          parameterColor={originalColors.parameterColor}
+          curlyBraceColor={originalColors.curlyBraceColor}
+          letConstColor={originalColors.letConstColor}
+          variableColor={originalColors.variableColor}
+          operatorColor={originalColors.operatorColor}
+          numberColor={originalColors.numberColor}
+          punctuationColor={originalColors.punctuationColor}
+          fatArrowColor={originalColors.fatArrowColor}
+          methodColor={originalColors.methodColor}
+          stringColor={originalColors.stringColor}
+        />
+      </div> */}
     </div>
 };
 

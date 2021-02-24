@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllThemes } from '../../store/themes';
+import MiniTextEditor from '../MiniTextEditor';
 
 const Themes = () => {
   const dispatch = useDispatch();
@@ -39,14 +40,46 @@ const Themes = () => {
   return isLoaded &&
     <div className='themes-container'>
       {currentThemes && themesArray.map((theme, idx) => {
+        let {
+          commentColor,
+          funcKeywordColor,
+          funcNameColor,
+          roundBraceColor,
+          parameterColor,
+          curlyBraceColor,
+          letConstColor,
+          variableColor,
+          operatorColor,
+          numberColor,
+          punctuationColor,
+          fatArrowColor,
+          methodColor,
+          stringColor,
+        } = theme;
         return (
           <div className='individual-theme' key={idx}>
             <Link to={`/themes/${theme.id}`}>
               <h3 className="theme-name">{theme.name}</h3>
             </Link>
-            {theme.Users.map((user, idx) => {
+            <MiniTextEditor 
+              commentColor={commentColor}
+              funcKeywordColor={funcKeywordColor}
+              funcNameColor={funcNameColor}
+              roundBraceColor={roundBraceColor}
+              parameterColor={parameterColor}
+              curlyBraceColor={curlyBraceColor}
+              letConstColor={letConstColor}
+              variableColor={variableColor}
+              operatorColor={operatorColor}
+              numberColor={numberColor}
+              punctuationColor={punctuationColor}
+              fatArrowColor={fatArrowColor}
+              methodColor={methodColor}
+              stringColor={stringColor}
+            />
+            {/* {theme.Users.map((user, idx) => {
               return <p className='username' key={idx}>{user.username}</p>;
-            })}
+            })} */}
           </div>
         )
       })}
