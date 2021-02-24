@@ -1,0 +1,11 @@
+.themes-container {
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.theme-name {
+  margin-left: 25px;
+  letter-spacing: 1.125px;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './MiniTextEditor.css';
 
 const MiniTextEditor = ({
   commentColor,
@@ -18,11 +19,11 @@ const MiniTextEditor = ({
 }) => {
 
   return (
-    <div className='textEditor__wrapper'>
+    <div className='miniTextEditor__wrapper'>
       {/* 'Saved!' popup */}
-      <div className='textEditor__window'>
+      <div className='miniTextEditor__window'>
         <pre>
-          <code className='textEditor__window--lang-js'>
+          <code className='miniTextEditor__window--lang-js'>
             {/* COMMENT --------------------*/}
             <span
               className='string-js comment'

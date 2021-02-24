@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllThemes } from '../../store/themes';
 import MiniTextEditor from '../MiniTextEditor';
+import './Themes.css';
 
 const Themes = () => {
   const dispatch = useDispatch();

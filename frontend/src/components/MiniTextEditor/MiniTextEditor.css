@@ -1,0 +1,22 @@
+/* Text Editor -------------------- */
+.miniTextEditor__window {
+  background-color: #1e1e1e;
+  width: 700px;
+  padding: 30px;
+  border-radius: 4px;
+  line-height: 1.125em;
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
+  margin: 10px 25px 50px 25px;
+}
+
+.miniTextEditor__window pre {
+  background-color: #1e1e1e;
+}
+
+.miniTextEditor__window--lang-js span {
+  background-color: #1e1e1e;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.5em;
+  letter-spacing: 0.75px;
+}
