@@ -102,6 +102,7 @@ const setThemeToWhite = () => {
   setStringColor(white);
 };
 
+// Save theme to database **************************************
   const saveThemeToDB = (e) => {
     e.preventDefault();
     // Send info to db

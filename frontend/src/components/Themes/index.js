@@ -33,7 +33,7 @@ const Themes = () => {
   // if (currentThemes == null) return null // '==' coerces null & undefined to be truthy to execute 'if' statement
   if (isLoaded && themesArray.length === 0) {
     return (
-      <h3>Time to create more themes!</h3> // replace with loading gif
+      <h3 className='empty-page'>Time to create more themes!</h3> // replace with loading gif
     );
   };
 

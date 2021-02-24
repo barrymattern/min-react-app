@@ -34,24 +34,6 @@ const HomePage = () => {
       <div className='themeGenerator__wrapper'>
         <TextEditor originalColorState={originalColors} />
       </div>
-      {/* <div className='themeGenerator__wrapper'>
-        <MiniTextEditor
-          commentColor={originalColors.commentColor}
-          funcKeywordColor={originalColors.funcKeywordColor}
-          funcNameColor={originalColors.funcNameColor}
-          roundBraceColor={originalColors.roundBraceColor}
-          parameterColor={originalColors.parameterColor}
-          curlyBraceColor={originalColors.curlyBraceColor}
-          letConstColor={originalColors.letConstColor}
-          variableColor={originalColors.variableColor}
-          operatorColor={originalColors.operatorColor}
-          numberColor={originalColors.numberColor}
-          punctuationColor={originalColors.punctuationColor}
-          fatArrowColor={originalColors.fatArrowColor}
-          methodColor={originalColors.methodColor}
-          stringColor={originalColors.stringColor}
-        />
-      </div> */}
     </div>
 };
 
