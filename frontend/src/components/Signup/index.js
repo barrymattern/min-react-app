@@ -13,7 +13,7 @@ const SignupForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const history = useHistory();
 
-  if (sessionUser) return <Redirect to='/' />;
+  if (sessionUser) return <Redirect to='/colorize' />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

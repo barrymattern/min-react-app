@@ -24,7 +24,7 @@ const UserThemes = () => {
 
   if (currentUserThemes.length === 0) {
     return (
-      <h3 className='empty-page'>Go ahead, create some themes. Your eyes will thank you.</h3>
+      <h3 className='hmm-nothing'>Go ahead, create some themes. Your eyes will thank you.</h3>
     );
   }
 

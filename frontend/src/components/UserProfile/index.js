@@ -12,7 +12,7 @@ const UserProfile = () => {
 
   const sessionUser = useSelector(state => state.session.user);
 
-  if (!sessionUser) return <Redirect to='/' />
+  if (!sessionUser) return <Redirect to='/colorize' />
 
   return isLoaded &&
     <p>{Object.values(sessionUser)}</p>

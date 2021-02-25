@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import TextEditor from "../TextEditor";
-import './HomePage.css';
-import MiniTextEditor from '../MiniTextEditor';
+import './Colorize.css';
 
-const HomePage = () => {
+const Colorize = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -37,4 +36,4 @@ const HomePage = () => {
     </div>
 };
 
-export default HomePage;
+export default Colorize;

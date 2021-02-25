@@ -40,11 +40,17 @@ export const replaceHexColor = (
           },
           { // Function Names
             "scope": [
-              "entity.name.function",
-              "support.function",
-              "entity.other.attribute-name",  // HTML attribute
-              "variable.other.constant.property",
-              "variable.other.constant"
+            "entity.name.function",
+            "meta.function",
+            "support.function",
+            "entity.other.attribute-name", // HTML attribute
+            "entity.other.attribute-name.id.css", // HTML id attribute CSS
+            "variable.other.constant.property",
+            "variable.other.constant",
+            "entity.name.function.js",
+            "entity.name.function",
+            "keyword.control",
+            "support.class"
             ],
             "settings": {
               "foreground": funcNameColor
@@ -88,7 +94,8 @@ export const replaceHexColor = (
               "storage.type",
               "punctuation.definition.tag",  // Tag brackets, '</>'
               "support.type",
-              "keyword.operator.new" // Keyword "new"
+              "keyword.operator.new", // Keyword "new"
+              "support.type.property-name.css" // Property name CSS
             ],
             "settings": {
               "foreground": letConstColor
@@ -100,7 +107,8 @@ export const replaceHexColor = (
               "variable.other.constant.object",
               "support.variable",
               "entity.name.tag", // HTML element tag
-              "support.type.property-name",
+              "entity.name.tag.css", // HTML element tag CSS
+              "support.constant.property-value.css", // Property value CSS
               "variable"
             ],
             "settings": {
@@ -142,7 +150,9 @@ export const replaceHexColor = (
           { // Fat Arrow
             "scope": [
               "storage.type.function.arrow",
-              "punctuation.section.embedded" // JSX comment braces, '{}'
+              "punctuation.section.embedded", // JSX comment braces, '{}'
+              "entity.other.attribute-name.pseudo-class.css", // Pseudo class CSS
+              "entity.other.attribute-name.pseudo-element.css" // Pseudo class CSS
             ],
             "settings": {
               "foreground": fatArrowColor
@@ -152,7 +162,10 @@ export const replaceHexColor = (
             "scope": [
               "entity.name.function",
               "keyword.control", // 'import', 'from', 'return', etc.
-              "support.class" // React component
+              "support.class", // React component
+              "entity.other.attribute-name.class.css", // HTML class attribute CSS
+              "constant.other.color.rgb-value.hex.css", // Hex value CSS
+              "keyword.other.unit" // Unit value CSS
             ],
             "settings": {
               "foreground": methodColor

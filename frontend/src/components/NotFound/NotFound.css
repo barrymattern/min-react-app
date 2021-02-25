@@ -1,0 +1,12 @@
+.empty-page {
+  text-align: center;
+  color: rgba(136, 136, 136, 0.3);
+  letter-spacing: 1px;
+  margin-top: 200px;
+}
+
+h3#hmm-nothing {
+  font-size: 2em;
+  font-style: italic;
+  margin-bottom: 10px;
+}

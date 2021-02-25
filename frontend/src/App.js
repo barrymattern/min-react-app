@@ -6,7 +6,8 @@ import Navigation from "./components/Navigation";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import HomePage from "./components/HomePage";
+import SplashPage from "./components/SplashPage";
+import Colorize from "./components/Colorize";
 import Themes from "./components/Themes";
 import SingleTheme from "./components/SingleTheme";
 import UserProfile from "./components/UserProfile";
@@ -49,7 +50,11 @@ function App() {
           </Route>
 
           <Route exact path="/">
-            <HomePage />
+            <SplashPage />
+          </Route>
+
+          <Route exact path="/colorize">
+            <Colorize />
           </Route>
 
           <Route exact path="/themes">

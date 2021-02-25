@@ -37,9 +37,9 @@ const Navigation = ({ isLoaded }) => {
           </Link></li>
           <li id='home'>
             <NavLink
-              exact to="/"
+              exact to="/colorize"
               activeClassName="active"
-            >Home
+            >Colorize
             </NavLink>
           </li>
           <li id='themes'>
