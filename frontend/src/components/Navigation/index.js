@@ -32,10 +32,15 @@ const Navigation = ({ isLoaded }) => {
       {isLoaded && sessionLinks}
       <nav className="navbar">
         <ul>
-          <li><Link to="/" >
-            <img src={logo} alt="mīn logo" id='min-logo'/>
-          </Link></li>
-          <li id='home'>
+          <li>
+            <div id='min-logo'>
+              <Link to="/" >
+                <h2 id='min-text'>mīn</h2>
+                <img src={logo} alt="mīn logo" id='min-logoMark'/>
+              </Link>
+            </div>
+          </li>
+          <li id='colorize'>
             <NavLink
               exact to="/colorize"
               activeClassName="active"

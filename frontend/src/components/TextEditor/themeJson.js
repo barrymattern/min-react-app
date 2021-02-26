@@ -165,7 +165,9 @@ export const replaceHexColor = (
               "support.class", // React component
               "entity.other.attribute-name.class.css", // HTML class attribute CSS
               "constant.other.color.rgb-value.hex.css", // Hex value CSS
-              "keyword.other.unit" // Unit value CSS
+              "keyword.other.unit", // Unit value CSS
+              "support.constant.font-name", // Font name CSS
+              "support.constant.color" // Color CSS
             ],
             "settings": {
               "foreground": methodColor

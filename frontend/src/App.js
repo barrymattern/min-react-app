@@ -17,6 +17,7 @@ import NotFound from "./components/NotFound";
 
 function App() {
   const dispatch = useDispatch();
+
   const [authenticated, setAuthenticated] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -49,7 +50,7 @@ function App() {
             />
           </Route>
 
-          <Route exact path="/">
+          <Route exact path='/' >
             <SplashPage />
           </Route>
 
