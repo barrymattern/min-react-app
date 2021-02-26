@@ -47,12 +47,12 @@ p {
 }
 
 /* Extra shadow */
-.miniTextEditor__window {
+/* .miniTextEditor__window {
   width: 700px;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.6);
-}
+} */
 
 /* Picture fade -------------------- */
 #pic-fade {
