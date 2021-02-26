@@ -72,6 +72,8 @@ button:active {
 /* Profile Dropdown -------------------- */
 .profile__dropdown {
   position: absolute;
+  z-index: 2;
+  top: 25px;
   right: 265px;
 }
 
