@@ -105,3 +105,13 @@ button:active {
 #profile__dropdown--logout {
   margin-top: 13px;
 }
+
+/* Empty Routes */
+.hmm-nothing {
+  text-align: center;
+  color: rgba(136, 136, 136, 0.3);
+  letter-spacing: 1px;
+  margin-top: 200px;
+  font-size: 2em;
+  font-style: italic;
+}
