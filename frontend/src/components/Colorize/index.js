@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import TextEditor from "../TextEditor";
+import TextEditor from '../TextEditor';
 import './Colorize.css';
 
 const Colorize = () => {

@@ -13,6 +13,7 @@ import SingleTheme from "./components/SingleTheme";
 import UserProfile from "./components/UserProfile";
 import UserThemes from "./components/UserThemes";
 import UserSingleTheme from "./components/UserSingleTheme";
+import Footer from '../src/components/Footer';
 import NotFound from "./components/NotFound";
 
 function App() {
@@ -84,6 +85,10 @@ function App() {
 
         </Switch>
       )}
+      {/* Remove div? */}
+      <div>
+        <Footer />
+      </div>
       
     </BrowserRouter>
   );
