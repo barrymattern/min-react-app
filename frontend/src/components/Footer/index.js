@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-const Footer = (props ) => {
+const Footer = () => {
   const links = {
     linkedIn: 'https://www.linkedin.com/in/barrymattern/',
     angelList: 'https://angel.co/u/barry-mattern',

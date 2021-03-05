@@ -9,6 +9,7 @@
   position: relative;
   z-index: 1;
   align-items: center;
+  margin-top: 60px;
   justify-content: center;
   background-image: linear-gradient(to bottom right, #FA3445, #FA5934);
   box-shadow: 1px 1px 25px 10px rgba(0, 0, 0, 0.45);
