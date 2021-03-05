@@ -14,4 +14,11 @@
 .link {
   color: #4A4A4A;
   margin: 0 40px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.separator {
+  color: #4A4A4A;
 }
