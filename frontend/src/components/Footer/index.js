@@ -32,6 +32,7 @@ const Footer = () => {
           onClick={() => window.open(links.email, '_blank')}  
         >Email</li>
       </ul>
+      <p id='copyright'>© 2021 Barry Mattern</p>
     </div>
   );
 };
