@@ -65,7 +65,11 @@ export const replaceHexColor = (
           },
           {
             // Curly Braces
-            scope: ["meta.brace.curly"],
+            scope: [
+              "meta.brace.curly",
+              "punctuation.section.property-list.begin.bracket.curly",
+              "punctuation.section.property-list.end.bracket.curly"
+            ],
             settings: {
               foreground: curlyBraceColor,
             },
@@ -135,7 +139,12 @@ export const replaceHexColor = (
           },
           {
             // Punctuation Terminator
-            scope: ["punctuation.terminator.statement"],
+            scope: [
+              "punctuation.terminator.statement",
+              "punctuation.separator.key-value",
+              "punctuation.terminator.rule",
+              "source.json.comments"
+            ],
             settings: {
               foreground: punctuationColor,
             },
