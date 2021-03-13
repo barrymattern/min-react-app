@@ -15,94 +15,94 @@ export const replaceHexColor = (
   methodColor,
   stringColor
 ) => {
-  let themeJson =
-  {
+  let themeJson = {
     "editor.tokenColorCustomizations": {
       "[Default Dark+]": {
-        "textMateRules": [
-          { // Comments
-            "scope": [
+        textMateRules: [
+          {
+            // Comments
+            scope: [
               "comment.line.double-slash",
               "comment.block",
-              "comment.block.documentation"
+              "comment.block.documentation",
             ],
-            "settings": {
-              "foreground": commentColor
-            }
+            settings: {
+              foreground: commentColor,
+            },
           },
-          { // Function Keyword
-            "scope": [
-              "storage.type.function"
+          {
+            // Function Keyword
+            scope: ["storage.type.function"],
+            settings: {
+              foreground: funcKeywordColor,
+            },
+          },
+          {
+            // Function Names
+            scope: [
+              "entity.name.function",
+              "meta.function",
+              "support.function",
+              "entity.other.attribute-name", // HTML attribute
+              "entity.other.attribute-name.id.css", // HTML id attribute CSS
+              "variable.other.constant.property",
+              "variable.other.constant",
+              "entity.name.function.js",
+              "entity.name.function",
+              "keyword.control",
+              "support.class",
             ],
-            "settings": {
-              "foreground": funcKeywordColor
-            }
+            settings: {
+              foreground: funcNameColor,
+            },
           },
-          { // Function Names
-            "scope": [
-            "entity.name.function",
-            "meta.function",
-            "support.function",
-            "entity.other.attribute-name", // HTML attribute
-            "entity.other.attribute-name.id.css", // HTML id attribute CSS
-            "variable.other.constant.property",
-            "variable.other.constant",
-            "entity.name.function.js",
-            "entity.name.function",
-            "keyword.control",
-            "support.class"
-            ],
-            "settings": {
-              "foreground": funcNameColor
-            }
+          {
+            // Round Braces
+            scope: ["meta.brace.round"],
+            settings: {
+              foreground: roundBraceColor,
+            },
           },
-          { // Round Braces
-            "scope": [
-              "meta.brace.round"
-            ],
-            "settings": {
-              "foreground": roundBraceColor
-            }
+          {
+            // Curly Braces
+            scope: ["meta.brace.curly"],
+            settings: {
+              foreground: curlyBraceColor,
+            },
           },
-          { // Curly Braces
-            "scope": [
-              "meta.brace.curly",
-            ],
-            "settings": {
-              "foreground": curlyBraceColor
-            }
+          {
+            // Square Braces
+            scope: ["meta.brace.square"],
+            settings: {
+              foreground: curlyBraceColor,
+            },
           },
-          { // Square Braces
-            "scope": [
-              "meta.brace.square"
-            ],
-            "settings": {
-              "foreground": curlyBraceColor
-            }
-          },
-          { // Parameters
-            "scope": [
+          {
+            // Parameters
+            scope: [
               "variable.parameter",
-              "constant.language" // booleans, null, etc.
+              "constant.language", // booleans, null, etc.
             ],
-            "settings": {
-              "foreground": parameterColor
-            }
+            settings: {
+              foreground: parameterColor,
+            },
           },
-          { // Let / Const
-            "scope": [
+          {
+            // Let / Const
+            scope: [
               "storage.type",
-              "punctuation.definition.tag",  // Tag brackets, '</>'
+              "punctuation.definition.tag", // Tag brackets, '</>'
               "support.type",
               "keyword.operator.new", // Keyword "new"
-              "support.type.property-name.css" // Property name CSS
+              "support.type.property-name.css", // Property name CSS
             ],
-            "settings": {
-              "foreground": letConstColor
-            }
+            settings: {
+              foreground: letConstColor,
+            },
           },
-          { // Variables
-            "scope": [
+          {
+            // Variables
+            scope: [
               "variable.other.readwrite",
               "variable.other.constant.object",
               "support.variable",
@@ -110,57 +110,58 @@ export const replaceHexColor = (
               "entity.name.tag.css", // HTML element tag CSS
               "support.constant.property-value.css", // Property value CSS
               "support.type.property-name", // JSON string
-              "variable"
+              "variable",
             ],
-            "settings": {
-              "foreground": variableColor
-            }
+            settings: {
+              foreground: variableColor,
+            },
           },
-          { // Operators
-            "scope": [
-              "keyword.operator"
+          {
+            // Operators
+            scope: ["keyword.operator"],
+            settings: {
+              foreground: operatorColor,
+            },
+          },
+          {
+            // Numbers
+            scope: [
+              "constant.numeric",
+              "variable.language.this" // 'this' keyword
             ],
-            "settings": {
-              "foreground": operatorColor
-            }
+            settings: {
+              foreground: numberColor,
+            },
           },
-          { // Numbers
-            "scope": [
-              "constant.numeric"
-            ],
-            "settings": {
-              "foreground": numberColor
-            }
+          {
+            // Punctuation Terminator
+            scope: ["punctuation.terminator.statement"],
+            settings: {
+              foreground: punctuationColor,
+            },
           },
-          { // Punctuation Terminator
-            "scope": [
-              "punctuation.terminator.statement"
-            ],
-            "settings": {
-              "foreground": punctuationColor
-            }
+          {
+            // Comma Delimeter
+            scope: ["meta.delimiter.comma"],
+            settings: {
+              foreground: punctuationColor,
+            },
           },
-          { // Comma Delimeter
-            "scope": [
-              "meta.delimiter.comma"
-            ],
-            "settings": {
-              "foreground": punctuationColor
-            }
-          },
-          { // Fat Arrow
-            "scope": [
+          {
+            // Fat Arrow
+            scope: [
               "storage.type.function.arrow",
               "punctuation.section.embedded", // JSX comment braces, '{}'
               "entity.other.attribute-name.pseudo-class.css", // Pseudo class CSS
-              "entity.other.attribute-name.pseudo-element.css" // Pseudo class CSS
+              "entity.other.attribute-name.pseudo-element.css", // Pseudo class CSS
             ],
-            "settings": {
-              "foreground": fatArrowColor
-            }
+            settings: {
+              foreground: fatArrowColor,
+            },
           },
-          { // Method & Keyword Control
-            "scope": [
+          {
+            // Method & Keyword Control
+            scope: [
               "entity.name.function",
               "keyword.control", // 'import', 'from', 'return', etc.
               "support.class", // React component
@@ -168,26 +169,28 @@ export const replaceHexColor = (
               "constant.other.color.rgb-value.hex.css", // Hex value CSS
               "keyword.other.unit", // Unit value CSS
               "support.constant.font-name", // Font name CSS
-              "support.constant.color" // Color CSS
+              "support.constant.color", // Color CSS
             ],
-            "settings": {
-              "foreground": methodColor
-            }
+            settings: {
+              foreground: methodColor,
+            },
           },
-          { // Strings
-            "scope": [
+          {
+            // Strings
+            scope: [
               "string.quoted.single",
               "string.quoted.double",
               "string.quoted.template",
-              "string"
+              "string",
+              "entity.name.type.class", // Class names
             ],
-            "settings": {
-              "foreground": stringColor
-            }
-          }
-        ]
-      }
-    }
+            settings: {
+              foreground: stringColor,
+            },
+          },
+        ],
+      },
+    },
   };
 
   // TODO: Define function to remove first/last curly brace
