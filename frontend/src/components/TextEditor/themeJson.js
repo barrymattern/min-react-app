@@ -183,6 +183,7 @@ export const replaceHexColor = (
               "string.quoted.template",
               "string",
               "entity.name.type.class", // Class names
+              "entity.name.class" // Class names
             ],
             settings: {
               foreground: stringColor,
