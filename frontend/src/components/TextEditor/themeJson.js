@@ -114,6 +114,7 @@ export const replaceHexColor = (
               "entity.name.tag.css", // HTML element tag CSS
               "support.constant.property-value.css", // Property value CSS
               "support.type.property-name", // JSON string
+              "entity.name.type.module",
               "variable",
             ],
             settings: {
