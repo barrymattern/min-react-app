@@ -86,6 +86,7 @@ export const replaceHexColor = (
             scope: [
               "variable.parameter",
               "constant.language", // booleans, null, etc.
+              "variable.language.arguments"
             ],
             settings: {
               foreground: parameterColor,
@@ -97,8 +98,12 @@ export const replaceHexColor = (
               "storage.type",
               "punctuation.definition.tag", // Tag brackets, '</>'
               "support.type",
-              "keyword.operator.new", // Keyword "new"
+              "keyword.operator.new", // Keyword 'new'
               "support.type.property-name.css", // Property name CSS
+              "storage.modifier", // Keyword 'static'
+              "entity.name.section.markdown", // Markdown section heading
+              "punctuation.definition.list.begin.markdown", // Markdown lists indicators
+              "punctuation.definition.heading.markdown" // Markdown heading punctuation
             ],
             settings: {
               foreground: letConstColor,
@@ -180,6 +185,7 @@ export const replaceHexColor = (
               "keyword.other.unit", // Unit value CSS
               "support.constant.font-name", // Font name CSS
               "support.constant.color", // Color CSS
+              "entity.name.type.interface" // Keyword 'Date'
             ],
             settings: {
               foreground: methodColor,
@@ -193,7 +199,9 @@ export const replaceHexColor = (
               "string.quoted.template",
               "string",
               "entity.name.type.class", // Class names
-              "entity.name.class" // Class names
+              "entity.name.class", // Class names
+              "entity.name.type.instance", // instance of Class
+              "markup.inline.raw.string.markdown" // Markdown string
             ],
             settings: {
               foreground: stringColor,
