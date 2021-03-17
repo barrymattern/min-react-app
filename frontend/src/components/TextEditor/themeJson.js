@@ -98,7 +98,6 @@ export const replaceHexColor = (
               "storage.type",
               "punctuation.definition.tag", // Tag brackets, '</>'
               "support.type",
-              "keyword.operator.new", // Keyword 'new'
               "support.type.property-name.css", // Property name CSS
               "storage.modifier", // Keyword 'static'
               "entity.name.section.markdown", // Markdown section heading
@@ -128,7 +127,11 @@ export const replaceHexColor = (
           },
           {
             // Operators
-            scope: ["keyword.operator"],
+            scope: [
+              "keyword.operator",
+              "keyword.operator.new", // Keyword 'new'
+              "keyword.operator.instanceof", // Keyword 'instanceof'
+            ],
             settings: {
               foreground: operatorColor,
             },
