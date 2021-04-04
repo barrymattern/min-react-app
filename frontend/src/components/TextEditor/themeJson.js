@@ -25,6 +25,9 @@ export const replaceHexColor = (
               "comment.line.double-slash",
               "comment.block",
               "comment.block.documentation",
+              "punctuation.definition.comment",
+              "comment.line.shebang",
+              "comment.line.number-sign.shell"
             ],
             settings: {
               foreground: commentColor,
@@ -120,6 +123,7 @@ export const replaceHexColor = (
               "support.type.property-name", // JSON string
               "entity.name.type.module",
               "variable",
+              "variable.css"
             ],
             settings: {
               foreground: variableColor,
