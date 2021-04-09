@@ -27,7 +27,8 @@ export const replaceHexColor = (
               "comment.block.documentation",
               "punctuation.definition.comment",
               "comment.line.shebang",
-              "comment.line.number-sign.shell"
+              "comment.line.number-sign.shell",
+              "comment.line.number-sign.yaml"
             ],
             settings: {
               foreground: commentColor,
