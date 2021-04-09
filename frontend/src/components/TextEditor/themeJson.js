@@ -209,7 +209,8 @@ export const replaceHexColor = (
               "entity.name.type.class", // Class names
               "entity.name.class", // Class names
               "entity.name.type.instance", // instance of Class
-              "markup.inline.raw.string.markdown" // Markdown string
+              "markup.inline.raw.string.markdown", // Markdown string
+              "markup.bold.markdown" // Markdown bold
             ],
             settings: {
               foreground: stringColor,
